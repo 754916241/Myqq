@@ -18,7 +18,7 @@
         android:id="@+id/tv_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="    请填写具体内容帮助我们了解您的意见和建议，共同打造更好的产品"
+        android:text="    请填写具体内容帮助我们了解您的意见和建议，我们会认真考虑，打造更好的产品"
         android:layout_margin="15dp"
         android:textColor="#ABABAB"
         android:textSize="15sp"
@@ -32,6 +32,7 @@
         android:background="@drawable/edittext_type"
         android:textSize="18sp"
         android:layout_margin="10dp"
+        android:gravity="bottom"
         android:padding="5dp"
         android:layout_below="@+id/tv_toast"
         />

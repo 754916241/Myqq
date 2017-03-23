@@ -152,7 +152,8 @@
         <activity
             android:name="com.wyj.myqq.activity.About"
             android:theme="@style/NoTitle" />
-        <activity android:name="com.wyj.myqq.activity.Suggest"></activity>
+        <activity android:name="com.wyj.myqq.activity.Suggest"
+            android:theme="@style/NoTitle"/>
     </application>
 
 </manifest>

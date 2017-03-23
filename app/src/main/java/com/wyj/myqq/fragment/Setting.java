@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,13 @@ import android.widget.TextView;
 
 import com.example.wyj.myqq.R;
 
+import com.wyj.myqq.activity.MainUI;
 import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
 
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Setting extends Fragment implements View.OnClickListener{
 
 
@@ -39,9 +38,11 @@ public class Setting extends Fragment implements View.OnClickListener{
     private RelativeLayout layoutHead,layoutNick,layoutSex,layoutSignature,layoutAge;
     private Bitmap bm;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.e("fragment state","onCreateView");
        View settingLayout =inflater .inflate(R.layout.fragment_setting, container, false);
 
         btnMore = (Button) settingLayout.findViewById(R.id.btn_more);
@@ -99,8 +100,21 @@ public class Setting extends Fragment implements View.OnClickListener{
 
     @Override
     public void onAttach(Context context) {
+        Log.e("fragment state","onAttach");
         super.onAttach(context);
         onSettingListener = (OnSettingListener) context;
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.e("fragment state","onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDetach() {
+        Log.e("fragment state","onDetach");
+        super.onDetach();
     }
 
     public interface OnSettingListener {

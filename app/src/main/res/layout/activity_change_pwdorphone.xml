@@ -61,4 +61,18 @@
         android:layout_below="@+id/edt_password"
         android:inputType="textPassword"/>
 
+    <EditText
+        android:id="@+id/edt_new_phone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffffff"
+        android:hint="请输入新手机号"
+        android:textSize="16sp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/edt_repassword"
+        android:inputType="number"
+        android:visibility="gone"/>
+
 </RelativeLayout>

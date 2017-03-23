@@ -23,6 +23,10 @@ import com.wyj.myqq.utils.DataCleanManager;
 import com.wyj.myqq.utils.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
 
+import static com.wyj.myqq.utils.Constant.KEY_PHONE;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEPHONE;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_SUGGEST;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGEPHONE;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 public class MoreSetting extends AppCompatActivity implements View.OnClickListener{
@@ -92,7 +96,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void changePwdOrPhone(String key,String value){
+    private void changePwdOrPhone(String key,String value,int requestCode){
         Bundle bundle = new Bundle();
         if(key!=null){
             bundle.putString(key,value);
@@ -100,7 +104,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         bundle.putString(Constant.KEY_QQNUMBER,qqnumber);
         Intent intent = new Intent(this,ChangePwdOrPhone.class);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivityForResult(intent,requestCode);
     }
 
 
@@ -114,13 +118,14 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 builder = new AlertDialog.Builder(this);
                 edtDialog = new EditText(this);
                 edtDialog.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                edtDialog.setBackgroundResource(R.drawable.edittext_type);
                 builder.setMessage("请输入您的密码以确认");
                 builder.setView(edtDialog);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         if(edtDialog.getText().toString().equals(password)){
-                            changePwdOrPhone(null,null);
+                            changePwdOrPhone(null,null,Constant.REQUEST_CODE_CHANGEPASSWORD);
 
                         }else{
                             MyToast.showToast(MoreSetting.this, "密码错误，请验证后重试",R.mipmap.error, Toast.LENGTH_SHORT);
@@ -134,7 +139,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 startActivity(new Intent(this,About.class));
                 break;
             case R.id.tv_suggest:
-                startActivityForResult(new Intent(this,Suggest.class),Constant.REQUEST_CODE_SUGGEST);
+               submitSuggest();
                 break;
             case R.id.layout_phone:
                 String[] items = new String[]{"通过密码修改", "通过绑定手机号修改"};
@@ -146,10 +151,10 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                                 arg0.dismiss();
                                 switch (arg1) {
                                     case 0:
-                                        changePwdOrPhone(Constant.KEY_PASSWORD,password);
+                                        changePwdOrPhone(Constant.KEY_PASSWORD,password, RESULT_CODE_CHANGEPHONE);
                                         break;
                                     case 1:
-                                        changePwdOrPhone(Constant.KEY_PHONE,phone);
+                                        changePwdOrPhone(Constant.KEY_PHONE,phone,RESULT_CODE_CHANGEPHONE);
                                         break;
                                 }
                             }
@@ -193,6 +198,27 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.img_left:
                 onBackPressed();
+                break;
+        }
+    }
+
+    private void submitSuggest() {
+        Intent intent = new Intent(this,Suggest.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constant.KEY_QQNUMBER,qqnumber);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, REQUEST_CODE_SUGGEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQUEST_CODE_SUGGEST:
+
+                break;
+            case REQUEST_CODE_CHANGEPHONE:
+                tvPhone.setText(data.getExtras().getString(KEY_PHONE));
                 break;
         }
     }

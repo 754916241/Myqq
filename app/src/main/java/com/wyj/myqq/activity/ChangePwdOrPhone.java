@@ -2,6 +2,7 @@ package com.wyj.myqq.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.MyToast;
 import org.apache.http.Header;
@@ -25,14 +27,15 @@ import org.json.JSONObject;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
+import static android.R.attr.key;
 import static com.wyj.myqq.utils.Constant.MOB_APP_KEY;
 import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
 public class ChangePwdOrPhone extends AppCompatActivity {
 
-    private EditText edtPassword, repassword;
+    private EditText edtPassword, repassword,edtNewPhone;
     private TextView tvGetCode,tvToast;
-    private TextView tvSave, tvCancel;
+    private TextView tvSave, tvCancel,tvTitle;
     private String qqnumber,phone,password;
     private Bundle bundle;
     private int success;
@@ -50,8 +53,12 @@ public class ChangePwdOrPhone extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            // MyToast.showToast(Regist.this,"验证码输入正确",Toast.LENGTH_SHORT);
-                            postInformation(phone);
+                            //获取验证码以修改绑定手机号
+                            if(Config.isPhone(edtNewPhone.getText().toString())){
+                                postInformation(edtNewPhone.getText().toString());
+                            }else{
+                                MyToast.showToast(ChangePwdOrPhone.this,"输入的新手机号格式有误",Toast.LENGTH_SHORT);
+                            }
                         }
                     });
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
@@ -131,12 +138,14 @@ public class ChangePwdOrPhone extends AppCompatActivity {
                     SMSSDK.submitVerificationCode(Constant.COUNTRY_ID_DEFAULT,phone,repassword.getText().toString());
                 }else if(password!=null){
                     if(edtPassword.getText().toString().equals(password)){
+                        //修改绑定手机号通过密码
                         postInformation("");
                     }else{
                         MyToast.showToast(ChangePwdOrPhone.this, "密码输入错误,请核对后重试",R.mipmap.error ,Toast.LENGTH_SHORT);
                     }
                 } else {
                     if (edtPassword.getText().toString().equals(repassword.getText().toString())) {
+                        //修改密码
                         postInformation(null);
                     } else {
                         MyToast.showToast(ChangePwdOrPhone.this, "两次密码输入不一致，请核对后重试",R.mipmap.error ,Toast.LENGTH_SHORT);
@@ -159,13 +168,16 @@ public class ChangePwdOrPhone extends AppCompatActivity {
 
     private void initView() {
         edtPassword = (EditText) findViewById(R.id.edt_password);
+        edtNewPhone = (EditText) findViewById(R.id.edt_new_phone);
         repassword = (EditText) findViewById(R.id.edt_repassword);
         tvGetCode = (TextView) findViewById(R.id.tv_get_code);
         tvToast = (TextView) findViewById(R.id.tv_toast);
         tvSave = (TextView) findViewById(R.id.tv_right);
         tvCancel = (TextView) findViewById(R.id.tv_left);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         tvSave.setText("保存");
+        tvTitle.setText("修改密码");
         dialog = new ProgressDialog(this);
         if(phone!=null){
             edtPassword.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -173,13 +185,16 @@ public class ChangePwdOrPhone extends AppCompatActivity {
             edtPassword.setText(phone);
             edtPassword.setFocusable(false);
             edtPassword.setFocusableInTouchMode(false);
+            tvTitle.setText("修改绑定手机号");
             tvToast.setText("如果您想更改绑定手机号请点击获取验证码，我们会发送验证码至您绑定的手机号以便于验证");
             repassword.setHint("请输入验证码");
+            edtNewPhone.setVisibility(View.VISIBLE);
             tvGetCode.setVisibility(View.VISIBLE);
         }
         if(password!=null){
             repassword.setInputType(InputType.TYPE_CLASS_TEXT);
             tvToast.setText("请输入密码进行验证，输入新手机号以完成修改");
+            tvTitle.setText("修改绑定手机号");
             edtPassword.setHint("请输入密码");
             repassword.setHint("请输入新手机号");
         }
@@ -187,12 +202,19 @@ public class ChangePwdOrPhone extends AppCompatActivity {
     }
 
     private void postInformation(String phone) {
-        dialog.show();
+
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         if(phone!=null){
-            params.add(Constant.KEY_PHONE, repassword.getText().toString());
+            if(phone.equals("")){
+                imm.hideSoftInputFromWindow(repassword.getWindowToken(), 0);
+                params.add(Constant.KEY_PHONE, repassword.getText().toString());
+            }else{
+                imm.hideSoftInputFromWindow(edtNewPhone.getWindowToken(), 0);
+                params.add(Constant.KEY_PHONE, phone);
+            }
+
         }else{
             params.add(Constant.KEY_PASSWORD, repassword.getText().toString());
         }
@@ -201,20 +223,22 @@ public class ChangePwdOrPhone extends AppCompatActivity {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 String result = new String(bytes);
-                final JSONArray array;
                 try {
-                    array = new JSONArray(result);
-                    JSONObject userObject = array.getJSONObject(0);
+                    JSONObject userObject = new JSONObject(result);
                     success = userObject.getInt("success");
                     if(success!=0){
-                        Toast.makeText(ChangePwdOrPhone.this,"外部网络错误",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ChangePwdOrPhone.this,"传入信息有误请核对后重试",Toast.LENGTH_SHORT).show();
                     }else{
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
 
-                            }
-                        }, 1000);
+                        if(userObject.getString("arg").equals(Constant.KEY_PASSWORD)){
+
+                        }else{
+                            Intent intent = new Intent();
+                            intent.putExtra(Constant.KEY_PHONE, userObject.getString("arg"));
+                            setResult(Constant.RESULT_CODE_CHANGEPHONE, intent);
+                            finish();
+                        }
+
                     }
 
                 } catch (JSONException e) {
@@ -224,7 +248,7 @@ public class ChangePwdOrPhone extends AppCompatActivity {
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                dialog.dismiss();
+
                 Toast.makeText(ChangePwdOrPhone.this, "内部网络错误请稍后重试", Toast.LENGTH_SHORT).show();
             }
         });

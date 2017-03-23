@@ -1,7 +1,6 @@
 package com.wyj.myqq.activity;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -11,12 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.graphics.Color;
 import android.app.AlertDialog.Builder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.wyj.myqq.utils.Constant;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
@@ -31,6 +31,20 @@ import java.util.List;
 
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation;
+
+import static com.wyj.myqq.utils.Constant.KEY_AGE;
+import static com.wyj.myqq.utils.Constant.KEY_NICK;
+import static com.wyj.myqq.utils.Constant.KEY_SEX;
+import static com.wyj.myqq.utils.Constant.KEY_SIGNATURE;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEAGE;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGENICK;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGESEX;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGESIGNATURE;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGEAGE;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGENICK;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESEX;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESIGNATURE;
+
 
 public class MainUI extends FragmentActivity implements Setting.OnSettingListener, Contacts.OnContactsListener {
 
@@ -48,6 +62,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     private TextView title;
     private ScreenManager screenManager;
     private ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +197,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         }
 
         transaction.commit();
-
     }
 
     private void hideFragments(FragmentTransaction transaction) {
@@ -246,10 +260,10 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
 
                 break;
             case R.id.layout_nick:
-                changeData(Constant.KEY_NICK,user.getNickname(),Constant.REQUEST_CODE_CHANGENICK);
+                changeData(Constant.KEY_NICK,user.getNickname(), REQUEST_CODE_CHANGENICK);
                 break;
             case R.id.layout_sex:
-                changeData(Constant.KEY_SEX,user.getSex(),Constant.REQUEST_CODE_CHANGESEX);
+                changeData(KEY_SEX,user.getSex(), REQUEST_CODE_CHANGESEX);
                 break;
             case R.id.layout_signature:
                 changeData(Constant.KEY_SIGNATURE,user.getSignature(),Constant.REQUEST_CODE_CHANGESIGNATURE);
@@ -286,27 +300,41 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        switch (requestCode){
+            case REQUEST_CODE_CHANGENICK:
+                if(resultCode == RESULT_CODE_CHANGENICK){
+                    user.setNickname(data.getExtras().getString(KEY_NICK));
+                    resetSetting();
+                }
+                break;
+            case REQUEST_CODE_CHANGEAGE:
+                if(resultCode == RESULT_CODE_CHANGEAGE){
+                    user.setAge(data.getExtras().getString(KEY_AGE));
+                    resetSetting();
+                }
+                break;
+            case REQUEST_CODE_CHANGESIGNATURE:
+                if(resultCode == RESULT_CODE_CHANGESIGNATURE){
+                    user.setSignature(data.getExtras().getString(KEY_SIGNATURE));
+                    resetSetting();
+                }
+                break;
+            case REQUEST_CODE_CHANGESEX:
+                if(resultCode == RESULT_CODE_CHANGESEX){
+                    user.setSex(data.getExtras().getString(KEY_SEX));
+                    resetSetting();
+                }
+                break;
+        }
     }
+
+    private void resetSetting() {
+        setting.onDestroyView();
+        setting.onDestroy();
+        setting.onDetach();
+        setting = null;
+        setTabSelection(2);
+    }
+
+
 }
-
-   /* Builder builder = new Builder(this);
-builder.setTitle("系统提示");
-        builder.setMessage("确认退出当前账号?");
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-@Override
-public void onClick(DialogInterface arg0, int arg1) {
-        dialog.setMessage("正在退出……");
-        dialog.show();
-        new Handler().postDelayed(new Runnable() {
-@Override
-public void run() {
-
-        }
-        }, 1500);
-
-        MainUI.this.finish();
-        }
-        });
-        builder.setNegativeButton("取消", null);
-        builder.create().show();*/

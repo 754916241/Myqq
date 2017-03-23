@@ -26,7 +26,7 @@ public class Constant {
     public static final String KEY_FRIENDS_ITEM = "friend_item";
 
     //192.168.0.108  192.168.1.9
-    private static final String HTTP_URL = "192.168.1.9";
+    private static final String HTTP_URL = "192.168.0.108";
     public static final String HTTPURL_REGIST = "http://"+HTTP_URL+":82/htdocs/qq/Adduser.php";
     public static final String HTTPURL_LOGIN = "http://"+HTTP_URL+":82/htdocs/qq/Login.php";
     public static final String HTTPURL_ADDFRIENDS = "http://"+HTTP_URL+":82/htdocs/qq/Addfriends.php";
@@ -54,8 +54,10 @@ public class Constant {
     public static final int RESULT_CODE_CHANGEAGE = 5015;
     public static final int REQUEST_CODE_CHANGESIGNATURE= 5016;
     public static final int RESULT_CODE_CHANGESIGNATURE = 5017;
-    public static final int REQUEST_CODE_SUGGEST = 5018;
-
+    public static final int REQUEST_CODE_CHANGEPHONE = 5018;
+    public static final int RESULT_CODE_CHANGEPHONE = 5019;
+    public static final int REQUEST_CODE_SUGGEST = 5020;
+    public static final int RESULT_CODE_SUGGEST = 5021;
 
     public static final String MOB_APP_KEY = "1c31c4dd9f304";
     public static final String MOB_APP_SECRETE = "5e063382d632069c76a99d73921965b6";

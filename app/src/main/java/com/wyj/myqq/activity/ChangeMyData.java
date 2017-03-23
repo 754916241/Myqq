@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,6 +20,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.utils.Constant;
+import com.wyj.myqq.utils.MyToast;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -31,7 +33,7 @@ public class ChangeMyData extends AppCompatActivity {
     private String qqnumber, nickname, truename, sex, age, signature;
     private EditText editText;
     private ImageButton selectMan, selectWoman;
-    private TextView tvSave, tvCancel, tvMan, tvWoman;
+    private TextView tvSave, tvCancel, tvMan, tvWoman,tvTitle;
     private RelativeLayout layoutSex;
     private ProgressDialog dialog;
     private int success;
@@ -49,6 +51,7 @@ public class ChangeMyData extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.edt_change);
         selectMan = (ImageButton) findViewById(R.id.img_select_man);
         selectWoman = (ImageButton) findViewById(R.id.img_select_woman);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
         tvSave = (TextView) findViewById(R.id.tv_save);
         tvCancel = (TextView) findViewById(R.id.tv_left);
         tvMan = (TextView) findViewById(R.id.tv_man);
@@ -61,23 +64,28 @@ public class ChangeMyData extends AppCompatActivity {
     private void initData() {
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
+
         if (bundle.getString(Constant.KEY_NICK) != null) {
             nickname = bundle.getString(Constant.KEY_NICK);
             editText.setText(nickname);
             editText.setVisibility(View.VISIBLE);
             layoutSex.setVisibility(View.GONE);
+            tvTitle.setText("昵称");
         }
 
         if (bundle.getString(Constant.KEY_AGE) != null) {
             age = bundle.getString(Constant.KEY_AGE);
             editText.setText(age);
+            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             editText.setVisibility(View.VISIBLE);
             layoutSex.setVisibility(View.GONE);
+            tvTitle.setText("年龄");
         }
         if (bundle.getString(Constant.KEY_SEX) != null) {
             sex = bundle.getString(Constant.KEY_SEX);
             editText.setVisibility(View.GONE);
             layoutSex.setVisibility(View.VISIBLE);
+            tvTitle.setText("性别");
             if (sex.equals("男")) {
                 selectMan.setVisibility(View.VISIBLE);
                 selectWoman.setVisibility(View.GONE);
@@ -91,6 +99,7 @@ public class ChangeMyData extends AppCompatActivity {
             editText.setVisibility(View.VISIBLE);
             layoutSex.setVisibility(View.GONE);
             editText.setText(signature);
+            tvTitle.setText("个性签名");
         }
 
         tvMan.setOnClickListener(new View.OnClickListener() {
@@ -115,16 +124,16 @@ public class ChangeMyData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nickname != null) {
-                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_NICK, nickname, Constant.RESULT_CODE_CHANGENICK);
+                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_NICK, editText.getText().toString(), Constant.RESULT_CODE_CHANGENICK);
                 }
                 if (sex != null) {
                     httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_SEX, sex, Constant.RESULT_CODE_CHANGESEX);
                 }
                 if (age != null) {
-                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_AGE, age, Constant.RESULT_CODE_CHANGEAGE);
+                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_AGE, editText.getText().toString(), Constant.RESULT_CODE_CHANGEAGE);
                 }
                 if (signature != null) {
-                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_SIGNATURE, signature, Constant.RESULT_CODE_CHANGESIGNATURE);
+                    httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_SIGNATURE, editText.getText().toString(), Constant.RESULT_CODE_CHANGESIGNATURE);
                 }
             }
         });
@@ -155,26 +164,31 @@ public class ChangeMyData extends AppCompatActivity {
                 String result = new String(bytes);
                 try {
                     Log.e("result", result);
-                    final JSONArray array = new JSONArray(result);
-                    JSONObject userObject = array.getJSONObject(0);
+
+                    JSONObject userObject = new JSONObject(result);
                     success = userObject.getInt("success");
                     if (success == 0) {
+                        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                         Intent intent = new Intent();
                         intent.putExtra(key, values);
                         setResult(resultCode, intent);
-                        Toast.makeText(ChangeMyData.this, "修改成功", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        MyToast.showToast(ChangeMyData.this, "修改成功",R.mipmap.right, Toast.LENGTH_SHORT);
                         finish();
                     } else {
-                        Toast.makeText(ChangeMyData.this, "消息有误请重试", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        MyToast.showToast(ChangeMyData.this, "消息有误请重试",R.mipmap.error, Toast.LENGTH_SHORT);
                     }
                 } catch (JSONException e) {
+                    dialog.dismiss();
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                Toast.makeText(ChangeMyData.this, "网络错误请稍后再试", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+                MyToast.showToast(ChangeMyData.this, "内部网络错误请稍后重试",R.mipmap.error, Toast.LENGTH_SHORT);
             }
         });
     }
