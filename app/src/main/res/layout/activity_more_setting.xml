@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_more_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f2f2"
+    tools:context="com.wyj.myqq.activity.MoreSetting">
+
+    <include android:id="@+id/layout_title"
+        layout="@layout/common_title"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/layout_title"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="绑定手机号"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="13934817674"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/layout_phone"
+        android:background="#ffffffff"
+        android:layout_marginTop="1dp"
+        android:paddingLeft="10dp"
+        android:text="修改密码"
+        android:textSize="18sp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/layout_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv_password"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="清除缓存"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="586.2KB"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/layout_cache"
+        android:background="#ffffffff"
+        android:layout_marginTop="1dp"
+        android:paddingLeft="10dp"
+        android:text="关于"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/tv_about"
+        android:background="#ffffffff"
+        android:layout_marginTop="1dp"
+        android:paddingLeft="10dp"
+        android:text="意见反馈"
+        android:textSize="18sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp">
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:textColor="#c6262e"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffffff"
+            android:text="退出登陆"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

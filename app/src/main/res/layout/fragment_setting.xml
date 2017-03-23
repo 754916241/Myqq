@@ -1,0 +1,200 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f2f2"
+    tools:context="com.wyj.myqq.fragment.Setting">
+
+    <RelativeLayout
+        android:id="@+id/layout_qqnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="#ffffffff"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/layout_image"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/tv_setting_qqnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="754916241"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="qq号"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_qqnumber"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="昵称"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_setting_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="王亚君"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_nick"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="性别"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_setting_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="男"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_sex"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="年龄"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_setting_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="20"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_age"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="个性签名"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_setting_signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="傻逼文升"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:background="#ffffffff"
+        android:layout_below="@+id/title_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="头像"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/img_setting_head"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/qq_icon"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/btn_more"
+            android:textColor="#c6262e"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffffff"
+            android:text="更多设置"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

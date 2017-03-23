@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7e0e0">
+
+    <ImageView
+        android:id="@+id/img_regist_addhead"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@mipmap/asw" />
+
+    <EditText
+        android:id="@+id/edt_regist_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/img_regist_addhead"
+        android:layout_marginTop="10dp"
+        android:background="#ffffffff"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        android:paddingLeft="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_regist_phone">
+
+        <EditText
+            android:id="@+id/edt_regist_code"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffffff"
+            android:hint="请填写您获取的验证码"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_regist_getCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取验证码"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edt_regist_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_code"
+        android:layout_marginTop="1dp"
+        android:background="#ffffffff"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp" />
+
+    <EditText
+        android:id="@+id/edt_regist_repwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_regist_pwd"
+        android:layout_marginTop="1dp"
+        android:background="#ffffffff"
+        android:hint="请再次输入密码"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_below="@+id/edt_regist_repwd"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout">
+
+        <Button
+            android:id="@+id/btn_regist_regist"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_unable_click"
+            android:enabled="false"
+            android:text="马上注册"
+            android:textColor="@android:color/white"
+            android:soundEffectsEnabled="false"
+            android:textSize="18sp" />
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:text="test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignRight="@+id/img_regist_addhead"
+        android:layout_alignEnd="@+id/img_regist_addhead"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:visibility="gone"
+        android:id="@+id/button" />
+
+
+</RelativeLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f2f2">
+
+    <RelativeLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3998dc">
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="取消"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的信息"
+            android:textColor="#ffffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="保存"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/edt_change"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:text="哈哈"
+        android:layout_below="@id/layout_title"
+        android:layout_marginTop="15dp"
+        android:background="#ffffffff"
+        />
+
+    <RelativeLayout
+        android:id="@+id/layout_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"
+        android:layout_below="@id/layout_title">
+
+        <TextView
+            android:id="@+id/tv_man"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:text="男"
+            android:background="#ffffffff"
+            android:gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/tv_woman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:text="女"
+            android:layout_below="@id/tv_man"
+            android:layout_marginTop="2dp"
+            android:background="#ffffffff"
+            android:gravity="center_vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/img_select_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:baseline="15dp"
+            android:layout_alignBaseline="@id/tv_man"
+            android:background="#ffffffff"
+            android:src="@mipmap/right"
+            />
+
+        <ImageButton
+            android:id="@+id/img_select_woman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:baseline="15dp"
+            android:layout_alignBaseline="@id/tv_woman"
+            android:background="#ffffffff"
+            android:src="@mipmap/right"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

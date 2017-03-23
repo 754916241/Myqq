@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wyj.myqq.activity.ChangePwdOrPhone"
+    android:background="#f5f2f2">
+
+    <!-- gone不占用空间，后面的空间会取代他的位置，而invisible会占据空间 -->
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/common_title_with_button"
+        />
+
+    <TextView
+        android:id="@+id/tv_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改密码后您将返回到登录界面重新登录"
+        android:layout_margin="15dp"
+        android:textColor="#ABABAB"
+        android:textSize="15sp"
+        android:layout_below="@id/layout_title"
+       />
+
+    <EditText
+        android:id="@+id/edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffffff"
+        android:hint="请设置MyQQ密码"
+        android:textSize="16sp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/tv_toast"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/tv_get_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取验证码"
+        android:layout_alignBaseline="@id/edt_password"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="gone"/>
+
+
+    <EditText
+        android:id="@+id/edt_repassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffffff"
+        android:hint="请再次输入"
+        android:textSize="16sp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/edt_password"
+        android:inputType="textPassword"/>
+
+</RelativeLayout>

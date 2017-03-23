@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wyj.myqq.fragment.Contacts">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <RelativeLayout
+        android:id="@+id/rl_contacts_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:padding="10dp">
+
+    <EditText
+        android:id="@+id/edt_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="搜索本地联系人"
+        android:textSize="16sp"
+        android:background="#ffffffff"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_new_friend"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffffff"
+        android:layout_below="@id/rl_contacts_search">
+
+        <ImageView
+            android:id="@+id/img_add_friend"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_add_friend"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新的朋友"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_add_friend"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_group_chat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="#ffffffff"
+        android:layout_below="@id/rl_new_friend">
+
+        <ImageView
+            android:id="@+id/img_group_chat"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_group_chat"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="群聊"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_group_chat"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/rl_group_chat"
+        android:footerDividersEnabled="false"
+        />
+
+</RelativeLayout>

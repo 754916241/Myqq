@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wyj.myqq.activity.MainUI">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/common_title"
+
+        />
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:background="#f5f2f2"
+        android:layout_height="0dp"
+        android:layout_weight="9">
+    </FrameLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="#ffffffff"
+        >
+        <LinearLayout
+            android:id="@+id/message_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/img_mainUI_message"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/tab_message_normal"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_mainUI_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消息"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/contacts_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_mainUI_contacts"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/tab_contacts_normal"
+
+                />
+            <TextView
+                android:id="@+id/tv_mainUI_contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系人"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/setting_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_mainUI_setting"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/tab_settings_normal"
+
+                />
+            <TextView
+                android:id="@+id/tv_mainUI_settting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

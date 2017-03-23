@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/viewitem2">
+
+ <Button
+     android:id="@+id/btn_guide_start"
+     android:layout_width="150dp"
+     android:layout_height="wrap_content"
+     android:layout_marginBottom="60dp"
+     android:layout_gravity="center_horizontal"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true"
+     android:background="@drawable/button_type2"
+     android:text="进入我的QQ"
+     android:textSize="20dp"
+     android:textColor="#ff0d00"
+     android:onClick="startClick"/>
+
+</RelativeLayout>
