@@ -42,7 +42,7 @@ public class Setting extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("fragment state","onCreateView");
+
        View settingLayout =inflater .inflate(R.layout.fragment_setting, container, false);
 
         btnMore = (Button) settingLayout.findViewById(R.id.btn_more);
@@ -100,22 +100,12 @@ public class Setting extends Fragment implements View.OnClickListener{
 
     @Override
     public void onAttach(Context context) {
-        Log.e("fragment state","onAttach");
+
         super.onAttach(context);
         onSettingListener = (OnSettingListener) context;
     }
 
-    @Override
-    public void onDestroyView() {
-        Log.e("fragment state","onDestroyView");
-        super.onDestroyView();
-    }
 
-    @Override
-    public void onDetach() {
-        Log.e("fragment state","onDetach");
-        super.onDetach();
-    }
 
     public interface OnSettingListener {
         void settingClick(View view);
@@ -126,18 +116,6 @@ public class Setting extends Fragment implements View.OnClickListener{
     }
 
     private OnSettingListener onSettingListener;
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("您希望：");
-        menu.add(1,1,1,"修改我的密码");
-        menu.add(1,2,1,"修改我的昵称");
-        menu.add(1,3,1,"修改我的真实姓名");
-        menu.add(1,4,1,"修改我的年龄");
-        menu.add(1,5,1,"修改我的性别");
-        menu.add(1,6,1,"修改我的个性签名");
-    }
 
 
     @Override

@@ -34,7 +34,7 @@ import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -127,7 +127,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
             regist.setSoundEffectsEnabled(false);
         }else{
             if(edtPwd.getText().toString().length() == edtRepwd.getText().toString().length()){
-                regist.setBackgroundResource(R.drawable.button_select);
+                regist.setBackgroundResource(R.drawable.button_blue_select);
                 regist.setEnabled(true);
                 regist.setSoundEffectsEnabled(true);
             }else{
@@ -373,17 +373,4 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         super.onDestroy();
     }
 }
-
-/**
- * rgSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
- *
- * @Override public void onCheckedChanged(RadioGroup group, int checkedId) {
- * if(checkedId == R.id.rb_regist_man){
- * sex = rbMan.getText().toString();
- * }else if(checkedId == R.id.rb_regist_woman){
- * sex = rbWoman.getText().toString();
- * }
- * }
- * });
- */
 

@@ -1,12 +1,18 @@
 package com.wyj.myqq.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,100 +22,153 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.utils.ImageUtils;
+import com.wyj.myqq.utils.ScreenManager;
+import com.wyj.myqq.view.MyToast;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AddFriends extends AppCompatActivity {
+public class AddFriends extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtAddFriend;
-    private TextView tvAdd,tvCancel;
-    private String qqnumber;
-    private int success;
-    private Friends friend;
+    private ImageView imgLeft;
+    /**
+     * 联系人
+     */
+    private TextView title;
+    private ImageView imgHead;
+
+    private TextView tvNick;
+
+    private EditText edtExtra;
+    /**
+     * 确认添加
+     */
+    private Button btnAddFriend;
+    private RelativeLayout activityAddFriends;
+    private Bundle bundle;
+    private String qqnumber,nickname, imgPath;
+    private Friends friends;
+    private Bitmap bm;
     private InputMethodManager imm;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                imgHead.setImageBitmap(bm);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friends);
-        Bundle bundle = getIntent().getExtras();
-        qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
-        init();
+        initData();
+        initView();
     }
 
-    private void init() {
+    private void initData() {
+        bundle = getIntent().getExtras();
+        friends = (Friends) bundle.getSerializable(Constant.KEY_FRIENDS);
+        qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
+        nickname = friends.getFriendNick();
+        imgPath = friends.getFriendImg();
+    }
 
-        edtAddFriend = (EditText) findViewById(R.id.edt_add_friend);
-        tvCancel = (TextView) findViewById(R.id.tv_left);
-        tvAdd = (TextView) findViewById(R.id.tv_right);
+    private void initView() {
+        imgLeft = (ImageView) findViewById(R.id.img_left);
+        imgLeft.setOnClickListener(this);
+        title = (TextView) findViewById(R.id.title);
+        imgHead = (ImageView) findViewById(R.id.img_head);
+        tvNick = (TextView) findViewById(R.id.tv_nick);
+        edtExtra = (EditText) findViewById(R.id.edt_extra);
+        btnAddFriend = (Button) findViewById(R.id.btn_add_friend);
+        btnAddFriend.setOnClickListener(this);
+        activityAddFriends = (RelativeLayout) findViewById(R.id.activity_add_friends);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        tvAdd.setOnClickListener(new View.OnClickListener() {
+        imgLeft.setVisibility(View.VISIBLE);
+        title.setText("确认添加");
+        tvNick.setText(nickname);
+        new Thread() {
             @Override
-            public void onClick(View v) {
+            public void run() {
+                bm = ImageUtils.receiveImage(friends.getFriendImg());
+                Message msg = new Message();
+                msg.what = 0;
+                handler.sendMessage(msg);
+            }
+        }.start();
+    }
 
-                if (qqnumber.equals(edtAddFriend.getText().toString())) {
-                    MyToast.showToast(AddFriends.this, "不能添加自己为好友哦", Toast.LENGTH_SHORT);
-                } else {
-                    AsyncHttpClient client = new AsyncHttpClient();
-                    RequestParams params = new RequestParams();
-                    params.add(Constant.KEY_QQNUMBER, qqnumber);
-                    params.add(Constant.KEY_FRIENDS_QQNUMBER, edtAddFriend.getText().toString());
-                    client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                            String response = new String(bytes);
-                            System.out.println(response);
-                            try {
-                                JSONArray array = new JSONArray(response);
-                                JSONObject object = array.getJSONObject(0);
-                                success = object.getInt("success");
-                                System.out.println(object);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.img_left:
+                imm.hideSoftInputFromWindow(edtExtra.getWindowToken(), 0);
+                onBackPressed();
+                break;
+            case R.id.btn_add_friend:
+                addFriends();
+                break;
+        }
+    }
 
-                                if (success == 0) {
-                                    friend = new Friends( object.getString("qqnumber"),
-                                             object.getString(Constant.KEY_NICK),
-                                             object.getString(Constant.KEY_TOKEN),
-                                             object.getString(Constant.KEY_SIGNATURE),
-                                             object.getString(Constant.KEY_IMAGE));
-
-                                    Intent intent = new Intent();
-                                    intent.putExtra(Constant.KEY_FRIENDS_ITEM, friend);
-                                    setResult(Constant.RESULT_CODE_ADDFRIENDS, intent);
-                                    Toast.makeText(AddFriends.this, "正在等待对方通过验证", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                } else if (success == 1) {
-                                    Toast.makeText(AddFriends.this, "该用户已经是您的好友了，不可重复添加", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(AddFriends.this, "您搜索的用户不存在，请核对后重试", Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                            MyToast.showToast(AddFriends.this,"内网错误请稍后重试",Toast.LENGTH_SHORT);
-                        }
-                    });
-
+    private void addFriends() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.add(Constant.KEY_QQNUMBER, qqnumber);
+        params.add(Constant.KEY_FRIENDS_QQNUMBER, friends.getFriendQQ());
+        params.add("message",edtExtra.getText().toString());
+        client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                String response = new String(bytes);
+                Log.d("addfriend response",response);
+                int success;
+                try {
+                    JSONObject object = new JSONObject(response);
+                    success = object.getInt("success");
+                    if (success == 0) {
+                        ScreenManager.getScreenManager().popAllActivityExceptOne(SearchFriends.class);
+                        MyToast.showToast(AddFriends.this,"好友申请已发出，请等待对方答复",Toast.LENGTH_SHORT);
+                        finish();
+                    } else if(success == 1) {
+                        MyToast.showToast(AddFriends.this,"该用户已经是您的好友了，不可重复添加",Toast.LENGTH_SHORT);
+                    }else{
+                        MyToast.showToast(AddFriends.this, "外网错误请稍后重试", Toast.LENGTH_SHORT);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-        });
-
-        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                imm.hideSoftInputFromWindow(edtAddFriend.getWindowToken(), 0);
-                onBackPressed();
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                MyToast.showToast(AddFriends.this, "内网错误请稍后重试", Toast.LENGTH_SHORT);
             }
         });
 
     }
-
-
 }
+
+
+/*
+if (success == 0) {
+                        friends = new Friends(object.getString("qqnumber"),
+                                object.getString(Constant.KEY_NICK),
+                                object.getString(Constant.KEY_TOKEN),
+                                object.getString(Constant.KEY_SIGNATURE),
+                                object.getString(Constant.KEY_IMAGE));
+
+                        Intent intent = new Intent();
+                        intent.putExtra(Constant.KEY_FRIENDS_ITEM, friends);
+                        setResult(Constant.RESULT_CODE_ADDFRIENDS, intent);
+                        Toast.makeText(SearchFriends.this, "正在等待对方通过验证", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else if (success == 1) {
+                        Toast.makeText(SearchFriends.this, "该用户已经是您的好友了，不可重复添加", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(SearchFriends.this, "您搜索的用户不存在，请核对后重试", Toast.LENGTH_SHORT).show();
+                    }
+ */

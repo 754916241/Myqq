@@ -86,10 +86,10 @@
             android:gravity="center_vertical"
             />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_select_man"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:baseline="15dp"
@@ -98,10 +98,10 @@
             android:src="@mipmap/right"
             />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_select_woman"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:baseline="15dp"

@@ -9,9 +9,11 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,14 +22,15 @@ import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.DataCleanManager;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
 
 import static com.wyj.myqq.utils.Constant.KEY_PHONE;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEPASSWORD;
 import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEPHONE;
 import static com.wyj.myqq.utils.Constant.REQUEST_CODE_SUGGEST;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGEPASSWORD;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGEPHONE;
-import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 public class MoreSetting extends AppCompatActivity implements View.OnClickListener{
 
@@ -119,6 +122,15 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 edtDialog = new EditText(this);
                 edtDialog.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 edtDialog.setBackgroundResource(R.drawable.edittext_type);
+                //不起作用
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        45
+                );
+                params.setMargins(15,15,15,15);
+                //
+                edtDialog.setLayoutParams(params);
+
                 builder.setMessage("请输入您的密码以确认");
                 builder.setView(edtDialog);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -219,6 +231,12 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 break;
             case REQUEST_CODE_CHANGEPHONE:
                 tvPhone.setText(data.getExtras().getString(KEY_PHONE));
+                break;
+            case REQUEST_CODE_CHANGEPASSWORD:
+                if(resultCode == RESULT_CODE_CHANGEPASSWORD){
+                    ScreenManager.getScreenManager().popAllActivityExceptOne(MainUI.class);
+                }
+
                 break;
         }
     }

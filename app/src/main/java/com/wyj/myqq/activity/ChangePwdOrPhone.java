@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
@@ -19,15 +18,13 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-import static android.R.attr.key;
 import static com.wyj.myqq.utils.Constant.MOB_APP_KEY;
 import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
@@ -227,11 +224,14 @@ public class ChangePwdOrPhone extends AppCompatActivity {
                     JSONObject userObject = new JSONObject(result);
                     success = userObject.getInt("success");
                     if(success!=0){
-                        Toast.makeText(ChangePwdOrPhone.this,"传入信息有误请核对后重试",Toast.LENGTH_SHORT).show();
+                        MyToast.showToast(ChangePwdOrPhone.this,"传入信息有误请核对后重试",R.mipmap.error,Toast.LENGTH_SHORT);
                     }else{
 
                         if(userObject.getString("arg").equals(Constant.KEY_PASSWORD)){
-
+                            Intent intent = new Intent();
+                            setResult(Constant.RESULT_CODE_CHANGEPASSWORD, intent);
+                            MyToast.showToast(ChangePwdOrPhone.this,"修改成功！请重新登陆",Toast.LENGTH_LONG);
+                            finish();
                         }else{
                             Intent intent = new Intent();
                             intent.putExtra(Constant.KEY_PHONE, userObject.getString("arg"));
@@ -249,7 +249,7 @@ public class ChangePwdOrPhone extends AppCompatActivity {
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
-                Toast.makeText(ChangePwdOrPhone.this, "内部网络错误请稍后重试", Toast.LENGTH_SHORT).show();
+                MyToast.showToast(ChangePwdOrPhone.this,"内网错误请稍后重试",R.mipmap.error,Toast.LENGTH_SHORT);
             }
         });
 

@@ -1,7 +1,6 @@
 package com.wyj.myqq.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 
 public class Suggest extends AppCompatActivity {
 
@@ -45,7 +44,9 @@ public class Suggest extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(edtSuggest.getText().toString().equals("")){
+                    MyToast.showToast(Suggest.this,"请您填写对我们的意见", Toast.LENGTH_SHORT);
+                }
                 MyToast.showToast(Suggest.this,"提交成功，我们会认真考虑您的建议，谢谢！",R.mipmap.right, Toast.LENGTH_SHORT);
                 setResult(Constant.RESULT_CODE_SUGGEST);
                 finish();

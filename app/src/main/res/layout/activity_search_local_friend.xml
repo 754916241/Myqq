@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wyj.myqq.activity.SearchLocalFriend">
+
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#3998dc"
+        >
+
+        <com.wyj.myqq.view.MySearchView
+            android:id="@+id/tv_search"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="9"
+            app:queryBackground="@android:color/background_light"
+            android:iconifiedByDefault="false"
+            android:queryHint="请输入好友昵称或QQ"
+            />
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/lv_result"
+        android:layout_below="@id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+         />
+
+</RelativeLayout>

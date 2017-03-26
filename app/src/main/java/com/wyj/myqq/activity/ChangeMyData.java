@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +21,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +32,7 @@ public class ChangeMyData extends AppCompatActivity {
     private Bundle bundle;
     private String qqnumber, nickname, truename, sex, age, signature;
     private EditText editText;
-    private ImageButton selectMan, selectWoman;
+    private ImageView selectMan, selectWoman;
     private TextView tvSave, tvCancel, tvMan, tvWoman,tvTitle;
     private RelativeLayout layoutSex;
     private ProgressDialog dialog;
@@ -49,8 +49,8 @@ public class ChangeMyData extends AppCompatActivity {
 
     private void initView() {
         editText = (EditText) findViewById(R.id.edt_change);
-        selectMan = (ImageButton) findViewById(R.id.img_select_man);
-        selectWoman = (ImageButton) findViewById(R.id.img_select_woman);
+        selectMan = (ImageView) findViewById(R.id.img_select_man);
+        selectWoman = (ImageView) findViewById(R.id.img_select_woman);
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tvSave = (TextView) findViewById(R.id.tv_save);
         tvCancel = (TextView) findViewById(R.id.tv_left);

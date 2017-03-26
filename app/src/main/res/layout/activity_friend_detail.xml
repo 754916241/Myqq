@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_friend_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wyj.myqq.activity.FriendDetail"
+    android:background="#f5f2f2">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/common_title"
+        />
+    <RelativeLayout
+        android:id="@+id/layout_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            />
+
+            <TextView
+                android:id="@+id/tv_nick"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:text="123"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/img_head"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_qqnumber"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:layout_below="@id/tv_nick"
+                android:text="123"
+                android:layout_toRightOf="@id/img_head"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/img_sex"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/tv_nick"
+                android:src="@mipmap/icon_man"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_base"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="绑定手机号"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="13934817674"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_phone"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="个性签名"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="傻逼文升"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signature"
+        android:padding="20dp"
+        android:layout_marginTop="100dp"
+       >
+
+        <Button
+            android:id="@+id/btn_send"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/button_blue_select"
+            android:text="发消息"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/btn_send"
+            android:background="@drawable/button_red_select"
+            android:text="删除好友"/>
+    </RelativeLayout>
+
+</RelativeLayout>

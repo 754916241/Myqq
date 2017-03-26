@@ -32,7 +32,7 @@
         android:background="@drawable/edittext_type"
         android:textSize="18sp"
         android:layout_margin="10dp"
-        android:gravity="bottom"
+        android:gravity="top"
         android:padding="5dp"
         android:layout_below="@+id/tv_toast"
         />
@@ -41,7 +41,7 @@
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/button_select"
+        android:background="@drawable/button_blue_select"
         android:text="提交"
         android:textColor="@android:color/white"
         android:layout_below="@+id/edt_suggest"

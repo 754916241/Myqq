@@ -1,4 +1,4 @@
-package com.wyj.myqq.utils;
+package com.wyj.myqq.view;
 
 import android.app.Activity;
 import android.app.Application;
@@ -49,7 +49,7 @@ public class MyToast extends Toast {
         tv.setText(text);
         iv.setVisibility(View.GONE);
         toast.setView(toastView);
-        toast.setGravity(Gravity.CENTER, 0, 20);
+        toast.setGravity(Gravity.CENTER, 0, 30);
         toast.setDuration(duration);
         toast.show();
     }

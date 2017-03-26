@@ -22,7 +22,7 @@ import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.MyToast;
+import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
 
 import org.apache.http.Header;
@@ -38,7 +38,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
 
     private Button login,regist;
     private EditText edtQQnumber,edtPassword;
@@ -61,6 +61,7 @@ public class Login extends AppCompatActivity {
             edtQQnumber.setText(bundle.getString(Constant.KEY_QQNUMBER));
         }
 
+        RongIM.setUserInfoProvider(this,true);
         initClick();
     }
 
@@ -88,6 +89,9 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.setMessage("正在验证个人信息，请稍后");
                 dialog.show();
+                if(list.size()!=0){
+                    list.clear();
+                }
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 if(edtQQnumber.getText().toString().equals("")||
@@ -139,6 +143,8 @@ public class Login extends AppCompatActivity {
                                                     friendsObject = array.getJSONObject(j);
                                                     friends = new Friends(friendsObject.getString(Constant.KEY_FRIENDS_QQNUMBER),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_NICK),
+                                                            friendsObject.getString(Constant.KEY_FRIENDS_SEX),
+                                                            friendsObject.getString(Constant.KEY_FRIENDS_PHONE),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_TOKEN),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_IMAGE),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_SIGNATURE));
@@ -167,13 +173,7 @@ public class Login extends AppCompatActivity {
                                         }
                                     });
 
-                                    RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
-                                        @Override
-                                        public UserInfo getUserInfo(String s) {
-                                            UserInfo userInfo = new UserInfo(s,nickname, Uri.parse(image));
-                                            return userInfo;
-                                        }
-                                    },true);
+
                                 }else{
                                     dialog.dismiss();
                                     MyToast.showToast(Login.this,"用户名或密码输入错误，请检查后重试",Toast.LENGTH_LONG);
@@ -210,5 +210,18 @@ public class Login extends AppCompatActivity {
         screenManager.pushActivity(this);
         list = new ArrayList<>();
         dialog = new ProgressDialog(this);
+    }
+
+    @Override
+    public UserInfo getUserInfo(String userId) {
+//        System.out.println("run here");
+//        UserInfo userInfo = new UserInfo(s,"系统管理员",Uri.parse("http://192.168.1.9:82/htdocs/qq/0system.png"));
+        if(userId.equals("123456")){
+            return new UserInfo(userId,"系统消息",null);
+        }
+        if(userId.equals("754916241")){
+            return new UserInfo(userId,"流年似水",Uri.parse("http://192.168.0.108:82/htdocs/qq/myself.png"));
+        }
+        return null;
     }
 }

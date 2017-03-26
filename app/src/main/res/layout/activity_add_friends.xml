@@ -1,24 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_friends"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f2f2"
-    tools:context="com.wyj.myqq.activity.AddFriends"
-    >
+    tools:context="com.wyj.myqq.activity.AddFriends">
 
-    <include android:id="@+id/layout_title"
-        layout="@layout/common_title_with_button"/>
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/common_title" />
 
-    <EditText
-        android:id="@+id/edt_add_friend"
+    <RelativeLayout
+        android:id="@+id/layout_friend"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="18sp"
-        android:padding="10dp"
-        android:hint="请输入要添加的qq"
-        android:layout_below="@id/layout_title"
-        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:layout_marginTop="20dp"
         android:background="#ffffffff"
-        />
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="王亚君"
+            android:textSize="25sp"
+            android:layout_centerInParent="true"
+            />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_extra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_friend"
+        android:layout_marginTop="50dp"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/edt_extra"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:hint="对TA说点什么吧"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_extra"
+        android:layout_marginTop="60dp"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_add_friend"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/button_blue_select"
+            android:text="确认添加"
+            android:textColor="#ffffffff" />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_confirm_friend"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wyj.myqq.activity.ConfirmFriend">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/common_title" />
+
+    <TextView
+        android:id="@+id/tv_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="当前暂无验证消息"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+    <ListView
+        android:id="@+id/list_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"/>
+
+</RelativeLayout>
