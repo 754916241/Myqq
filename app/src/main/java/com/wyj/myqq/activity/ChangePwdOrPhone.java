@@ -90,6 +90,15 @@ public class ChangePwdOrPhone extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pwdorphone);
+        Config.setNotificationBar(this,R.color.colorApp);
+        initData();
+        initView();
+        SMSSDK.initSDK(this, MOB_APP_KEY, MOB_APP_SECRETE);
+        SMSSDK.registerEventHandler(eh);
+        initClick();
+    }
+
+    private void initData() {
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
         if(bundle.getString(Constant.KEY_PHONE)!=null){
@@ -98,11 +107,6 @@ public class ChangePwdOrPhone extends AppCompatActivity {
         if(bundle.getString(Constant.KEY_PASSWORD)!=null){
             password = bundle.getString(Constant.KEY_PASSWORD);
         }
-        initView();
-        SMSSDK.initSDK(this, MOB_APP_KEY, MOB_APP_SECRETE);
-        //checkSdkVersion();
-        SMSSDK.registerEventHandler(eh);
-        initClick();
     }
 
     private void initClick() {

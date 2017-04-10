@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.wyj.myqq.activity.MainUI">
+    tools:context="com.wyj.myqq.activity.MainUI"
+    android:fitsSystemWindows="true">
 
     <include
         android:id="@+id/title_bar"
         layout="@layout/common_title"
-
         />
 
     <FrameLayout

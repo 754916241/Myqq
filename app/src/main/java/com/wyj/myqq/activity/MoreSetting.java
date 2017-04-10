@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,8 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.User;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.DataCleanManager;
 import com.wyj.myqq.view.MyToast;
@@ -46,11 +49,13 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
     private ProgressDialog dialog;
     private ScreenManager screenManager;
     private ImageView imgBack;
+    private View dialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_setting);
+        Config.setNotificationBar(this,R.color.colorApp);
         initData();
         initView();
         initClick();
@@ -115,24 +120,14 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         AlertDialog.Builder builder;
-
         switch (view.getId()){
             case R.id.tv_password:
                 builder = new AlertDialog.Builder(this);
-                edtDialog = new EditText(this);
-                edtDialog.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                edtDialog.setBackgroundResource(R.drawable.edittext_type);
-                //不起作用
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        45
-                );
-                params.setMargins(15,15,15,15);
-                //
-                edtDialog.setLayoutParams(params);
-
+                dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_input,null);
+                edtDialog = (EditText) dialogView.findViewById(R.id.edittext);
                 builder.setMessage("请输入您的密码以确认");
-                builder.setView(edtDialog);
+                builder.setView(dialogView);
+
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -197,11 +192,11 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                App.user = null;
                                 ScreenManager.getScreenManager().popAllActivityExceptOne(MainUI.class);
                                 dialog.dismiss();
                             }
                         }, 1500);
-
 
                     }
                 });

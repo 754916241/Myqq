@@ -23,7 +23,28 @@ public class Friends implements Serializable{
         this.friendImg = friendImg;
     }
 
-    public Friends(String friendQQ, String friendNick,String friendSex,String friendPhone, String friendToken, String friendImg, String friendSign) {
+    @Override
+    public boolean equals(Object o) {
+        if(this.toString().equals(o.toString())){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Friends{" +
+                "friendPhone='" + friendPhone + '\'' +
+                ", friendSex='" + friendSex + '\'' +
+                ", friendToken='" + friendToken + '\'' +
+                ", friendSign='" + friendSign + '\'' +
+                ", friendImg='" + friendImg + '\'' +
+                ", friendNick='" + friendNick + '\'' +
+                ", friendQQ='" + friendQQ + '\'' +
+                '}';
+    }
+
+    public Friends(String friendQQ, String friendNick, String friendSex, String friendPhone, String friendToken, String friendImg, String friendSign) {
         this.friendQQ = friendQQ;
         this.friendNick = friendNick;
         this.friendSign = friendSign;
@@ -104,4 +125,5 @@ public class Friends implements Serializable{
     public void setFriendBm(Bitmap friendBm) {
         this.friendBm = friendBm;
     }
+
 }

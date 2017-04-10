@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_discuss_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.wyj.myqq.activity.CreateDiscussGroup"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/common_title_with_button"/>
+
+    <ListView
+        android:id="@+id/lv_choose_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_title"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>

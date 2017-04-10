@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wyj.myqq.activity.ChangePwdOrPhone"
-    android:background="#f5f2f2">
+    android:background="#f5f2f2"
+    android:fitsSystemWindows="true">
 
     <!-- gone不占用空间，后面的空间会取代他的位置，而invisible会占据空间 -->
 

@@ -23,6 +23,10 @@ import com.wyj.myqq.view.MyToast;
 
 import java.util.ArrayList;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.Message;
+
 /**
 
  */
@@ -33,27 +37,31 @@ public class Contacts extends ListFragment implements View.OnClickListener{
     private RelativeLayout rlAddFriend,rlGroupChat;
     private ContactsAdapter adapter;
     private Friends friends;
+    private String qqnumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("fragment state","onCreateView");
         // Inflate the layout for this fragment
         View contactsLayout = inflater.inflate(R.layout.fragment_contacts, container, false);
         rlAddFriend = (RelativeLayout) contactsLayout.findViewById(R.id.rl_new_friend);
         rlGroupChat = (RelativeLayout) contactsLayout.findViewById(R.id.rl_group_chat);
         tvSearch = (TextView) contactsLayout.findViewById(R.id.tv_search);
         if (getArguments() != null) {
+            qqnumber = getArguments().getString(Constant.KEY_QQNUMBER);
             if (getArguments().getSerializable(Constant.KEY_FRIENDS) != null) {
                 listFriends = (ArrayList<Friends>) getArguments().getSerializable(Constant.KEY_FRIENDS);
             }
-
+            /*ArrayList<Friends> list = new ArrayList<>();
+            for(Friends friend : listFriends){
+                list.checkbox_normal(new Friends(friend.getFriendQQ(),friend.getFriendNick(),friend.getFriendImg()))
+            }*/
             adapter = new ContactsAdapter(getActivity(), listFriends);
             setListAdapter(adapter);
         }
         rlAddFriend.setOnClickListener(this);
         tvSearch.setOnClickListener(this);
-
+        rlGroupChat.setOnClickListener(this);
         return contactsLayout;
     }
     @Override
@@ -82,10 +90,27 @@ public class Contacts extends ListFragment implements View.OnClickListener{
         friends = listFriends.get(position);
         Intent intent = new Intent(getActivity(), FriendDetail.class);
         Bundle bundle = new Bundle();
+        bundle.putString(Constant.KEY_QQNUMBER,qqnumber);
         bundle.putSerializable(Constant.KEY_FRIENDS,friends);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivityForResult(intent,Constant.REQUEST_CODE_DELETE_FRIEND);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constant.REQUEST_CODE_DELETE_FRIEND){
+            if(resultCode == Constant.RESULT_CODE_DELETE_FRIEND){
+                listFriends.remove(friends);
+                adapter.notifyDataSetChanged();
+                //RongIM.getInstance().deleteMessages();
+                RongIM.getInstance().removeConversation(
+                        Conversation.ConversationType.PRIVATE,friends.getFriendQQ());
+            }
+        }
+    }
+
+
 
     private OnContactsListener onContactsListener;
 

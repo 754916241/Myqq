@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wyj.myqq.R;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
@@ -29,6 +30,7 @@ public class Suggest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggest);
+        Config.setNotificationBar(this,R.color.colorApp);
         initData();
         initView();
         initClick();

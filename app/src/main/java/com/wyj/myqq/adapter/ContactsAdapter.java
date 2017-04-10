@@ -2,9 +2,11 @@ package com.wyj.myqq.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ import java.util.List;
 public class ContactsAdapter extends BaseAdapter {
     private List<Friends> friendsList ;
     private LayoutInflater inflater;
-    private Bitmap bm;
+    private volatile Bitmap bm;
 
     public ContactsAdapter(Context context, List<Friends> friendsList) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -65,24 +67,20 @@ public class ContactsAdapter extends BaseAdapter {
         final Friends bean = friendsList.get(position);
         holder.friendNick.setText(bean.getFriendNick());
 
-        final Handler handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                if(msg.what == 0){
-                    holder.friendImg.setImageBitmap(bm);
-                }
-            }
-        };
+        new AsyncTask<Void,Void,Bitmap>(){
 
-        new Thread(){
             @Override
-            public void run() {
+            protected Bitmap doInBackground(Void... params) {
                 bm = ImageUtils.receiveImage(bean.getFriendImg());
-                Message msg = new Message();
-                msg.what = 0;
-                handler.sendMessage(msg);
+                return bm;
             }
-        }.start();
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+
+                holder.friendImg.setImageBitmap(bitmap);
+            }
+        }.execute();
 
         return convertView;
 

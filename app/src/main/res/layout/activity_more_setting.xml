@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f2f2"
-    tools:context="com.wyj.myqq.activity.MoreSetting">
+    tools:context="com.wyj.myqq.activity.MoreSetting"
+    android:fitsSystemWindows="true">
 
     <include android:id="@+id/layout_title"
         layout="@layout/common_title"/>

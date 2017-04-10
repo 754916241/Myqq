@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.wyj.myqq.R;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 
 public class RegistSuccess extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class RegistSuccess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist_success);
+        Config.setNotificationBar(this,R.color.colorLogin);
         go = (Button) findViewById(R.id.btn_registSuccess_go);
         tvQqnumber = (TextView) findViewById(R.id.tv_registSuccess_qqnumber);
         bundle = getIntent().getExtras();

@@ -7,6 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wyj.myqq.R;
+import com.wyj.myqq.utils.Config;
+
+import io.rong.imkit.RongIM;
 
 import static com.example.wyj.myqq.R.id.img;
 
@@ -19,6 +22,7 @@ public class About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        Config.setNotificationBar(this,R.color.colorApp);
         initView();
     }
 

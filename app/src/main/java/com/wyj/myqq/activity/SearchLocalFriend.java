@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.adapter.SearchFriendResultAdapter;
 import com.wyj.myqq.bean.Friends;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
@@ -43,6 +44,7 @@ public class SearchLocalFriend extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_local_friend);
+        Config.setNotificationBar(this,R.color.colorApp);
         initView();
         initData();
         initClick();

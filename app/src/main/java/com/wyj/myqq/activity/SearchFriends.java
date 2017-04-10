@@ -20,6 +20,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.adapter.SearchFriendResultAdapter;
 import com.wyj.myqq.bean.Friends;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
@@ -47,6 +48,7 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_friends);
+        Config.setNotificationBar(this,R.color.colorApp);
         Bundle bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
         list = new ArrayList<>();

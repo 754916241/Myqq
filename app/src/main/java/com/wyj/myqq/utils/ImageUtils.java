@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,6 +27,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.widget.ImageView;
 
 
 public class ImageUtils extends Activity {
@@ -67,7 +69,7 @@ public class ImageUtils extends Activity {
     }
 
     //从相册中选取照片
-    protected static void pickImageFromalbum(Activity activity) {
+    public static void pickImageFromalbum(Activity activity) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
@@ -154,6 +156,11 @@ public class ImageUtils extends Activity {
         }
     }
 
+    /**
+     * 图片压缩，好像有点问题
+     * @param uri
+     * @param activity
+     */
     public static void imageZoom(Uri uri, Activity activity) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
@@ -166,16 +173,37 @@ public class ImageUtils extends Activity {
         activity.startActivityForResult(intent, Constant.CROP_REQUEST);
     }
 
-    public static String sendImage(Bitmap bm) {
+
+    /**
+     * 将bitmap转换为base64格式的字符串
+     * @param bm
+     * @return
+     */
+    public static String bitmapToString(Bitmap bm) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 60, stream);
         byte[] bytes = stream.toByteArray();
         String image = new String(Base64.encodeToString(bytes, Base64.DEFAULT));
         return image;
-
     }
 
+    /**
+     * 将base64格式的image转换为bitmap
+     * @param image
+     * @return
+     */
+    public static Bitmap stringToBitmap(String image) {
+        byte[] bitmapArray;
+        bitmapArray = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+        return bitmap;
+    }
 
+    /**
+     * 给一个网络上的图片地址将其转换为bitmap格式的照片
+     * @param imgUrl
+     * @return
+     */
     public static Bitmap receiveImage(String imgUrl) {
         URL url;
         Bitmap bitmap = null;
@@ -192,11 +220,92 @@ public class ImageUtils extends Activity {
         }
         return bitmap;
     }
+    /**
+     * 计算位图的采样比例大小
+     * @param options
+     * @param imageView 控件(根据控件的大小进行压缩)
+     * @return
+     */
+    private static int calculatInSampleSize(BitmapFactory.Options options, ImageView imageView) {
+        //获取位图的原宽高
+        final int w = options.outWidth;
+        final int h = options.outHeight;
 
-    public static Bitmap stringtoBitmap(String image) {
-        byte[] bitmapArray;
-        bitmapArray = Base64.decode(image, Base64.DEFAULT);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+        if (imageView!=null){
+            //获取控件的宽高
+            final int reqWidth = imageView.getWidth();
+            final int reqHeight = imageView.getHeight();
+
+            //默认为一(就是不压缩)
+            int inSampleSize = 1;
+            //如果原图的宽高比需要的图片宽高大
+            if (w > reqWidth || h > reqHeight) {
+                if (w > h) {
+                    inSampleSize = Math.round((float) h / (float) reqHeight);
+                } else {
+                    inSampleSize = Math.round((float) w / (float) reqWidth);
+                }
+            }
+            System.out.println("压缩比为:" + inSampleSize);
+            return inSampleSize;
+
+        }else {
+            return 1;
+        }
+    }
+    /**
+     * 将Uri转换成Bitmap
+     * @param context
+     * @param uri
+     * @param options
+     * @return
+     */
+    public static Bitmap decodeBitmap(Context context, Uri uri, BitmapFactory.Options options) {
+        Bitmap bitmap = null;
+
+        if (uri != null) {
+            ContentResolver cr = context.getContentResolver();
+            InputStream inputStream = null;
+            try {
+                /**
+                 * 将图片的Uri地址转换成一个输入流
+                 */
+                inputStream = cr.openInputStream(uri);
+
+                /**
+                 * 将输入流转换成Bitmap
+                 */
+                bitmap = BitmapFactory.decodeStream(inputStream, null, options);
+
+                assert inputStream != null;
+                inputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return bitmap;
+    }
+    /**
+     * 对图片进行重新采样
+     * @param context
+     * @param uri 图片的Uri地址
+     * @param imageView
+     * @return
+     */
+    public static Bitmap compressBitmap(Context context, Uri uri, ImageView imageView) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = false;
+        decodeBitmap(context, uri, options);
+        options = new BitmapFactory.Options();
+        options.inSampleSize = calculatInSampleSize(options, imageView);
+        Bitmap bitmap = null;
+
+        try {
+            bitmap = decodeBitmap(context, uri, options);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return bitmap;
     }
 }

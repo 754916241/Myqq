@@ -1,27 +1,50 @@
 package com.wyj.myqq.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.SharedPreferences.Editor;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Toast;
+
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wyj.myqq.adapter.UserRecordAdapter;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
+import com.wyj.myqq.dblocal.DBLocal;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
+import com.wyj.myqq.utils.ImageUtils;
+import com.wyj.myqq.utils.SystemBarTintManager;
 import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
 
@@ -32,13 +55,17 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
 
-public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
+import static io.rong.imlib.statistics.UserData.username;
+
+public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,UserRecordAdapter.UserRecordClickListener{
 
     private Button login,regist;
     private EditText edtQQnumber,edtPassword;
@@ -47,15 +74,27 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
     private String qqnumber,nickname, sex, age, truename, signature, token, image,phone;
     private User user;
     private Friends friends;
-    private List<Friends> list;
+    private ArrayList<Friends> friendsList;
     private ProgressDialog dialog;
+    private Bitmap localBm ;
+    private ImageView imgHead,imgExpand;
+    private View popLayout;
+    private PopupWindow popRecord;
+    private ListView lvPop;
+    private List<Map<String, Object>> popList = new ArrayList<>();
+    private UserRecordAdapter adapter;
+    private DBLocal db;
+    private Map<String,Object> map;
+    private HashMap<String, String> qqAndPwd = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //无title
         setContentView(R.layout.activity_login);
+        Config.setNotificationBar(this,R.color.colorLogin);
         initView();
+        initPopWindow();
         bundle = getIntent().getExtras();
         if(bundle!=null){
             edtQQnumber.setText(bundle.getString(Constant.KEY_QQNUMBER));
@@ -63,6 +102,37 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
 
         RongIM.setUserInfoProvider(this,true);
         initClick();
+    }
+
+
+
+    private void initPopWindow() {
+        db = new DBLocal(this);
+        SQLiteDatabase read = db.getReadableDatabase();
+        String qqnumber;
+        String password;
+        Cursor c = read.query("record", null, null, null, null, null, null);
+        while (c.moveToNext()) {
+            qqnumber = c.getString(c.getColumnIndex("qqnumber"));
+            password = c.getString(c.getColumnIndex("password"));
+            image = c.getString(c.getColumnIndex("image"));
+            map = new HashMap<>();
+            map.put(Constant.KEY_QQNUMBER, qqnumber);
+            map.put(Constant.KEY_IMAGE, image);
+            map.put(Constant.KEY_DELETE, R.mipmap.arrow_delete);
+            popList.add(map);
+            qqAndPwd.put(qqnumber, password);
+        }
+        read.close();
+        c.close();
+        adapter = new UserRecordAdapter(this, popList);
+        popLayout = LayoutInflater.from(this).inflate(R.layout.pop_user_record, null);
+        popRecord = new PopupWindow(popLayout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        popRecord.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        popRecord.setFocusable(true);
+        lvPop = (ListView) popLayout.findViewById(R.id.list_user_record);
+        lvPop.setAdapter(adapter);
+        adapter.setUserRecordListener(this);
     }
 
     private void initClick() {
@@ -73,12 +143,49 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
             }
         });
 
+        imgExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popRecord.showAsDropDown(edtQQnumber);
+                if (imgExpand
+                        .getDrawable()
+                        .getConstantState()
+                        .equals(getResources().getDrawable(R.mipmap.arrow_down)
+                                .getConstantState())) {
+                    imgExpand.setImageResource(R.mipmap.arrow_up);
+                }
+            }
+        });
+
+        popRecord.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                imgExpand.setImageResource(R.mipmap.arrow_down);
+            }
+        });
+
+        lvPop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                HashMap item = (HashMap) parent.getItemAtPosition(position);
+                String qqnumber = String.valueOf(item.get(
+                        Constant.KEY_QQNUMBER).toString());
+                String image = String.valueOf(item.get(
+                        Constant.KEY_IMAGE).toString());
+                edtQQnumber.setText(qqnumber);
+                edtPassword.setText(qqAndPwd.get(qqnumber));
+                imgHead.setImageBitmap(ImageUtils.stringToBitmap(image));
+                popRecord.dismiss();
+            }
+        });
+
         edtQQnumber.setOnKeyListener(new View.OnKeyListener() {
 
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     edtPassword.setText("");
+                    imgHead.setImageResource(R.drawable.qq_icon);
                 }
                 return false;
             }
@@ -89,8 +196,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
             public void onClick(View v) {
                 dialog.setMessage("正在验证个人信息，请稍后");
                 dialog.show();
-                if(list.size()!=0){
-                    list.clear();
+                if(friendsList.size()!=0){
+                    friendsList.clear();
                 }
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
@@ -106,10 +213,10 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
                         public void onSuccess(int i, Header[] headers, byte[] bytes) {
                             SharedPreferences sp = getSharedPreferences(
                                     "mysp", Context.MODE_PRIVATE);
-                            Editor editor = sp.edit();
+                            final Editor editor = sp.edit();
                             editor.putString(Constant.KEY_QQNUMBER, edtQQnumber.getText().toString());
                             editor.putString(Constant.KEY_PASSWORD, edtPassword.getText().toString());
-                            editor.apply();
+
                             String result = new String(bytes);
                             try {
                                 Log.d("login_result",result);
@@ -126,7 +233,35 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
                                     age = userObject.getString(Constant.KEY_AGE);
                                     signature = userObject.getString(Constant.KEY_SIGNATURE);
                                     image = userObject.getString(Constant.KEY_IMAGE);
+
+                                    //将图片缓存到本地
+                                    final Handler handler = new Handler(){
+                                        @Override
+                                        public void handleMessage(Message msg) {
+                                            if(msg.what == 0){
+                                                String imageBase64 = ImageUtils.bitmapToString(localBm);
+                                                editor.putString(Constant.KEY_IMAGE,imageBase64);
+                                                editor.apply();
+                                                recordUser(qqnumber,edtPassword.getText().toString(),imageBase64);
+                                            }
+                                        }
+                                    };
+
+                                    new Thread(){
+                                        @Override
+                                        public void run() {
+                                            localBm = ImageUtils.receiveImage(image);
+                                            Message msg = new Message();
+                                            msg.what = 0;
+                                            handler.sendMessage(msg);
+                                        }
+                                    }.start();
+
+
+                                    //----------------------------------------------------
+
                                     user = new User(qqnumber,nickname,truename,sex,age,phone,token,signature,image);
+                                    App.user = user;
                                     RongIM.connect(token, new RongIMClient.ConnectCallback() {
                                         @Override
                                         public void onTokenIncorrect() {
@@ -148,18 +283,19 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
                                                             friendsObject.getString(Constant.KEY_FRIENDS_TOKEN),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_IMAGE),
                                                             friendsObject.getString(Constant.KEY_FRIENDS_SIGNATURE));
-                                                    list.add(friends);
+                                                    friendsList.add(friends);
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
 
                                             }
+                                            App.friendsList = friendsList;
                                             Intent intent = new Intent(Login.this,MainUI.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putString(Constant.KEY_PASSWORD,edtPassword.getText().toString());
                                             bundle.putSerializable(Constant.KEY_USER,user);
-                                            if(list.size()!=0){
-                                                bundle.putSerializable(Constant.KEY_FRIENDS, (Serializable) list);
+                                            if(friendsList.size()!=0){
+                                                bundle.putSerializable(Constant.KEY_FRIENDS, friendsList);
                                             }
                                             intent.putExtras(bundle);
                                             dialog.dismiss();
@@ -169,7 +305,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
                                         @Override
                                         public void onError(RongIMClient.ErrorCode errorCode) {
                                             dialog.dismiss();
-                                            Toast.makeText(Login.this,"外部网络服务器错误请稍后重试",Toast.LENGTH_SHORT).show();
+                                            MyToast.showToast(Login.this, "外部网络错误请稍后重试",R.mipmap.error,Toast.LENGTH_SHORT);
                                         }
                                     });
 
@@ -198,30 +334,85 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider{
 
     }
 
+    private void recordUser(String qqnumber,String password,String image) {
+        db = new DBLocal(this);
+        if(!db.isExistInRecord(qqnumber)){
+            db.insertToRecord(qqnumber,password,image);
+        }
+    }
+
     private void initView() {
         login = (Button) findViewById(R.id.btn_login_login);
         regist = (Button) findViewById(R.id.btn_login_regist);
         edtPassword = (EditText) findViewById(R.id.edt_login_password);
         edtQQnumber = (EditText) findViewById(R.id.edt_login_qqnumber);
+        imgHead = (ImageView) findViewById(R.id.img_login_head);
+        imgExpand = (ImageView) findViewById(R.id.img_expand);
         SharedPreferences sp = getSharedPreferences("mysp", Context.MODE_PRIVATE);
         edtQQnumber.setText(sp.getString(Constant.KEY_QQNUMBER,""));
         edtPassword.setText(sp.getString(Constant.KEY_PASSWORD,""));
+        if(!sp.getString(Constant.KEY_IMAGE,"").equals("")){
+            imgHead.setImageBitmap(ImageUtils.stringToBitmap(sp.getString(Constant.KEY_IMAGE,"")));
+        }
+        if(edtQQnumber.getText().toString().equals("")){
+            imgExpand.setVisibility(View.GONE);
+        }
         ScreenManager screenManager = ScreenManager.getScreenManager();
         screenManager.pushActivity(this);
-        list = new ArrayList<>();
+        friendsList = new ArrayList<>();
         dialog = new ProgressDialog(this);
     }
 
     @Override
     public UserInfo getUserInfo(String userId) {
-//        System.out.println("run here");
-//        UserInfo userInfo = new UserInfo(s,"系统管理员",Uri.parse("http://192.168.1.9:82/htdocs/qq/0system.png"));
+
         if(userId.equals("123456")){
             return new UserInfo(userId,"系统消息",null);
         }
-        if(userId.equals("754916241")){
+       /* if(userId.equals("754916241")){
             return new UserInfo(userId,"流年似水",Uri.parse("http://192.168.0.108:82/htdocs/qq/myself.png"));
+        }*/
+        if(friendsList !=null){
+            for(Friends friend : friendsList){
+                if (userId.equals(friend.getFriendQQ())){
+                    return new UserInfo(userId,friend.getFriendNick(),Uri.parse(friend.getFriendImg()));
+                }
+            }
+        }
+        if(user!=null){
+            if(userId.equals(user.getQQnumber())){
+                return new UserInfo(userId,user.getNickname(),Uri.parse(user.getImage()));
+            }
         }
         return null;
+    }
+
+    @Override
+    public void click(View v, final int position) {
+        switch (v.getId()){
+            case R.id.img_delete:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("系统提示");
+                builder.setMessage("确认删除该账号的登陆记录吗？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        String qqnumber = (String) popList.get(position).get(Constant.KEY_QQNUMBER);
+                        if (qqnumber.equals(edtQQnumber.getText().toString())) {
+                            edtPassword.setText("");
+                            edtQQnumber.setText("");
+                            imgHead.setImageResource(R.drawable.qq_icon);
+                        }
+                        db = new DBLocal(Login.this);
+                        db.deleteFromRecord(qqnumber);
+                        popList.remove(position);
+                        adapter.notifyDataSetChanged();
+                        popRecord.dismiss();
+                    }
+                });
+                builder.setNegativeButton("取消",null);
+                builder.create().show();
+                break;
+        }
     }
 }

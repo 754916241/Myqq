@@ -41,7 +41,7 @@ public class SettingAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder holder ;
         if(convertView == null){
             convertView = inflater.inflate(R.layout.settinglist_item,parent,false);
             holder = new ViewHolder();

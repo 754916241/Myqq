@@ -12,12 +12,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.DataCleanManager;
 import com.wyj.myqq.utils.ImageUtils;
+import com.wyj.myqq.view.MyToast;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.rong.imkit.RongIM;
 
@@ -26,9 +37,7 @@ import static com.example.wyj.myqq.R.id.img;
 public class FriendDetail extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imgLeft;
-    /**
-     * 联系人
-     */
+
     private TextView title;
     private ImageView imgHead;
 
@@ -49,11 +58,13 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
     private Bundle bundle;
     private Friends friends;
     private Bitmap bm;
+    private String qqnumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_detail);
+        Config.setNotificationBar(this,R.color.colorApp);
         initView();
         initData();
     }
@@ -78,6 +89,7 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
 
     private void initData() {
         bundle = getIntent().getExtras();
+        qqnumber = App.user.getQQnumber();
         friends = (Friends) bundle.getSerializable(Constant.KEY_FRIENDS);
         tvQQnumber.setText(friends.getFriendQQ());
         tvNick.setText(friends.getFriendNick());
@@ -114,7 +126,7 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_send:
                 if(RongIM.getInstance()!=null){
                     RongIM.getInstance().startPrivateChat(this,friends.getFriendQQ(),
-                            "与"+friends.getFriendNick()+"聊天中");
+                            friends.getFriendNick());
                   finish();
                 }
                 break;
@@ -125,7 +137,7 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
+                        deleteFriend();
                     }
                 });
                 builder.setNegativeButton("取消", null);
@@ -135,5 +147,33 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
                 onBackPressed();
                 break;
         }
+    }
+
+    private void deleteFriend() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.add(Constant.KEY_QQNUMBER,qqnumber);
+        params.add(Constant.KEY_FRIENDS_QQNUMBER,friends.getFriendQQ());
+        client.post(Constant.HTTPURL_DELETE_FRIEND, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                String result = new String(bytes);
+                try {
+                    JSONObject object = new JSONObject(result);
+                    if(object.getInt("success") == 0){
+                        setResult(Constant.RESULT_CODE_DELETE_FRIEND);
+                        MyToast.showToast(FriendDetail.this,"删除好友成功",R.mipmap.right, Toast.LENGTH_SHORT);
+                        finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                MyToast.showToast(FriendDetail.this,"内部网络错误请稍后重试",R.mipmap.error, Toast.LENGTH_SHORT);
+            }
+        });
     }
 }

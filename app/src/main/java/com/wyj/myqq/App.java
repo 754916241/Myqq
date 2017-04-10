@@ -4,6 +4,11 @@ import android.app.Application;
 import android.net.Uri;
 
 
+import com.wyj.myqq.bean.Friends;
+import com.wyj.myqq.bean.User;
+
+import java.util.ArrayList;
+
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.UserInfo;
 
@@ -12,17 +17,12 @@ import io.rong.imlib.model.UserInfo;
  */
 public class App extends Application {
 
+    public static User user;
+    public static ArrayList<Friends> friendsList;
+
     @Override
     public void onCreate() {
         super.onCreate();
         RongIM.init(this);
-//        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
-//            @Override
-//            public UserInfo getUserInfo(String s) {
-//                UserInfo userInfo = new UserInfo(s,"系统管理员", Uri.parse("http://192.168.0.108:82/htdocs/qq/0system.png"));
-//                return userInfo;
-//            }
-//        },true);
-
     }
 }

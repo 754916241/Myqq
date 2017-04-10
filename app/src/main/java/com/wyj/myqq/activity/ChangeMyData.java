@@ -3,6 +3,7 @@ package com.wyj.myqq.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,10 +17,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
@@ -27,10 +30,17 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
+
+import static com.example.wyj.myqq.App.user;
+import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGE_DISCUSSION_NAME;
+import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGE_DISCUSSION_NAME;
+
 public class ChangeMyData extends AppCompatActivity {
 
     private Bundle bundle;
-    private String qqnumber, nickname, truename, sex, age, signature;
+    private String qqnumber, nickname, discussionName, sex, age, signature;
     private EditText editText;
     private ImageView selectMan, selectWoman;
     private TextView tvSave, tvCancel, tvMan, tvWoman,tvTitle;
@@ -43,6 +53,7 @@ public class ChangeMyData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_my_data);
+        Config.setNotificationBar(this,R.color.colorApp);
         initView();
         initData();
     }
@@ -64,6 +75,14 @@ public class ChangeMyData extends AppCompatActivity {
     private void initData() {
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
+
+        if(getIntent().getStringExtra(Constant.KEY_DISCUSSION_NAME)!=null){
+            discussionName = getIntent().getStringExtra(Constant.KEY_DISCUSSION_NAME);
+            editText.setText(discussionName);
+            editText.setVisibility(View.VISIBLE);
+            layoutSex.setVisibility(View.GONE);
+            tvTitle.setText("讨论组名称");
+        }
 
         if (bundle.getString(Constant.KEY_NICK) != null) {
             nickname = bundle.getString(Constant.KEY_NICK);
@@ -125,6 +144,7 @@ public class ChangeMyData extends AppCompatActivity {
             public void onClick(View v) {
                 if (nickname != null) {
                     httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_NICK, editText.getText().toString(), Constant.RESULT_CODE_CHANGENICK);
+                    RongIM.getInstance().refreshUserInfoCache(new UserInfo(qqnumber,editText.getText().toString(), Uri.parse(App.user.getImage())));
                 }
                 if (sex != null) {
                     httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_SEX, sex, Constant.RESULT_CODE_CHANGESEX);
@@ -134,6 +154,12 @@ public class ChangeMyData extends AppCompatActivity {
                 }
                 if (signature != null) {
                     httpPost(Constant.HTTPURL_CHANGEMYDATA, Constant.KEY_SIGNATURE, editText.getText().toString(), Constant.RESULT_CODE_CHANGESIGNATURE);
+                }
+                if(discussionName!=null){
+                    Intent intent = new Intent();
+                    intent.putExtra(Constant.KEY_DISCUSSION_NAME,editText.getText().toString());
+                    setResult(RESULT_CODE_CHANGE_DISCUSSION_NAME,intent);
+                    finish();
                 }
             }
         });

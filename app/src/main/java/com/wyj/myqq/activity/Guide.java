@@ -48,7 +48,7 @@ public class Guide extends AppCompatActivity implements ViewPager.OnPageChangeLi
     }
     public void startClick(View v){
         startActivity(new Intent(Guide.this,Login.class));
-        this.finish();
+        finish();
     }
 
     private void initDots(){

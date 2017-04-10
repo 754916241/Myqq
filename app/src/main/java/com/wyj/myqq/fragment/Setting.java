@@ -3,6 +3,7 @@ package com.wyj.myqq.fragment;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -37,7 +38,7 @@ public class Setting extends Fragment implements View.OnClickListener{
     private TextView tvQQnumber,tvNick,tvSex,tvSignature,tvAge;
     private RelativeLayout layoutHead,layoutNick,layoutSex,layoutSignature,layoutAge;
     private Bitmap bm;
-
+    private String imgBase64,imgUriString;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,24 +68,33 @@ public class Setting extends Fragment implements View.OnClickListener{
 
         if(getArguments()!=null){
             user = (User) getArguments().getSerializable(Constant.KEY_USER);
-            final Handler handler = new Handler(){
-                @Override
-                public void handleMessage(Message msg) {
-                    if(msg.what == 0){
-                        imgHead.setImageBitmap(bm);
+            if(getArguments().getString(Constant.KEY_IMAGE_BASE64)!=null){
+                imgBase64 = getArguments().getString(Constant.KEY_IMAGE_BASE64);
+                imgHead.setImageBitmap(ImageUtils.stringToBitmap(imgBase64));
+            }else if(getArguments().getString(Constant.KEY_IMAGE_URI)!=null){
+                imgUriString = getArguments().getString(Constant.KEY_IMAGE_URI);
+                imgHead.setImageBitmap(ImageUtils.compressBitmap(getActivity(),
+                        Uri.parse(imgUriString),imgHead));
+            }else{
+                final Handler handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        if(msg.what == 0){
+                            imgHead.setImageBitmap(bm);
+                        }
                     }
-                }
-            };
+                };
 
-            new Thread(){
-                @Override
-                public void run() {
-                    bm = ImageUtils.receiveImage(user.getImage());
-                    Message msg = new Message();
-                    msg.what = 0;
-                    handler.sendMessage(msg);
-                }
-            }.start();
+                new Thread(){
+                    @Override
+                    public void run() {
+                        bm = ImageUtils.receiveImage(user.getImage());
+                        Message msg = new Message();
+                        msg.what = 0;
+                        handler.sendMessage(msg);
+                    }
+                }.start();
+            }
 
             tvAge.setText(user.getAge());
             tvQQnumber.setText(user.getQQnumber());
@@ -93,7 +103,6 @@ public class Setting extends Fragment implements View.OnClickListener{
             tvSignature.setText(user.getSignature());
 
         }
-
 
         return settingLayout;
     }
@@ -125,14 +134,3 @@ public class Setting extends Fragment implements View.OnClickListener{
         }
     }
 }
-
-/*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==Constant.REQUEST_CODE_CHANGENICK){
-            if(resultCode==Constant.RESULT_CODE_CHANGENICK){
-                //adapter.getItem(0).getNickname()
-            }
-        }
-    }*/

@@ -3,13 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wyj.myqq.Conversation">
+    tools:context="com.wyj.myqq.Conversation"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/common_title"
+        />
 
     <fragment
         android:id="@+id/conversation"
         android:name="io.rong.imkit.fragment.ConversationFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_title"/>
 
 
 </RelativeLayout>

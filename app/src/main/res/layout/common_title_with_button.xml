@@ -32,7 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:text="搜索"
-        android:textColor="#ffffffff"
+        android:textColor="#ffffff"
         android:textSize="16sp" />
 
 </RelativeLayout>

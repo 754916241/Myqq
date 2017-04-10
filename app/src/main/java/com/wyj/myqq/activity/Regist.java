@@ -112,6 +112,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //无title
         setContentView(R.layout.activity_regist);
+        Config.setNotificationBar(this,R.color.colorLogin);
         SMSSDK.initSDK(this, MOB_APP_KEY, MOB_APP_SECRETE);
         checkSdkVersion();
         SMSSDK.registerEventHandler(eh);
@@ -181,7 +182,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                     if(Config.isPhone(edtPhone.getText().toString())){
 
                        SMSSDK.getVerificationCode(Constant.COUNTRY_ID_DEFAULT,edtPhone.getText().toString());
-                        CountDownTimer countDownTimer = new CountDownTimer(60000,1000) {
+                       new CountDownTimer(60000,1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 getCode.setClickable(false);
@@ -230,7 +231,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         if (photo == null) {
             photo = BitmapFactory.decodeResource(getResources(), R.drawable.qq_icon);
         }
-        params.add(Constant.KEY_IMAGE, ImageUtils.sendImage(photo));
+        params.add(Constant.KEY_IMAGE, ImageUtils.bitmapToString(photo));
 
         client.post(Constant.HTTPURL_REGIST, params, new AsyncHttpResponseHandler() {
             @Override
@@ -262,7 +263,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                                 startActivity(intent);
                                 Regist.this.finish();
                             }
-                        }, 2000);
+                        }, 1500);
 
                     }
                 } catch (JSONException e) {
@@ -326,16 +327,8 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         switch (requestCode) {
             case Constant.REQUEST_CODE_FROM_ALBUM:
                 imageUri = data.getData();
-                ContentResolver resolver = getContentResolver();
-                try {
-                    photo = MediaStore.Images.Media.getBitmap(resolver, ImageUtils.convertUri(imageUri, this));
-                    imgHead.setImageBitmap(photo);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                photo = ImageUtils.compressBitmap(this,imageUri,imgHead);
+                imgHead.setImageBitmap(photo);
                 break;
             case Constant.REQUEST_CODE_FROM_CAMERA:
                 if (resultCode == RESULT_CANCELED) {

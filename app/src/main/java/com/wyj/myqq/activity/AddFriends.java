@@ -1,5 +1,6 @@
 package com.wyj.myqq.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
 import com.wyj.myqq.utils.ScreenManager;
@@ -52,6 +54,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
     private Friends friends;
     private Bitmap bm;
     private InputMethodManager imm;
+    private ProgressDialog dialog;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -65,6 +68,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friends);
+        Config.setNotificationBar(this,R.color.colorApp);
         initData();
         initView();
     }
@@ -88,6 +92,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         btnAddFriend.setOnClickListener(this);
         activityAddFriends = (RelativeLayout) findViewById(R.id.activity_add_friends);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        dialog = new ProgressDialog(this);
         imgLeft.setVisibility(View.VISIBLE);
         title.setText("确认添加");
         tvNick.setText(nickname);
@@ -110,7 +115,10 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
                 onBackPressed();
                 break;
             case R.id.btn_add_friend:
+                dialog.setMessage("正在发送验证申请，请稍后");
+                dialog.show();
                 addFriends();
+                dialog.dismiss();
                 break;
         }
     }
@@ -151,24 +159,3 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
 
     }
 }
-
-
-/*
-if (success == 0) {
-                        friends = new Friends(object.getString("qqnumber"),
-                                object.getString(Constant.KEY_NICK),
-                                object.getString(Constant.KEY_TOKEN),
-                                object.getString(Constant.KEY_SIGNATURE),
-                                object.getString(Constant.KEY_IMAGE));
-
-                        Intent intent = new Intent();
-                        intent.putExtra(Constant.KEY_FRIENDS_ITEM, friends);
-                        setResult(Constant.RESULT_CODE_ADDFRIENDS, intent);
-                        Toast.makeText(SearchFriends.this, "正在等待对方通过验证", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else if (success == 1) {
-                        Toast.makeText(SearchFriends.this, "该用户已经是您的好友了，不可重复添加", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SearchFriends.this, "您搜索的用户不存在，请核对后重试", Toast.LENGTH_SHORT).show();
-                    }
- */

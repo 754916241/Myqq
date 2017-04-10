@@ -1,5 +1,13 @@
 package com.wyj.myqq.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.example.wyj.myqq.R;
+
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +36,31 @@ public class Config {
         return m.matches();
     }
 
+    public static void setNotificationBar(Activity activity,int resColor){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Config.setTranslucentStatus(activity,true);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintResource(resColor);//通知栏所需颜色
+    }
 
+    /**
+     * 设置导航栏颜色
+     * @param activity
+     * @param on
+     */
+
+    private static void setTranslucentStatus(Activity activity, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
 
 }

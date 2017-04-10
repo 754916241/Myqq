@@ -4,7 +4,8 @@
     android:id="@+id/activity_confirm_friend"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wyj.myqq.activity.ConfirmFriend">
+    tools:context="com.wyj.myqq.activity.ConfirmFriend"
+    android:fitsSystemWindows="true">
 
     <include
         android:id="@+id/title_bar"
