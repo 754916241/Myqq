@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.activity.DiscussionDetail;
 import com.wyj.myqq.activity.SendLocation;
+import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ScreenManager;
 
@@ -34,6 +35,7 @@ public class Conversation extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
+        Config.setNotificationBar(this,R.color.colorApp);
         initView();
         initData();
 
