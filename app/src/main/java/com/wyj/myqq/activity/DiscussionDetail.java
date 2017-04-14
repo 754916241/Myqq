@@ -4,15 +4,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +23,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.Conversation;
-import com.wyj.myqq.adapter.ConfirmFriendAdapter;
 import com.wyj.myqq.adapter.DiscussionMembersAdapter;
 import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
-import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ScreenManager;
@@ -68,6 +67,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
     private ScreenManager screenManager;
     private String qqnumber;
     private Discussion discussion;
+    private Switch messageFree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
                     intent.putExtra(Constant.KEY_FRIENDS,listDetail);
                     //讨论组id传过去
                     intent.putExtra(Constant.KEY_DISCUSSION_ID,targetId);
-                    startActivityForResult(intent,Constant.REQUEST_CODE_ADD_DISCUSSION_MEMBERS);
+                    startActivity(intent);
                 }else{
                     if(!listDetail.get(position).getFriendQQ().equals(App.user.getQQnumber())){
                         intent = new Intent(DiscussionDetail.this,FriendDetail.class);
@@ -100,6 +100,44 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
+
+        messageFree.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    RongIM.getInstance().setConversationNotificationStatus(
+                            io.rong.imlib.model.Conversation.ConversationType.DISCUSSION, targetId,
+                            io.rong.imlib.model.Conversation.ConversationNotificationStatus.DO_NOT_DISTURB,
+                            new RongIMClient.ResultCallback<io.rong.imlib.model.Conversation.ConversationNotificationStatus>() {
+                                @Override
+                                public void onSuccess(io.rong.imlib.model.Conversation.ConversationNotificationStatus conversationNotificationStatus) {
+
+                                }
+
+                                @Override
+                                public void onError(RongIMClient.ErrorCode errorCode) {
+
+                                }
+                            });
+                }else{
+                    RongIM.getInstance().setConversationNotificationStatus(
+                            io.rong.imlib.model.Conversation.ConversationType.DISCUSSION, targetId,
+                            io.rong.imlib.model.Conversation.ConversationNotificationStatus.NOTIFY,
+                            new RongIMClient.ResultCallback<io.rong.imlib.model.Conversation.ConversationNotificationStatus>() {
+                                @Override
+                                public void onSuccess(io.rong.imlib.model.Conversation.ConversationNotificationStatus conversationNotificationStatus) {
+
+                                }
+
+                                @Override
+                                public void onError(RongIMClient.ErrorCode errorCode) {
+
+                                }
+                            });
+                }
+            }
+        });
+
     }
 
 
@@ -111,6 +149,21 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
         listDetail = new ArrayList<>();
         screenManager = ScreenManager.getScreenManager();
         screenManager.pushActivity(this);
+        RongIM.getInstance().getConversationNotificationStatus(io.rong.imlib.model.Conversation.ConversationType.DISCUSSION, targetId, new RongIMClient.ResultCallback<io.rong.imlib.model.Conversation.ConversationNotificationStatus>() {
+            @Override
+            public void onSuccess(io.rong.imlib.model.Conversation.ConversationNotificationStatus conversationNotificationStatus) {
+                if(conversationNotificationStatus == io.rong.imlib.model.Conversation.ConversationNotificationStatus.DO_NOT_DISTURB){
+                    messageFree.setChecked(true);
+                }else{
+                    messageFree.setChecked(false);
+                }
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
+            }
+        });
         RongIM.getInstance().getDiscussion(targetId, new RongIMClient.ResultCallback<Discussion>() {
             @Override
             public void onSuccess(Discussion discussion) {
@@ -125,7 +178,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.put(Constant.KEY_QQNUMBER, membersId);
-                client.post(Constant.HTTP_CONFIRM_FRIEND, params, new AsyncHttpResponseHandler() {
+                client.post(Constant.HTTPURL_CONFIRM_FRIEND, params, new AsyncHttpResponseHandler() {
 
                     @Override
                     public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -176,6 +229,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
         imgLeft.setVisibility(View.VISIBLE);
         imgLeft.setOnClickListener(this);
         title = (TextView) findViewById(R.id.title);
+        messageFree = (Switch) findViewById(R.id.switch_discussion);
         tvDiscussionName = (TextView) findViewById(R.id.tv_discussion_name);
         tvDiscussionMembers = (TextView) findViewById(R.id.tv_discussion_members);
         layoutDiscussionName = (RelativeLayout) findViewById(R.id.layout_discussion_name);

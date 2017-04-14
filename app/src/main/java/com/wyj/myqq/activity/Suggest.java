@@ -12,13 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wyj.myqq.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
+import org.apache.http.Header;
+import org.apache.http.params.HttpParams;
+
 public class Suggest extends AppCompatActivity {
 
-    private TextView tvBack, tvTitle;
+    private TextView tvTitle;
     private String qqnumber;
     private EditText edtSuggest;
     private Button btnSubmit;
@@ -48,11 +54,27 @@ public class Suggest extends AppCompatActivity {
             public void onClick(View v) {
                 if(edtSuggest.getText().toString().equals("")){
                     MyToast.showToast(Suggest.this,"请您填写对我们的意见", Toast.LENGTH_SHORT);
-                }
-                MyToast.showToast(Suggest.this,"提交成功，我们会认真考虑您的建议，谢谢！",R.mipmap.right, Toast.LENGTH_SHORT);
-                setResult(Constant.RESULT_CODE_SUGGEST);
-                finish();
+                }else{
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    RequestParams params = new RequestParams();
+                    params.add(Constant.KEY_QQNUMBER,qqnumber);
+                    params.add(Constant.KEY_SUGGEST,edtSuggest.getText().toString());
+                    client.post(Constant.HTTPURL_SUGGEST, params, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                            MyToast.showToast(Suggest.this,"提交成功，我们会认真考虑您的建议，谢谢您对本产品的支持！",R.mipmap.right, Toast.LENGTH_SHORT);
+                            setResult(Constant.RESULT_CODE_SUGGEST);
+                            finish();
+                            overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                        }
 
+                        @Override
+                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                            MyToast.showToast(Suggest.this,"内部网络错误请稍后重试",R.mipmap.error,Toast.LENGTH_SHORT);
+                        }
+                    });
+
+                }
             }
         });
 

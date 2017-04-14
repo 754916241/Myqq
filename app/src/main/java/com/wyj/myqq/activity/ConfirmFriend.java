@@ -1,7 +1,6 @@
 package com.wyj.myqq.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -71,7 +70,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
             RequestParams params = new RequestParams();
             params.put(Constant.KEY_QQNUMBER, listSourceId);
             //   "http://"+Constant.HTTP_URL+":82/htdocs/qq/test1.php"
-            client.post(Constant.HTTP_CONFIRM_FRIEND, params, new AsyncHttpResponseHandler() {
+            client.post(Constant.HTTPURL_CONFIRM_FRIEND, params, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int i, Header[] headers, byte[] bytes) {
                     String result = new String(bytes);
@@ -154,7 +153,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, listSourceId.get(position));
         params.add(Constant.KEY_ADDFRIEND_RESULT, result);
-        client.post(Constant.HTTP_RESULT_ADDFRIEND, params, new AsyncHttpResponseHandler() {
+        client.post(Constant.HTTPURL_RESULT_ADDFRIEND, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 String result = new String(bytes);

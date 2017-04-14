@@ -21,7 +21,7 @@
         android:gravity="center_vertical"
         android:hint="请输入要添加的qq"
         android:layout_below="@id/layout_title"
-
+        android:layout_marginTop="20dp"
         android:background="#ffffffff"
         />
 

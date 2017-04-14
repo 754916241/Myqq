@@ -70,11 +70,42 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_discussion_members"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="消息免打扰"
+            android:layout_centerVertical="true"
+            />
+
+        <Switch
+            android:id="@+id/switch_discussion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:switchMinWidth="30dp"
+            android:textOff=""
+            android:textOn=""
+            android:thumb="@drawable/thumb"
+            android:thumbTextPadding="15dp"
+            android:track="@drawable/track"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/layout_discussion_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="40dp"
         android:padding="10dp"
        >
 
@@ -87,7 +118,6 @@
             android:textColor="#ffffff"
             android:background="@drawable/button_red_select"
             />
-
     </RelativeLayout>
 
 </RelativeLayout>

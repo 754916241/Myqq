@@ -18,6 +18,11 @@ import java.util.regex.Pattern;
 
 public class Config {
 
+
+    /**
+     * 随机生成qq号
+     * @return
+     */
     public static int generateqqNumber() {
         String uuid = UUID.randomUUID().toString(); // xxxx-xxx-xxx-xxxx-xxx
         int hashCode = Math.abs(uuid.hashCode());
@@ -36,6 +41,12 @@ public class Config {
         return m.matches();
     }
 
+
+    /**
+     * 设置导航栏颜色与标题一致
+     * @param activity
+     * @param resColor
+     */
     public static void setNotificationBar(Activity activity,int resColor){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Config.setTranslucentStatus(activity,true);
@@ -45,17 +56,14 @@ public class Config {
         tintManager.setStatusBarTintResource(resColor);//通知栏所需颜色
     }
 
-    /**
-     * 设置导航栏颜色
-     * @param activity
-     * @param on
-     */
+
 
     private static void setTranslucentStatus(Activity activity, boolean on) {
         Window win = activity.getWindow();
         WindowManager.LayoutParams winParams = win.getAttributes();
         final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
         if (on) {
+            /* 等同于 winParams.flags = winParams.flags|bits */
             winParams.flags |= bits;
         } else {
             winParams.flags &= ~bits;

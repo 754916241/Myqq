@@ -140,6 +140,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this,Regist.class));
+                overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
             }
         });
 
@@ -300,7 +301,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
                                             intent.putExtras(bundle);
                                             dialog.dismiss();
                                             startActivity(intent);
-
+                                            overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
                                         }
                                         @Override
                                         public void onError(RongIMClient.ErrorCode errorCode) {
@@ -369,9 +370,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         if(userId.equals("123456")){
             return new UserInfo(userId,"系统消息",null);
         }
-       /* if(userId.equals("754916241")){
-            return new UserInfo(userId,"流年似水",Uri.parse("http://192.168.0.108:82/htdocs/qq/myself.png"));
-        }*/
+
         if(friendsList !=null){
             for(Friends friend : friendsList){
                 if (userId.equals(friend.getFriendQQ())){

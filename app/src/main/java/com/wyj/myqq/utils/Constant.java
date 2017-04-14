@@ -20,6 +20,7 @@ public class Constant {
     public static final String KEY_NICK = "nickname";
     public static final String KEY_TRUE = "truename";
     public static final String KEY_PHONE = "phone";
+    public static final String KEY_SUGGEST = "suggest";
 
     public static final String KEY_FRIENDS = "friends";
     public static final String KEY_FRIENDS_QQNUMBER = "friendqqnumber";
@@ -29,9 +30,7 @@ public class Constant {
     public static final String KEY_FRIENDS_IMAGE = "friendimage";
     public static final String KEY_FRIENDS_TOKEN = "friendtoken";
     public static final String KEY_FRIENDS_NICK = "friendnickname";
-    public static final String KEY_FRIENDS_ITEM = "friend_item";
     public static final String KEY_APPLY_MESSAGE = "message";
-
 
     public static final String KEY_ADDFRIEND_RESULT = "result";
     public static final String KEY_ACCEPT = "accept";
@@ -48,11 +47,12 @@ public class Constant {
     public static final String HTTPURL_LOGIN = "http://"+HTTP_URL+":82/htdocs/qq/Login.php";
     public static final String HTTPURL_ADDFRIENDS = "http://"+HTTP_URL+":82/htdocs/qq/AddFriends.php";
     public static final String HTTPURL_CHANGEMYDATA = "http://"+HTTP_URL+":82/htdocs/qq/ChangeData.php";
-    public static final String HTTP_SEARCH_FRIEND = "http://"+HTTP_URL+":82/htdocs/qq/SearchFriend.php";
-    public static final String HTTP_CONFIRM_FRIEND = "http://"+HTTP_URL+":82/htdocs/qq/ConfirmFriend.php";
-    public static final String HTTP_RESULT_ADDFRIEND = "http://"+HTTP_URL+":82/htdocs/qq/ResultAddFriend.php";
+    public static final String HTTPURL_SEARCH_FRIEND = "http://"+HTTP_URL+":82/htdocs/qq/SearchFriend.php";
+    public static final String HTTPURL_CONFIRM_FRIEND = "http://"+HTTP_URL+":82/htdocs/qq/ConfirmFriend.php";
+    public static final String HTTPURL_RESULT_ADDFRIEND = "http://"+HTTP_URL+":82/htdocs/qq/ResultAddFriend.php";
     public static final String HTTPURL_DELETE_FRIEND = "http://"+HTTP_URL+":82/htdocs/qq/DeleteFriend.php";
     public static final String HTTPURL_GET_FRIEND_INFO = "http://"+HTTP_URL+":82/htdocs/qq/GetFriendInfo.php";
+    public static final String HTTPURL_SUGGEST = "http://"+HTTP_URL+":82/htdocs/qq/Suggest.php";
     //保存在本地的个人信息
     public static final String KEY_SHARE_REMEBER = "perference_key";
     public static final String KEY_SET_SOURCEID = "sourceId";
@@ -87,12 +87,12 @@ public class Constant {
     public static final int RESULT_CODE_CONFIRM_FRIEND_REFUSE = 5026;
     public static final int REQUEST_CODE_CHANGE_DISCUSSION_NAME = 5027;
     public static final int RESULT_CODE_CHANGE_DISCUSSION_NAME = 5028;
-    public static final int REQUEST_CODE_ADD_DISCUSSION_MEMBERS = 5029;
-    public static final int RESULT_CODE_ADD_DISCUSSION_MEMBERS = 5030;
+    /*public static final int REQUEST_CODE_ADD_DISCUSSION_MEMBERS = 5029;
+    public static final int RESULT_CODE_ADD_DISCUSSION_MEMBERS = 5030;*/
 
     public static final String MOB_APP_KEY = "1c31c4dd9f304";
     public static final String MOB_APP_SECRETE = "5e063382d632069c76a99d73921965b6";
     public static final String COUNTRY_ID_DEFAULT = "86";
 
-    public static final String GAODE_APP_KEY = "6cfa2930595b454b1622cf1a9b0f46f1";
+
 }

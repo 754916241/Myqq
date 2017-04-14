@@ -36,7 +36,6 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
     private EditText edtSearchFriend;
     private TextView tvSearch,tvCancel;
     private String qqnumber;
-    private int success;
     private Friends friends;
     private InputMethodManager imm;
     private ListView lvResult;
@@ -69,17 +68,17 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
             @Override
             public void onClick(View v) {
                 if (qqnumber.equals(edtSearchFriend.getText().toString())) {
-                    MyToast.showToast(SearchFriends.this, "不能添加自己为好友", Toast.LENGTH_SHORT);
+                    MyToast.showToast(SearchFriends.this, "这就是您自己哦", Toast.LENGTH_SHORT);
                 }else{
                     AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
                     params.add(Constant.KEY_QQNUMBER, edtSearchFriend.getText().toString());
-                    client.post(Constant.HTTP_SEARCH_FRIEND, params, new AsyncHttpResponseHandler() {
+                    client.post(Constant.HTTPURL_SEARCH_FRIEND, params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                            String response = new String(bytes);
+                            String result = new String(bytes);
                             try {
-                                JSONObject object = new JSONObject(response);
+                                JSONObject object = new JSONObject(result);
                                 if(object.getInt("success")==0){
                                     String nickname = object.getString(Constant.KEY_NICK);
                                     String imgPath = object.getString(Constant.KEY_IMAGE);
