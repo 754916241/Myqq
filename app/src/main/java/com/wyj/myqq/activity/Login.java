@@ -97,6 +97,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         initPopWindow();
         bundle = getIntent().getExtras();
         if(bundle!=null){
+            edtPassword.setText("");
+            imgHead.setImageResource(R.drawable.qq_icon);
             edtQQnumber.setText(bundle.getString(Constant.KEY_QQNUMBER));
         }
 

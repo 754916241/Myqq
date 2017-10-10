@@ -180,11 +180,16 @@ public class ImageUtils extends Activity {
      * @return
      */
     public static String bitmapToString(Bitmap bm) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.PNG, 60, stream);
-        byte[] bytes = stream.toByteArray();
-        String image = new String(Base64.encodeToString(bytes, Base64.DEFAULT));
-        return image;
+        try{
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bm.compress(Bitmap.CompressFormat.PNG, 60, stream);
+            byte[] bytes = stream.toByteArray();
+            String image = new String(Base64.encodeToString(bytes, Base64.DEFAULT));
+            return image;
+        }catch(Exception e){
+            return "";
+        }
+
     }
 
     /**

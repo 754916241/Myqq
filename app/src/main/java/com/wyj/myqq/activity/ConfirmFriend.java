@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -134,6 +135,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                 adapter.setAccept(true);
                 adapter.notifyDataSetChanged();
                 submitApply(Constant.KEY_ACCEPT, position);
+
                 break;
             case R.id.btn_refuse:
                 adapter.setRefuse(true);
@@ -166,6 +168,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                                 object.getString(Constant.KEY_FRIENDS_TOKEN),
                                 friendImg, object.getString(Constant.KEY_FRIENDS_SIGNATURE));
                         agreeFriends.add(friend);
+                        //App.friendsList.add(friend);
                         Intent intent = new Intent();
                         intent.putExtra(Constant.KEY_FRIENDS, agreeFriends);
                         setResult(Constant.RESULT_CODE_CONFIRM_FRIEND, intent);

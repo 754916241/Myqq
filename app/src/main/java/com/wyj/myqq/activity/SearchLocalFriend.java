@@ -83,14 +83,17 @@ public class SearchLocalFriend extends AppCompatActivity {
                     mLvResult.setAdapter(adapter);
                 }
                 imm.hideSoftInputFromWindow(mSvLocal.getWindowToken(), 0);
+                mSvLocal.setIconified(true);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                inputFriend.clear();
-                adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,inputFriend);
-                mLvResult.setAdapter(adapter);
+                if(!newText.isEmpty()){
+                    inputFriend.clear();
+                    adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,inputFriend);
+                    mLvResult.setAdapter(adapter);
+                }
                 return false;
             }
         });

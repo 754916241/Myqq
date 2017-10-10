@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -47,6 +48,7 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_friends);
+        Log.d("class","class");
         Config.setNotificationBar(this,R.color.colorApp);
         Bundle bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
@@ -62,11 +64,15 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
         tvCancel = (TextView) findViewById(R.id.tv_left);
         tvSearch = (TextView) findViewById(R.id.tv_right);
         lvResult = (ListView) findViewById(R.id.lv_search_result);
-
+        edtSearchFriend.addTextChangedListener(this);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         tvSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(list.size()!=0){
+                    list.clear();
+                    adapter.notifyDataSetChanged();
+                }
                 if (qqnumber.equals(edtSearchFriend.getText().toString())) {
                     MyToast.showToast(SearchFriends.this, "这就是您自己哦", Toast.LENGTH_SHORT);
                 }else{

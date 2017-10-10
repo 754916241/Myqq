@@ -53,7 +53,6 @@ public class Conversation extends FragmentActivity implements View.OnClickListen
             imgRight.setVisibility(View.VISIBLE);
         }
         if(!TextUtils.isEmpty(sTitle)){
-            Log.d("stitle", sTitle);
             title.setText(sTitle);
         }else{
             title.setText(targetId);

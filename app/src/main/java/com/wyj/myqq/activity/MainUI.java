@@ -121,7 +121,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         }
         initSet();
         init();
-
         setTabSelection(0);
     }
 
@@ -232,7 +231,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 imgContacts.setImageResource(R.mipmap.tab_contacts_pressed);
                 title.setText("联系人");
                 // 如果contactsFragment为空，则创建一个添加到界面上
-                if (contacts == null) {
+                if (contacts == null || contactsState == 1) {
                     contacts = new Contacts();
                     contacts.setOnContactsListener(this);
                     Bundle bundle = new Bundle();
@@ -255,7 +254,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 imgSetting.setImageResource(R.mipmap.tab_settings_pressed);
                 title.setText("个人");
                 // 如果newsFragment为空，则创建一个添加到界面上
-                if (setting == null) {
+                if (setting == null || settingState == 1) {
                     setting = new Setting();
                     setting.setOnSettingListener(this);
                     Bundle bundle = new Bundle();
@@ -268,12 +267,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     bundle.putSerializable(Constant.KEY_USER, user);
                     setting.setArguments(bundle);
                     transaction.add(R.id.fragment_content, setting);
-                } /*else {
-                    transaction.replace(R.id.fragment_content, setting);
-                }*/
+                }
                 transaction.show(setting);
-
-
                 break;
 
         }
@@ -525,26 +520,29 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         contacts.onDestroyView();
         contacts.onDestroy();
         contacts.onDetach();
-        contacts = null;
+        contactsState = 1;
         setTabSelection(1);
     }
+
+    private int settingState;
+    private int contactsState;
 
     private void resetSetting() {
         setting.onDestroyView();
         setting.onDestroy();
         setting.onDetach();
-        setting = null;
+        //setting = null;
+        settingState = 1;
         setTabSelection(2);
-
     }
 
 
     private String sourceId, applyMessage;
 
-
     @Override
     public boolean onReceived(Message message, int i) {
         MessageContent messageContent = message.getContent();
+
         if (messageContent instanceof ContactNotificationMessage) {
             ContactNotificationMessage contactContentMessage = (ContactNotificationMessage) messageContent;
             if (contactContentMessage.getOperation().
@@ -569,14 +567,17 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 editor.apply();
             }else if(contactContentMessage.getOperation().
                     equals(ContactNotificationMessage.CONTACT_OPERATION_ACCEPT_RESPONSE)){
-                String targetQQ = contactContentMessage.getTargetUserId();
+                String targetQQ = contactContentMessage.getSourceUserId();
+                Log.d("messageContent",targetQQ);
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add(Constant.KEY_QQNUMBER,targetQQ);
+                Log.d("messageContent","run here");
                 client.post(Constant.HTTPURL_GET_FRIEND_INFO, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int i, Header[] headers, byte[] bytes) {
                         try {
+                            Log.d("messageContent","run here");
                             JSONObject object = new JSONObject(new String(bytes));
                             Friends friends = new Friends(object.getString(Constant.KEY_QQNUMBER),
                                     object.getString(Constant.KEY_NICK),
@@ -585,17 +586,20 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                                     object.getString(Constant.KEY_TOKEN),
                                     object.getString(Constant.KEY_IMAGE),
                                     object.getString(Constant.KEY_SIGNATURE));
+
                             listFriends.add(friends);
                             App.friendsList.add(friends);
                             resetConstacts();
                         } catch (JSONException e) {
+                            Log.d("messageContent","run here1");
                             e.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
+                        Log.d("messageContent","run here2");
+                        Log.d("exception","内网错误");
                     }
                 });
                 return true;
