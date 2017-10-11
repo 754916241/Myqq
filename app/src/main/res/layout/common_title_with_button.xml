@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:text="取消"
-        android:textColor="#ffffffff"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="添加好友"
-        android:textColor="#ffffffff"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:text="搜索"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp" />
 
 </RelativeLayout>

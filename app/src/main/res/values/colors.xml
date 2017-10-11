@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorLogin">#e7e0e0</color>
     <color name="colorApp">#3998dc</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

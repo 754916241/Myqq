@@ -121,7 +121,7 @@
 
         <Button
             android:id="@+id/btn_send"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -130,7 +130,7 @@
 
         <Button
             android:id="@+id/btn_delete"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"

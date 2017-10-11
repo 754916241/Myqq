@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/button_blue_select"
-            android:text="登陆"
+            android:text="登录"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
              />

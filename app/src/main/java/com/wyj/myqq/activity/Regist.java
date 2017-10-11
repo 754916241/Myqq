@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -53,9 +54,9 @@ import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
 public class Regist extends AppCompatActivity implements TextWatcher{
 
-    private EditText edtPhone, edtCode,edtPwd, edtRepwd;
+    private EditText edtPhone, edtCode,edtPwd;
     private TextView getCode;
-    private ImageView imgHead;
+    private ImageView imgHead,imgPwdVisible;
     private Button regist,test;
     private String qqnumber, image, token;
     private int success;
@@ -63,7 +64,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
     private Bitmap photo = null;
     private ProgressDialog dialog;
     private InputMethodManager imm;
-
+    private boolean isPwdVisible = false;
 
 
     private EventHandler eh=new EventHandler(){
@@ -121,21 +122,15 @@ public class Regist extends AppCompatActivity implements TextWatcher{
     }
 
     private void checkInformation() {
-        if (edtPwd.getText().toString().equals("")||edtCode.getText().toString().equals("")
+        if (edtPwd.getText().toString().length() < 6||edtCode.getText().toString().equals("")
                 ||edtPwd.getText().toString().equals("")) {
             regist.setBackgroundResource(R.drawable.button_unable_click);
             regist.setEnabled(false);
             regist.setSoundEffectsEnabled(false);
         }else{
-            if(edtPwd.getText().toString().length() == edtRepwd.getText().toString().length()){
-                regist.setBackgroundResource(R.drawable.button_blue_select);
-                regist.setEnabled(true);
-                regist.setSoundEffectsEnabled(true);
-            }else{
-                regist.setBackgroundResource(R.drawable.button_unable_click);
-                regist.setEnabled(false);
-                regist.setSoundEffectsEnabled(false);
-            }
+            regist.setBackgroundResource(R.drawable.button_blue_select);
+            regist.setEnabled(true);
+            regist.setSoundEffectsEnabled(true);
         }
     }
 
@@ -143,14 +138,13 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         edtPhone = (EditText) findViewById(R.id.edt_regist_phone);
         edtCode = (EditText) findViewById(R.id.edt_regist_code);
         edtPwd = (EditText) findViewById(R.id.edt_regist_pwd);
-        edtRepwd = (EditText) findViewById(R.id.edt_regist_repwd);
         getCode = (TextView) findViewById(R.id.tv_regist_getCode);
         imgHead = (ImageView) findViewById(R.id.img_regist_addhead);
+        imgPwdVisible = (ImageView) findViewById(R.id.img_pwdVis);
         regist = (Button) findViewById(R.id.btn_regist_regist);
         test = (Button) findViewById(R.id.button);
         imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         edtPwd.addTextChangedListener(this);
-        edtRepwd.addTextChangedListener(this);
         edtCode.addTextChangedListener(this);
         dialog = new ProgressDialog(this);
     }
@@ -207,15 +201,25 @@ public class Regist extends AppCompatActivity implements TextWatcher{
             @Override
             public void onClick(View v) {
 
-                if (!(edtPwd.getText().toString().equals(edtRepwd.getText().toString()))) {
-                    MyToast.showToast(Regist.this, "两次密码输入不一致，请检查后重新输入",R.mipmap.error, Toast.LENGTH_SHORT);
-                }
-                else {
                     dialog.setMessage("正在从网络中获取数据，请稍后");
                     dialog.show();
                     SMSSDK.submitVerificationCode(Constant.COUNTRY_ID_DEFAULT,edtPhone.getText()
                             .toString(),edtCode.getText().toString());
 
+            }
+        });
+
+        imgPwdVisible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isPwdVisible){
+                    imgPwdVisible.setImageResource(R.mipmap.eye_invisible);
+                    edtPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    isPwdVisible = false;
+                }else{
+                    imgPwdVisible.setImageResource(R.mipmap.eye_visible);
+                    edtPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    isPwdVisible = true;
                 }
             }
         });

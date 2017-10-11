@@ -19,9 +19,6 @@ import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
-import org.apache.http.Header;
-import org.apache.http.params.HttpParams;
-
 public class Suggest extends AppCompatActivity {
 
     private TextView tvTitle;
@@ -40,6 +37,7 @@ public class Suggest extends AppCompatActivity {
         initData();
         initView();
         initClick();
+        
     }
 
     private void initData() {

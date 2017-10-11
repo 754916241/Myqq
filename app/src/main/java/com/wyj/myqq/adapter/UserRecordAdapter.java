@@ -1,12 +1,6 @@
 package com.wyj.myqq.adapter;
 
-import java.util.List;
-import java.util.Map;
-
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +12,9 @@ import android.widget.TextView;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class UserRecordAdapter extends BaseAdapter{
@@ -96,6 +93,7 @@ public class UserRecordAdapter extends BaseAdapter{
 		public void onClick(View v) {
 			listener.click(v,position);
 		}
+
 		
 	}
 

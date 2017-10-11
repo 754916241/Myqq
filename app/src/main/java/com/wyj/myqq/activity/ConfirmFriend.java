@@ -29,6 +29,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.TypingMessage.TypingStatus;
+import io.rong.imlib.model.Conversation;
 
 public class ConfirmFriend extends AppCompatActivity implements View.OnClickListener, ConfirmFriendAdapter.OnConfirmFriendListener {
 
@@ -137,7 +142,8 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                 submitApply(Constant.KEY_ACCEPT, position);
 
                 break;
-            case R.id.btn_refuse:
+            //拒绝按钮
+            /*case R.id.btn_refuse:
                 adapter.setRefuse(true);
                 adapter.notifyDataSetChanged();
                 Intent intent = new Intent();
@@ -145,7 +151,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                 intent.putExtra(Constant.KEY_FRIENDS, listRefuse);
                 setResult(Constant.RESULT_CODE_CONFIRM_FRIEND_REFUSE, intent);
                 // submitApply(Constant.KEY_REFUSE,position);
-                break;
+                break;*/
         }
     }
 

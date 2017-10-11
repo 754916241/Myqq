@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -28,7 +27,6 @@ import com.wyj.myqq.utils.ImageUtils;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
 
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -131,7 +129,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         params.add("message",edtExtra.getText().toString());
         client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+            public void onSuccess(int i, org.apache.http.Header[] headers, byte[] bytes) {
                 String response = new String(bytes);
                 Log.d("addfriend response",response);
                 int success;
