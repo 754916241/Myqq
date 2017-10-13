@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static io.rong.imlib.statistics.UserData.name;
-import static io.rong.imlib.statistics.UserData.username;
-
 /**
  * Created by wyj on 2017/3/27.
  */
@@ -41,6 +38,16 @@ public class DBLocal extends SQLiteOpenHelper {
         cv.put("password", password);
         cv.put("image", image);
         write.insert("record", null, cv);
+        cv.clear();
+        write.close();
+    }
+
+    public void updateInRecord(String qqnumber,String password,String image) {
+        SQLiteDatabase write = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("password", password);
+        cv.put("image", image);
+        write.update("record",cv,"qqnumber=?",new String[]{qqnumber});
         cv.clear();
         write.close();
     }

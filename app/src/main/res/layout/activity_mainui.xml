@@ -15,7 +15,7 @@
     <FrameLayout
         android:id="@+id/fragment_content"
         android:layout_width="match_parent"
-        android:background="#f5f2f2"
+        android:background="@color/colorMain"
         android:layout_height="0dp"
         android:layout_weight="9">
     </FrameLayout>
@@ -27,7 +27,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="#ffffffff"
+        android:background="@color/colorWhite"
         >
         <LinearLayout
             android:id="@+id/message_layout"

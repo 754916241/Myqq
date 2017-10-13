@@ -10,12 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wyj.myqq.App;
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import com.wyj.myqq.adapter.ConfirmFriendAdapter;
 import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
@@ -29,11 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
-import io.rong.imlib.RongIMClient;
-import io.rong.imlib.TypingMessage.TypingStatus;
-import io.rong.imlib.model.Conversation;
 
 public class ConfirmFriend extends AppCompatActivity implements View.OnClickListener, ConfirmFriendAdapter.OnConfirmFriendListener {
 
@@ -44,7 +38,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
     private TextView title, toast;
     private ListView listFriend;
     private Bundle bundle;
-    private ArrayList<String> listSourceId, listApplyMessage,listRefuse;
+    private ArrayList<String> listSourceId, listApplyMessage;
 
     private String qqnumber, friendNick, friendImg;
     private ConfirmFriendBean friendBean;
@@ -59,12 +53,12 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         Config.setNotificationBar(this,R.color.colorApp);
         initView();
         initData();
+
     }
 
     private void initData() {
         list = new ArrayList<>();
         agreeFriends = new ArrayList<>();
-        listRefuse = new ArrayList<>();
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
         listSourceId = bundle.getStringArrayList(Constant.KEY_SET_SOURCEID);

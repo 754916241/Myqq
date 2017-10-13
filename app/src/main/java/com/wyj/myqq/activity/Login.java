@@ -341,6 +341,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         db = new DBLocal(this);
         if(!db.isExistInRecord(qqnumber)){
             db.insertToRecord(qqnumber,password,image);
+        }else{
+            db.updateInRecord(qqnumber,password,image);
         }
     }
 
@@ -394,7 +396,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
             case R.id.img_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("系统提示");
-                builder.setMessage("确认删除该账号的登陆记录吗？");
+                builder.setMessage("确认删除该账号的登录记录吗？");
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
