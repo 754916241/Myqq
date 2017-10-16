@@ -9,6 +9,7 @@ import com.wyj.myqq.bean.User;
 
 import java.util.ArrayList;
 
+import cn.smssdk.SMSSDK;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.UserInfo;
 
@@ -25,4 +26,5 @@ public class App extends Application {
         super.onCreate();
         RongIM.init(this);
     }
+
 }

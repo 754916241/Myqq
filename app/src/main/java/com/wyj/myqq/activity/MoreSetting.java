@@ -7,14 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,8 +22,8 @@ import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.DataCleanManager;
-import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
+import com.wyj.myqq.view.MyToast;
 
 import static com.wyj.myqq.utils.Constant.KEY_PHONE;
 import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEPASSWORD;
@@ -104,11 +101,10 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void changePwdOrPhone(String key,String value,int requestCode){
+    private void changePwdOrPhone(String code,int requestCode){
         Bundle bundle = new Bundle();
-        if(key!=null){
-            bundle.putString(key,value);
-        }
+
+        bundle.putString(code,"");
         bundle.putString(Constant.KEY_QQNUMBER,qqnumber);
         Intent intent = new Intent(this,ChangePwdOrPhone.class);
         intent.putExtras(bundle);
@@ -132,7 +128,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         if(edtDialog.getText().toString().equals(password)){
-                            changePwdOrPhone(null,null,Constant.REQUEST_CODE_CHANGEPASSWORD);
+                            changePwdOrPhone(Constant.KEY_PASSWORD,Constant.REQUEST_CODE_CHANGEPASSWORD);
 
                         }else{
                             MyToast.showToast(MoreSetting.this, "密码错误，请验证后重试",R.mipmap.error, Toast.LENGTH_SHORT);
@@ -142,30 +138,14 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 builder.setNegativeButton("取消", null);
                 builder.create().show();
                 break;
+            case R.id.layout_phone:
+                changePwdOrPhone(Constant.KEY_PHONE,RESULT_CODE_CHANGEPHONE);
+                break;
             case R.id.tv_about:
                 startActivity(new Intent(this,About.class));
                 break;
             case R.id.tv_suggest:
                submitSuggest();
-                break;
-            case R.id.layout_phone:
-                String[] items = new String[]{"通过密码修改", "通过绑定手机号修改"};
-                new AlertDialog.Builder(this)
-                        .setTitle("选择修改方式")
-                        .setItems(items, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                arg0.dismiss();
-                                switch (arg1) {
-                                    case 0:
-                                        changePwdOrPhone(Constant.KEY_PASSWORD,password, RESULT_CODE_CHANGEPHONE);
-                                        break;
-                                    case 1:
-                                        changePwdOrPhone(Constant.KEY_PHONE,phone,RESULT_CODE_CHANGEPHONE);
-                                        break;
-                                }
-                            }
-                        }).show();
                 break;
             case R.id.layout_cache:
                 builder = new AlertDialog.Builder(this);

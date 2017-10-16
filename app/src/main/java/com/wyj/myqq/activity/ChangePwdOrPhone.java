@@ -30,7 +30,7 @@ import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
 public class ChangePwdOrPhone extends AppCompatActivity {
 
-    private EditText edtPassword, repassword,edtNewPhone;
+    private EditText edtPassword, edtRepassword;
     private TextView tvGetCode,tvToast;
     private TextView tvSave, tvCancel,tvTitle;
     private String qqnumber,phone,password;
@@ -50,12 +50,7 @@ public class ChangePwdOrPhone extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //获取验证码以修改绑定手机号
-                            if(Config.isPhone(edtNewPhone.getText().toString())){
-                                postInformation(edtNewPhone.getText().toString());
-                            }else{
-                                MyToast.showToast(ChangePwdOrPhone.this,"输入的新手机号格式有误",Toast.LENGTH_SHORT);
-                            }
+                            postInformation();
                         }
                     });
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
@@ -113,22 +108,25 @@ public class ChangePwdOrPhone extends AppCompatActivity {
         tvGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                imm.hideSoftInputFromWindow(edtPassword.getWindowToken(), 0);
+                if(Config.isPhone(edtPassword.getText().toString())) {
+                    SMSSDK.getVerificationCode(Constant.COUNTRY_ID_DEFAULT, edtPassword.getText().toString());
+                    new CountDownTimer(60000, 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            tvGetCode.setClickable(false);
+                            tvGetCode.setText(millisUntilFinished / 1000 + "s" + "后重新发送");
+                        }
 
-                SMSSDK.getVerificationCode(Constant.COUNTRY_ID_DEFAULT,phone);
-                new CountDownTimer(60000,1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        tvGetCode.setClickable(false);
-                        tvGetCode.setText(millisUntilFinished/1000+"s"+"后重新发送");
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        tvGetCode.setClickable(true);
-                        tvGetCode.setText("重新获取验证码");
-                    }
-                }.start();
-
+                        @Override
+                        public void onFinish() {
+                            tvGetCode.setClickable(true);
+                            tvGetCode.setText("重新获取验证码");
+                        }
+                    }.start();
+                }else{
+                    MyToast.showToast(ChangePwdOrPhone.this, "手机号码格式不正确",Toast.LENGTH_LONG);
+                }
             }
         });
 
@@ -136,18 +134,11 @@ public class ChangePwdOrPhone extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(phone!=null){
-                    SMSSDK.submitVerificationCode(Constant.COUNTRY_ID_DEFAULT,phone,repassword.getText().toString());
-                }else if(password!=null){
-                    if(edtPassword.getText().toString().equals(password)){
-                        //修改绑定手机号通过密码
-                        postInformation("");
-                    }else{
-                        MyToast.showToast(ChangePwdOrPhone.this, "密码输入错误,请核对后重试",R.mipmap.error ,Toast.LENGTH_SHORT);
-                    }
-                } else {
-                    if (edtPassword.getText().toString().equals(repassword.getText().toString())) {
+                    SMSSDK.submitVerificationCode(Constant.COUNTRY_ID_DEFAULT,edtPassword.getText().toString(),edtRepassword.getText().toString());
+                }else {
+                    if (edtPassword.getText().toString().equals(edtRepassword.getText().toString())) {
                         //修改密码
-                        postInformation(null);
+                        postInformation();
                     } else {
                         MyToast.showToast(ChangePwdOrPhone.this, "两次密码输入不一致，请核对后重试",R.mipmap.error ,Toast.LENGTH_SHORT);
                     }
@@ -159,7 +150,7 @@ public class ChangePwdOrPhone extends AppCompatActivity {
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imm.hideSoftInputFromWindow(repassword.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(edtRepassword.getWindowToken(), 0);
                 onBackPressed();
 
             }
@@ -169,8 +160,7 @@ public class ChangePwdOrPhone extends AppCompatActivity {
 
     private void initView() {
         edtPassword = (EditText) findViewById(R.id.edt_password);
-        edtNewPhone = (EditText) findViewById(R.id.edt_new_phone);
-        repassword = (EditText) findViewById(R.id.edt_repassword);
+        edtRepassword = (EditText) findViewById(R.id.edt_repassword);
         tvGetCode = (TextView) findViewById(R.id.tv_get_code);
         tvToast = (TextView) findViewById(R.id.tv_toast);
         tvSave = (TextView) findViewById(R.id.tv_right);
@@ -178,46 +168,32 @@ public class ChangePwdOrPhone extends AppCompatActivity {
         tvTitle = (TextView) findViewById(R.id.tv_title);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         tvSave.setText("保存");
-        tvTitle.setText("修改密码");
+
         dialog = new ProgressDialog(this);
         if(phone!=null){
+            //修改绑定手机号
             edtPassword.setInputType(InputType.TYPE_CLASS_TEXT);
-            repassword.setInputType(InputType.TYPE_CLASS_TEXT);
-            edtPassword.setText(phone);
-            edtPassword.setFocusable(false);
-            edtPassword.setFocusableInTouchMode(false);
+            edtRepassword.setInputType(InputType.TYPE_CLASS_TEXT);
             tvTitle.setText("修改绑定手机号");
-            tvToast.setText("如果您想更改绑定手机号请点击获取验证码，我们会发送验证码至您绑定的手机号以便于验证");
-            repassword.setHint("请输入验证码");
-            edtNewPhone.setVisibility(View.VISIBLE);
+            tvToast.setText("在您输入新手机号后，我们会发送验证码进行验证");
+            edtPassword.setHint("请输入新手机号");
+            edtRepassword.setHint("请输入验证码");
             tvGetCode.setVisibility(View.VISIBLE);
+        }else{
+            tvTitle.setText("修改密码");
         }
-        if(password!=null){
-            repassword.setInputType(InputType.TYPE_CLASS_TEXT);
-            tvToast.setText("请输入密码进行验证，输入新手机号以完成修改");
-            tvTitle.setText("修改绑定手机号");
-            edtPassword.setHint("请输入密码");
-            repassword.setHint("请输入新手机号");
-        }
-
     }
 
-    private void postInformation(String phone) {
+    private void postInformation() {
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         if(phone!=null){
-            if(phone.equals("")){
-                imm.hideSoftInputFromWindow(repassword.getWindowToken(), 0);
-                params.add(Constant.KEY_PHONE, repassword.getText().toString());
-            }else{
-                imm.hideSoftInputFromWindow(edtNewPhone.getWindowToken(), 0);
-                params.add(Constant.KEY_PHONE, phone);
-            }
-
+            imm.hideSoftInputFromWindow(edtRepassword.getWindowToken(), 0);
+            params.add(Constant.KEY_PHONE, edtRepassword.getText().toString());
         }else{
-            params.add(Constant.KEY_PASSWORD, repassword.getText().toString());
+            params.add(Constant.KEY_PASSWORD, edtRepassword.getText().toString());
         }
 
         client.post(Constant.HTTPURL_CHANGEMYDATA, params, new AsyncHttpResponseHandler() {
