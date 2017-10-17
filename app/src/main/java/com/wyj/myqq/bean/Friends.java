@@ -16,6 +16,7 @@ public class Friends implements Serializable{
     private String friendToken;
     private Bitmap friendBm;
     private String friendSex,friendPhone;
+    private int status;
 
     public Friends(String friendQQ, String friendNick, String friendImg) {
         this.friendQQ = friendQQ;
@@ -124,6 +125,14 @@ public class Friends implements Serializable{
 
     public void setFriendBm(Bitmap friendBm) {
         this.friendBm = friendBm;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 }

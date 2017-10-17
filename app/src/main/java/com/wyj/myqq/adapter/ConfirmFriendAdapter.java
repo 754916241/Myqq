@@ -71,7 +71,7 @@ public class ConfirmFriendAdapter extends BaseAdapter{
         if(isAccept){
             holder.btnAccept.setVisibility(View.GONE);
             holder.tvResult.setVisibility(View.VISIBLE);
-            holder.tvResult.setText("已同意该申请");
+            holder.tvResult.setText("已同意");
         }
 
         new AsyncTask<Void,Void,Bitmap>(){

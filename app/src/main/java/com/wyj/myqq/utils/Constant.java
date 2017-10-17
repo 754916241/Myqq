@@ -1,7 +1,5 @@
 package com.wyj.myqq.utils;
 
-import static java.lang.reflect.Modifier.FINAL;
-
 /**
  * Created by wyj on 2016/7/1.
  */
@@ -30,6 +28,7 @@ public class Constant {
     public static final String KEY_FRIENDS_IMAGE = "friendimage";
     public static final String KEY_FRIENDS_TOKEN = "friendtoken";
     public static final String KEY_FRIENDS_NICK = "friendnickname";
+    public static final String KEY_FRIENDS_STATUS = "friendstatus";
     public static final String KEY_APPLY_MESSAGE = "message";
 
     public static final String KEY_ADDFRIEND_RESULT = "result";
@@ -93,6 +92,7 @@ public class Constant {
     public static final String MOB_APP_KEY = "1c31c4dd9f304";
     public static final String MOB_APP_SECRETE = "5e063382d632069c76a99d73921965b6";
     public static final String COUNTRY_ID_DEFAULT = "86";
+
 
 
 }

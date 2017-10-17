@@ -3,7 +3,6 @@ package com.wyj.myqq.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.adapter.CreateDiscussAdapter;
-import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
@@ -22,10 +20,8 @@ import java.util.ArrayList;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.IRongCallback;
-import io.rong.imlib.NativeObject;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
-import io.rong.imlib.model.Discussion;
 import io.rong.imlib.model.Message;
 import io.rong.message.TextMessage;
 
@@ -96,7 +92,7 @@ public class CreateDiscussGroup extends AppCompatActivity implements View.OnClic
             lvChooseFriend.setAdapter(adapter);
         } else {
             //添加讨论组成员适配器
-            allFriends = App.friendsList;
+            allFriends = App.friendsListAgreed;
             allFriends.removeAll(existFriend);
             adapter = new CreateDiscussAdapter(this, allFriends);
             lvChooseFriend.setAdapter(adapter);

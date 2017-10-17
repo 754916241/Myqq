@@ -126,12 +126,12 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         RequestParams params = new RequestParams();
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, friends.getFriendQQ());
-        params.add("message",edtExtra.getText().toString());
+        params.add(Constant.KEY_APPLY_MESSAGE,edtExtra.getText().toString());
         client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, org.apache.http.Header[] headers, byte[] bytes) {
                 String response = new String(bytes);
-                Log.d("addfriend response",response);
+                Log.d("addfriend_response",response);
                 int success;
                 try {
                     JSONObject object = new JSONObject(response);

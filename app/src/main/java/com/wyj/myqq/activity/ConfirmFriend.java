@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -38,11 +38,8 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
     private TextView title, toast;
     private ListView listFriend;
     private Bundle bundle;
-    private ArrayList<String> listSourceId, listApplyMessage;
-
-    private String qqnumber, friendNick, friendImg;
-    private ConfirmFriendBean friendBean;
-    private ArrayList<ConfirmFriendBean> list;
+    private String qqnumber;
+    private ArrayList<ConfirmFriendBean> friendsListInPending,friendsListAgreed;
     private ArrayList<Friends> agreeFriends;
     private ConfirmFriendAdapter adapter;
 
@@ -57,54 +54,18 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
     }
 
     private void initData() {
-        list = new ArrayList<>();
-        agreeFriends = new ArrayList<>();
+        friendsListInPending = App.friendsListInPending;
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
-        listSourceId = bundle.getStringArrayList(Constant.KEY_SET_SOURCEID);
-        listApplyMessage = bundle.getStringArrayList(Constant.KEY_SET_MESSAGE);
-        if (listSourceId.size() == 0) {
+        friendsListAgreed = new ArrayList<>();
+        if (friendsListInPending == null) {
             toast.setVisibility(View.VISIBLE);
         }else{
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
-            params.put(Constant.KEY_QQNUMBER, listSourceId);
-            //   "http://"+Constant.HTTP_URL+":82/htdocs/qq/test1.php"
-            client.post(Constant.HTTPURL_CONFIRM_FRIEND, params, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                    String result = new String(bytes);
-                    Log.e("friendqq",result);
-                    try {
-                        JSONArray array = new JSONArray(result);
-                        JSONObject object;
-                        for(int j = 0;j<array.length();j++){
-                            object = array.getJSONObject(j);
-                            friendNick = object.getString(Constant.KEY_NICK);
-                            friendImg = object.getString(Constant.KEY_IMAGE);
-                            friendBean = new ConfirmFriendBean(listSourceId.get(j), friendNick, friendImg, listApplyMessage.get(j));
-                            list.add(friendBean);
-                        }
-
-                        adapter = new ConfirmFriendAdapter(ConfirmFriend.this, list);
-                        listFriend.setAdapter(adapter);
-                        adapter.setOnConfirmListener(ConfirmFriend.this);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                    MyToast.showToast(ConfirmFriend.this, "内部网络错误请稍后重试", R.mipmap.error, Toast.LENGTH_SHORT);
-                }
-
-            });
-
+            agreeFriends = new ArrayList<>();
+            adapter = new ConfirmFriendAdapter(ConfirmFriend.this, friendsListInPending);
+            listFriend.setAdapter(adapter);
+            adapter.setOnConfirmListener(ConfirmFriend.this);
         }
-
-
-
     }
 
 
@@ -125,6 +86,20 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                 onBackPressed();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        /**
+         * 如果用户进入页面并同意申请，则执行if语句
+         */
+        if(agreeFriends!=null && agreeFriends.size()!=0){
+            App.friendsListInPending.removeAll(friendsListAgreed);
+            Intent intent = new Intent();
+            intent.putExtra(Constant.KEY_FRIENDS, agreeFriends);
+            setResult(Constant.RESULT_CODE_CONFIRM_FRIEND, intent);
+        }
+        super.onBackPressed();
     }
 
     @Override
@@ -153,8 +128,9 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add(Constant.KEY_QQNUMBER, qqnumber);
-        params.add(Constant.KEY_FRIENDS_QQNUMBER, listSourceId.get(position));
+        params.add(Constant.KEY_FRIENDS_QQNUMBER, friendsListInPending.get(position).getFriendQQ());
         params.add(Constant.KEY_ADDFRIEND_RESULT, result);
+        // TODO: 2017/10/17  服务器端应该在此时改变好友状态
         client.post(Constant.HTTPURL_RESULT_ADDFRIEND, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -162,17 +138,15 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
                 try {
                     JSONObject object = new JSONObject(result);
                     if (object.getInt("success") == 0) {
-                        Friends friend = new Friends(listSourceId.get(position), friendNick,
+                        Friends friend = new Friends(friendsListInPending.get(position).getFriendQQ(),
+                                friendsListInPending.get(position).getFriendNick(),
                                 object.getString(Constant.KEY_FRIENDS_SEX),
                                 object.getString(Constant.KEY_FRIENDS_PHONE),
                                 object.getString(Constant.KEY_FRIENDS_TOKEN),
-                                friendImg, object.getString(Constant.KEY_FRIENDS_SIGNATURE));
+                                friendsListInPending.get(position).getFriendImg(),
+                                object.getString(Constant.KEY_FRIENDS_SIGNATURE));
                         agreeFriends.add(friend);
-                        //App.friendsList.add(friend);
-                        Intent intent = new Intent();
-                        intent.putExtra(Constant.KEY_FRIENDS, agreeFriends);
-                        setResult(Constant.RESULT_CODE_CONFIRM_FRIEND, intent);
-                        //finish();
+                        friendsListAgreed.add(friendsListInPending.get(position));
                     } else {
                         MyToast.showToast(ConfirmFriend.this, "外部网络服务器错误请稍后重试", Toast.LENGTH_SHORT);
                     }
@@ -190,3 +164,9 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         });
     }
 }
+/**
+ *服务器需要
+ 1.更改friends表，加一个status状态，并在login的时候返回这个状态(修改数据库语句以查询)
+ 2.添加一个friendstatus字段
+ 3.验证完成后改变好友状态
+ */

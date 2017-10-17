@@ -12,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -38,13 +37,13 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.adapter.UserRecordAdapter;
+import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
 import com.wyj.myqq.dblocal.DBLocal;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
-import com.wyj.myqq.utils.SystemBarTintManager;
 import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
 
@@ -53,7 +52,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,8 +60,6 @@ import java.util.Map;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
-
-import static io.rong.imlib.statistics.UserData.username;
 
 public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,UserRecordAdapter.UserRecordClickListener{
 
@@ -74,7 +70,9 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
     private String qqnumber,nickname, sex, age, truename, signature, token, image,phone;
     private User user;
     private Friends friends;
-    private ArrayList<Friends> friendsList;
+    private ConfirmFriendBean friendInPanding;
+    private ArrayList<Friends> friendsListAgreed;
+    private ArrayList<ConfirmFriendBean> friendsListInPanding;
     private ProgressDialog dialog;
     private Bitmap localBm ;
     private ImageView imgHead,imgExpand;
@@ -199,8 +197,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
             public void onClick(View v) {
                 dialog.setMessage("正在验证个人信息，请稍后");
                 dialog.show();
-                if(friendsList.size()!=0){
-                    friendsList.clear();
+                if(friendsListAgreed.size()!=0){
+                    friendsListAgreed.clear();
                 }
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
@@ -274,31 +272,48 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
 
                                         @Override
                                         public void onSuccess(String s) {
-
+                                            int status;
                                             for (int j = 1;j<array.length();j++){
                                                 JSONObject friendsObject ;
                                                 try {
                                                     friendsObject = array.getJSONObject(j);
-                                                    friends = new Friends(friendsObject.getString(Constant.KEY_FRIENDS_QQNUMBER),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_NICK),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_SEX),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_PHONE),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_TOKEN),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_IMAGE),
-                                                            friendsObject.getString(Constant.KEY_FRIENDS_SIGNATURE));
-                                                    friendsList.add(friends);
+                                                    /**
+                                                     * 添加好友状态status说明：
+                                                     *      0:不是好友
+                                                     *      1:已经是好友
+                                                     *      2:请求者
+                                                     *      3:被请求者
+                                                     */
+                                                    status = friendsObject.getInt(Constant.KEY_FRIENDS_STATUS);
+                                                    if(status == 1){
+                                                        friends = new Friends(friendsObject.getString(Constant.KEY_FRIENDS_QQNUMBER),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_NICK),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_SEX),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_PHONE),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_TOKEN),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_IMAGE),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_SIGNATURE));
+                                                        friendsListAgreed.add(friends);
+                                                    }else if(status == 3){
+                                                        friendInPanding = new ConfirmFriendBean(friendsObject.getString(Constant.KEY_FRIENDS_QQNUMBER),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_NICK),
+                                                                friendsObject.getString(Constant.KEY_FRIENDS_IMAGE),
+                                                                friendsObject.getString(Constant.KEY_APPLY_MESSAGE));
+                                                        friendsListInPanding.add(friendInPanding);
+                                                    }
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
 
                                             }
-                                            App.friendsList = friendsList;
+                                            App.friendsListAgreed = friendsListAgreed;
+                                            App.friendsListInPending = friendsListInPanding;
                                             Intent intent = new Intent(Login.this,MainUI.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putString(Constant.KEY_PASSWORD,edtPassword.getText().toString());
                                             bundle.putSerializable(Constant.KEY_USER,user);
-                                            if(friendsList.size()!=0){
-                                                bundle.putSerializable(Constant.KEY_FRIENDS, friendsList);
+                                            if(friendsListAgreed.size()!=0){
+                                                bundle.putSerializable(Constant.KEY_FRIENDS, friendsListAgreed);
                                             }
                                             intent.putExtras(bundle);
                                             dialog.dismiss();
@@ -364,7 +379,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         }
         ScreenManager screenManager = ScreenManager.getScreenManager();
         screenManager.pushActivity(this);
-        friendsList = new ArrayList<>();
+        friendsListAgreed = new ArrayList<>();
+        friendsListInPanding = new ArrayList<>();
         dialog = new ProgressDialog(this);
     }
 
@@ -375,8 +391,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
             return new UserInfo(userId,"系统消息",null);
         }
 
-        if(friendsList !=null){
-            for(Friends friend : friendsList){
+        if(friendsListAgreed !=null){
+            for(Friends friend : friendsListAgreed){
                 if (userId.equals(friend.getFriendQQ())){
                     return new UserInfo(userId,friend.getFriendNick(),Uri.parse(friend.getFriendImg()));
                 }

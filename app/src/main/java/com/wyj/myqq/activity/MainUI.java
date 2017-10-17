@@ -25,6 +25,7 @@ import com.example.wyj.myqq.App;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.example.wyj.myqq.R;
@@ -45,13 +46,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.model.UIConversation;
-import io.rong.imkit.widget.provider.CameraInputProvider;
-import io.rong.imkit.widget.provider.InputProvider;
-import io.rong.imkit.widget.provider.LocationInputProvider;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Discussion;
@@ -60,13 +57,9 @@ import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
 import io.rong.message.DiscussionNotificationMessage;
-import io.rong.message.TextMessage;
 
-import static android.os.Build.VERSION_CODES.M;
-import static com.example.wyj.myqq.R.id.img;
 import static com.wyj.myqq.utils.Constant.KEY_AGE;
 import static com.wyj.myqq.utils.Constant.KEY_NICK;
-import static com.wyj.myqq.utils.Constant.KEY_QQNUMBER;
 import static com.wyj.myqq.utils.Constant.KEY_SEX;
 import static com.wyj.myqq.utils.Constant.KEY_SIGNATURE;
 import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGEAGE;
@@ -80,7 +73,6 @@ import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESEX;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESIGNATURE;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CONFIRM_FRIEND;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CONFIRM_FRIEND_REFUSE;
-import static io.rong.imkit.common.RongConst.EXTRA.RES;
 
 
 public class MainUI extends FragmentActivity implements Setting.OnSettingListener,
@@ -119,7 +111,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
             user = (User) bundle.getSerializable(Constant.KEY_USER);
             password = bundle.getString(Constant.KEY_PASSWORD);
         }
-        initSet();
+        //initSet();
         init();
         setTabSelection(0);
     }
@@ -471,17 +463,9 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     }
                     ArrayList<Friends> friends = (ArrayList<Friends>) data.getExtras().getSerializable(Constant.KEY_FRIENDS);
                     listFriends.addAll(friends);
-                    ArrayList<String> agreeSourceId = new ArrayList<>();
-                    for(Friends friend : friends){
-                        agreeSourceId.add(friend.getFriendQQ());
-                    }
-                    listSourceId.removeAll(agreeSourceId);
                     if(contacts!=null){
                         resetConstacts();
                     }
-                }else if(resultCode == RESULT_CODE_CONFIRM_FRIEND_REFUSE){
-                    ArrayList<String> refuseSourceId = new ArrayList<>();
-                    listSourceId.removeAll(refuseSourceId);
                 }
         }
     }
@@ -531,40 +515,39 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         setting.onDestroyView();
         setting.onDestroy();
         setting.onDetach();
-        //setting = null;
         settingState = 1;
         setTabSelection(2);
     }
 
 
-    private String sourceId, applyMessage;
+    /**
+     * 添加好友状态status说明：
+     *      0:不是好友
+     *      1:已经是好友
+     *      2:请求者
+     *      3:被请求者
+     *
+     * @param message
+     * @param i
+     * @return
+     */
 
     @Override
     public boolean onReceived(Message message, int i) {
+        String sourceId, applyMessage,extra;
         MessageContent messageContent = message.getContent();
-
         if (messageContent instanceof ContactNotificationMessage) {
             ContactNotificationMessage contactContentMessage = (ContactNotificationMessage) messageContent;
             if (contactContentMessage.getOperation().
                     equals(ContactNotificationMessage.CONTACT_OPERATION_REQUEST)) {
+                if(App.friendsListInPending == null){
+                    App.friendsListInPending = new ArrayList<>();
+                }
+                // TODO: 2017/10/17 根据sourceId上服务器搜索一下好友具体信息并显示在界面上
                 sourceId = contactContentMessage.getSourceUserId();
                 applyMessage = contactContentMessage.getMessage();
-                if (setSourceId == null) {
-                    setSourceId = new HashSet<>();
-                    listSourceId = new ArrayList<>();
-                }
-                if (setMessage == null) {
-                    setMessage = new HashSet<>();
-                    listMessage = new ArrayList<>();
-                }
-                setSourceId.add(sourceId);
-                setMessage.add(applyMessage);
-                listSourceId.addAll(setSourceId);
-                listMessage.addAll(setMessage);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putStringSet(Constant.KEY_SET_SOURCEID, setSourceId);
-                editor.putStringSet(Constant.KEY_SET_MESSAGE, setMessage);
-                editor.apply();
+                extra = contactContentMessage.getExtra();
+                //App.friendsListInPending.add(new ConfirmFriendBean(sourceId,))
             }else if(contactContentMessage.getOperation().
                     equals(ContactNotificationMessage.CONTACT_OPERATION_ACCEPT_RESPONSE)){
                 String targetQQ = contactContentMessage.getSourceUserId();
@@ -572,12 +555,10 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add(Constant.KEY_QQNUMBER,targetQQ);
-                Log.d("messageContent","run here");
                 client.post(Constant.HTTPURL_GET_FRIEND_INFO, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int i, Header[] headers, byte[] bytes) {
                         try {
-                            Log.d("messageContent","run here");
                             JSONObject object = new JSONObject(new String(bytes));
                             Friends friends = new Friends(object.getString(Constant.KEY_QQNUMBER),
                                     object.getString(Constant.KEY_NICK),
@@ -588,7 +569,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                                     object.getString(Constant.KEY_SIGNATURE));
 
                             listFriends.add(friends);
-                            App.friendsList.add(friends);
+                            App.friendsListAgreed.add(friends);
                             resetConstacts();
                         } catch (JSONException e) {
                             Log.d("messageContent","run here1");
@@ -602,7 +583,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                         Log.d("exception","内网错误");
                     }
                 });
-                return true;
+
             }
 
         }else if(messageContent instanceof DiscussionNotificationMessage){

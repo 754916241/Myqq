@@ -4,6 +4,7 @@ import android.app.Application;
 import android.net.Uri;
 
 
+import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
 
@@ -19,8 +20,8 @@ import io.rong.imlib.model.UserInfo;
 public class App extends Application {
 
     public static User user;
-    public static ArrayList<Friends> friendsList;
-
+    public static ArrayList<Friends> friendsListAgreed;
+    public static ArrayList<ConfirmFriendBean> friendsListInPending;
     @Override
     public void onCreate() {
         super.onCreate();
