@@ -20,16 +20,16 @@
         "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_btn_public_service_enter_selector.xml"
     },
     {
-        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_an_voice_receive.xml",
-        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_an_voice_receive.xml"
+        "merged": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_btn_send.xml",
+        "source": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_btn_send.xml"
     },
     {
         "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_extend.xml",
         "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_extend.xml"
     },
     {
-        "merged": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_btn_send.xml",
-        "source": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_btn_send.xml"
+        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_an_voice_receive.xml",
+        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_an_voice_receive.xml"
     },
     {
         "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_picture.xml",

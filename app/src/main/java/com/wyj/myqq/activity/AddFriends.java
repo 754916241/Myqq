@@ -27,6 +27,7 @@ import com.wyj.myqq.utils.ImageUtils;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -129,7 +130,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         params.add(Constant.KEY_APPLY_MESSAGE,edtExtra.getText().toString());
         client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int i, org.apache.http.Header[] headers, byte[] bytes) {
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 String response = new String(bytes);
                 Log.d("addfriend_response",response);
                 int success;
@@ -149,10 +150,12 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                MyToast.showToast(AddFriends.this, "内网错误请稍后重试", Toast.LENGTH_SHORT);
+                MyToast.showToast(AddFriends.this,"内网错误请稍后重试",Toast.LENGTH_SHORT);
             }
+
         });
 
     }

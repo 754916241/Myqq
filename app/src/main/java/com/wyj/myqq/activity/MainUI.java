@@ -25,6 +25,7 @@ import com.example.wyj.myqq.App;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wyj.myqq.adapter.SearchFriendResultAdapter;
 import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
@@ -58,6 +59,7 @@ import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
 import io.rong.message.DiscussionNotificationMessage;
 
+import static android.R.id.list;
 import static com.wyj.myqq.utils.Constant.KEY_AGE;
 import static com.wyj.myqq.utils.Constant.KEY_NICK;
 import static com.wyj.myqq.utils.Constant.KEY_SEX;
@@ -94,8 +96,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     private ScreenManager screenManager;
     private ProgressDialog dialog;
     private SharedPreferences sp;
-    private HashSet<String> setSourceId, setMessage;
-    private ArrayList<String> listSourceId, listMessage;
     private HashMap<String, String> map;
     private String imageUriString = "",imageBase64 = "";
     private Bitmap photo;
@@ -111,40 +111,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
             user = (User) bundle.getSerializable(Constant.KEY_USER);
             password = bundle.getString(Constant.KEY_PASSWORD);
         }
-        //initSet();
         init();
         setTabSelection(0);
-    }
-
-    private void initSet() {
-        sp = getSharedPreferences(
-                "mysp", Context.MODE_PRIVATE);
-        map = new HashMap<>();
-        setSourceId = (HashSet<String>) sp.getStringSet(Constant.KEY_SET_SOURCEID, null);
-        setMessage = (HashSet<String>) sp.getStringSet(Constant.KEY_SET_MESSAGE, null);
-        if (setSourceId != null) {
-            Iterator<String> itSourceId = setSourceId.iterator();
-            Iterator<String> itMessage = setMessage.iterator();
-            while (itSourceId.hasNext()) {
-                map.put(itSourceId.next(), itMessage.next());
-            }
-            if (listFriends != null) {
-                Iterator<Friends> itFriend = listFriends.iterator();
-
-                while (itFriend.hasNext()) {
-                    String friendQQ = itFriend.next().getFriendQQ();
-                    map.remove(friendQQ);
-                }
-            }
-            listSourceId = new ArrayList<>();
-            listSourceId.addAll(map.keySet());
-            if(listSourceId.size() == 0){
-                RongIM.getInstance().getRongIMClient().removeConversation(
-                        Conversation.ConversationType.SYSTEM,"123456");
-            }
-            listMessage = new ArrayList<>();
-            listMessage.addAll(map.values());
-        }
     }
 
     private void init() {
@@ -526,28 +494,47 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
      *      1:已经是好友
      *      2:请求者
      *      3:被请求者
-     *
-     * @param message
-     * @param i
-     * @return
      */
 
     @Override
     public boolean onReceived(Message message, int i) {
-        String sourceId, applyMessage,extra;
+        final String sourceId, applyMessage;
         MessageContent messageContent = message.getContent();
         if (messageContent instanceof ContactNotificationMessage) {
             ContactNotificationMessage contactContentMessage = (ContactNotificationMessage) messageContent;
             if (contactContentMessage.getOperation().
                     equals(ContactNotificationMessage.CONTACT_OPERATION_REQUEST)) {
+                //收到好友请求时的处理
                 if(App.friendsListInPending == null){
                     App.friendsListInPending = new ArrayList<>();
                 }
-                // TODO: 2017/10/17 根据sourceId上服务器搜索一下好友具体信息并显示在界面上
                 sourceId = contactContentMessage.getSourceUserId();
                 applyMessage = contactContentMessage.getMessage();
-                extra = contactContentMessage.getExtra();
-                //App.friendsListInPending.add(new ConfirmFriendBean(sourceId,))
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+                params.add(Constant.KEY_QQNUMBER, sourceId);
+                client.post(Constant.HTTPURL_SEARCH_FRIEND, params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                        String result = new String(bytes);
+                        try {
+                            JSONObject object = new JSONObject(result);
+                            if(object.getInt("success")==0){
+                                String nickname = object.getString(Constant.KEY_NICK);
+                                String imgPath = object.getString(Constant.KEY_IMAGE);
+                                App.friendsListInPending.add(new ConfirmFriendBean(sourceId,
+                                        nickname,imgPath,applyMessage));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                        MyToast.showToast(MainUI.this,"内网错误请稍后重试",Toast.LENGTH_SHORT);
+                    }
+                });
             }else if(contactContentMessage.getOperation().
                     equals(ContactNotificationMessage.CONTACT_OPERATION_ACCEPT_RESPONSE)){
                 String targetQQ = contactContentMessage.getSourceUserId();
@@ -579,7 +566,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
 
                     @Override
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                        Log.d("messageContent","run here2");
                         Log.d("exception","内网错误");
                     }
                 });
@@ -627,8 +613,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 Intent intent = new Intent(this, ConfirmFriend.class);
                 Bundle bundle = new Bundle();
                 bundle.putString(Constant.KEY_QQNUMBER, user.getQQnumber());
-                bundle.putStringArrayList(Constant.KEY_SET_SOURCEID, listSourceId);
-                bundle.putStringArrayList(Constant.KEY_SET_MESSAGE, listMessage);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,Constant.REQUEST_CODE_CONFIRM_FRIEND);
             }

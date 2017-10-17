@@ -130,7 +130,6 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, friendsListInPending.get(position).getFriendQQ());
         params.add(Constant.KEY_ADDFRIEND_RESULT, result);
-        // TODO: 2017/10/17  服务器端应该在此时改变好友状态
         client.post(Constant.HTTPURL_RESULT_ADDFRIEND, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -164,9 +163,3 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
         });
     }
 }
-/**
- *服务器需要
- 1.更改friends表，加一个status状态，并在login的时候返回这个状态(修改数据库语句以查询)
- 2.添加一个friendstatus字段
- 3.验证完成后改变好友状态
- */
