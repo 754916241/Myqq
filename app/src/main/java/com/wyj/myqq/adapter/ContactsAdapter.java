@@ -2,11 +2,6 @@ package com.wyj.myqq.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.Friends;
-import com.wyj.myqq.bean.User;
-import com.wyj.myqq.utils.ImageUtils;
 
 import java.util.List;
 
@@ -28,10 +22,12 @@ public class ContactsAdapter extends BaseAdapter {
     private List<Friends> friendsList ;
     private LayoutInflater inflater;
     private volatile Bitmap bm;
+    private Context context;
 
     public ContactsAdapter(Context context, List<Friends> friendsList) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.friendsList = friendsList;
+        this.context = context;
     }
     @Override
     public int getCount() {
@@ -67,7 +63,7 @@ public class ContactsAdapter extends BaseAdapter {
         final Friends bean = friendsList.get(position);
         holder.friendNick.setText(bean.getFriendNick());
 
-        new AsyncTask<Void,Void,Bitmap>(){
+       /* new AsyncTask<Void,Void,Bitmap>(){
 
             @Override
             protected Bitmap doInBackground(Void... params) {
@@ -80,8 +76,15 @@ public class ContactsAdapter extends BaseAdapter {
 
                 holder.friendImg.setImageBitmap(bitmap);
             }
-        }.execute();
-
+        }.execute();*/
+        /**
+         * glide加载
+         */
+        Glide.with(context)
+                .load(bean.getFriendImg())
+                .placeholder(R.drawable.qq_icon)
+                .crossFade()
+                .into(holder.friendImg);
         return convertView;
 
     }

@@ -175,6 +175,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
                         Constant.KEY_IMAGE).toString());
                 edtQQnumber.setText(qqnumber);
                 edtPassword.setText(qqAndPwd.get(qqnumber));
+                edtPassword.setSelection(qqAndPwd.get(qqnumber).length());
                 imgHead.setImageBitmap(ImageUtils.stringToBitmap(image));
                 popRecord.dismiss();
             }

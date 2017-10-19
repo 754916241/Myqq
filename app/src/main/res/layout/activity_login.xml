@@ -13,7 +13,7 @@
         android:src="@drawable/qq_icon"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"/>
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
