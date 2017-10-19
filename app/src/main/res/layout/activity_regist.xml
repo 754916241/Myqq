@@ -71,9 +71,9 @@
 
         <ImageView
             android:id="@+id/img_pwdVis"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@mipmap/eye_invisible"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@mipmap/eye_invisible"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"/>

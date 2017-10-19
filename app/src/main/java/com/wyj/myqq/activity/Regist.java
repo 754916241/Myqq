@@ -214,11 +214,13 @@ public class Regist extends AppCompatActivity implements TextWatcher{
             public void onClick(View view) {
                 if(isPwdVisible){
                     imgPwdVisible.setImageResource(R.mipmap.eye_invisible);
-                    edtPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    edtPwd.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    edtPwd.setSelection(edtPwd.getText().toString().length());
                     isPwdVisible = false;
                 }else{
                     imgPwdVisible.setImageResource(R.mipmap.eye_visible);
                     edtPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    edtPwd.setSelection(edtPwd.getText().toString().length());
                     isPwdVisible = true;
                 }
             }

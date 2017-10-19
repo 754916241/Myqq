@@ -19,6 +19,8 @@ import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
 
+import org.apache.http.Header;
+
 public class Suggest extends AppCompatActivity {
 
     private TextView tvTitle;
@@ -58,6 +60,7 @@ public class Suggest extends AppCompatActivity {
                     params.add(Constant.KEY_QQNUMBER,qqnumber);
                     params.add(Constant.KEY_SUGGEST,edtSuggest.getText().toString());
                     client.post(Constant.HTTPURL_SUGGEST, params, new AsyncHttpResponseHandler() {
+
                         @Override
                         public void onSuccess(int i, Header[] headers, byte[] bytes) {
                             MyToast.showToast(Suggest.this,"提交成功，我们会认真考虑您的建议，谢谢您对本产品的支持！",R.mipmap.right, Toast.LENGTH_SHORT);
