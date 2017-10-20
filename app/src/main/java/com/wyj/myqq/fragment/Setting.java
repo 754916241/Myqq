@@ -5,12 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
-
-import com.wyj.myqq.activity.MainUI;
 import com.wyj.myqq.bean.User;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
@@ -76,7 +70,7 @@ public class Setting extends Fragment implements View.OnClickListener{
                 imgHead.setImageBitmap(ImageUtils.compressBitmap(getActivity(),
                         Uri.parse(imgUriString),imgHead));
             }else{
-                final Handler handler = new Handler(){
+                /*final Handler handler = new Handler(){
                     @Override
                     public void handleMessage(Message msg) {
                         if(msg.what == 0){
@@ -93,7 +87,12 @@ public class Setting extends Fragment implements View.OnClickListener{
                         msg.what = 0;
                         handler.sendMessage(msg);
                     }
-                }.start();
+                }.start();*/
+                Glide.with(this)
+                        .load(user.getImage())
+                        .placeholder(R.drawable.qq_icon)
+                        .crossFade()
+                        .into(imgHead);
             }
 
             tvAge.setText(user.getAge());

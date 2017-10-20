@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -49,6 +50,7 @@ import java.util.ArrayList;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
+import static com.example.wyj.myqq.R.id.img;
 import static com.wyj.myqq.utils.Constant.MOB_APP_KEY;
 import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
@@ -333,8 +335,9 @@ public class Regist extends AppCompatActivity implements TextWatcher{
         switch (requestCode) {
             case Constant.REQUEST_CODE_FROM_ALBUM:
                 imageUri = data.getData();
-                photo = ImageUtils.compressBitmap(this,imageUri,imgHead);
-                imgHead.setImageBitmap(photo);
+                ImageUtils.startImageZoom(ImageUtils.convertUri(imageUri,this),this);
+                //photo = ImageUtils.compressBitmap(this,imageUri,imgHead);
+                //imgHead.setImageBitmap(photo);
                 break;
             case Constant.REQUEST_CODE_FROM_CAMERA:
                 if (resultCode == RESULT_CANCELED) {
@@ -342,8 +345,17 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                 } else {
                     Bundle bundle = data.getExtras();
                     photo = bundle.getParcelable("data");
-                    imgHead.setImageBitmap(photo);
+                    ImageUtils.startImageZoom(ImageUtils.saveBitmap(photo),this);
+                    //imgHead.setImageBitmap(photo);
                 }
+                break;
+
+            case Constant.CROP_REQUEST:
+                if(data == null) {
+                    return;
+                }
+                photo = data.getExtras().getParcelable("data");
+                imgHead.setImageBitmap(photo);
                 break;
 
         }

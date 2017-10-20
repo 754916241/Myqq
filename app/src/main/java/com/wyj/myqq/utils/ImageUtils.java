@@ -4,15 +4,6 @@ package com.wyj.myqq.utils;
  * Created by wyj on 2016/7/1.
  */
 
-import java.net.URL;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -28,6 +19,16 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.ImageView;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class ImageUtils extends Activity {
@@ -105,7 +106,6 @@ public class ImageUtils extends Activity {
 
     public static void deleteImageUri(Context context, Uri uri) {
         context.getContentResolver().delete(imageUriFromcamera, null, null);
-
     }
 
 
@@ -120,7 +120,7 @@ public class ImageUtils extends Activity {
             InputStream is = activity.getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             is.close();
-            return ImageUtils.saveBitmap(bitmap);
+            return saveBitmap(bitmap);
         } catch (FileNotFoundException e) {
             // TODO 自动生成的 catch 块
             e.printStackTrace();
@@ -143,7 +143,7 @@ public class ImageUtils extends Activity {
             FileOutputStream fos = new FileOutputStream(img);
             bm.compress(Bitmap.CompressFormat.PNG, 85, fos);
             fos.flush();
-
+            fos.close();
             return Uri.fromFile(img);
         } catch (FileNotFoundException e) {
             // TODO 自动生成的 catch 块
@@ -161,14 +161,16 @@ public class ImageUtils extends Activity {
      * @param uri
      * @param activity
      */
-    public static void imageZoom(Uri uri, Activity activity) {
+    public static void startImageZoom(Uri uri, Activity activity) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
+        //宽高比例
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 150);
-        intent.putExtra("outputY", 150);
+        //实际宽高
+        intent.putExtra("outputX", 80);
+        intent.putExtra("outputY", 80);
         intent.putExtra("return-data", true);
         activity.startActivityForResult(intent, Constant.CROP_REQUEST);
     }
