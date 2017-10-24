@@ -4,12 +4,12 @@
         "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messagelist.xml"
     },
     {
-        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
-        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
-    },
-    {
         "merged": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",
         "source": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_catalog_listview.xml"
+    },
+    {
+        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
+        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
     },
     {
         "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_webview.xml",
@@ -136,12 +136,12 @@
         "source": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
     },
     {
-        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_conversation.xml",
-        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_conversation.xml"
-    },
-    {
         "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_camera.xml",
         "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_camera.xml"
+    },
+    {
+        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_conversation.xml",
+        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_conversation.xml"
     },
     {
         "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
@@ -152,12 +152,12 @@
         "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
     },
     {
-        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
-        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
-    },
-    {
         "merged": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_warning.xml",
         "source": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_warning.xml"
+    },
+    {
+        "merged": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
+        "source": "D:\\180321\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
     },
     {
         "merged": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",

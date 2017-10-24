@@ -35,7 +35,7 @@ import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGEPHONE;
 public class MoreSetting extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tvTitle;
-    private TextView tvPassword,tvAbout,tvSuggest;
+    private TextView tvPassword,tvAbout,tvSuggest,tvUpdate;
     private RelativeLayout rlPhone,rlCache;
     private TextView tvPhone,tvCache;
     private EditText edtDialog;
@@ -72,6 +72,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         tvPassword.setOnClickListener(this);
         tvAbout.setOnClickListener(this);
         tvSuggest.setOnClickListener(this);
+        tvUpdate.setOnClickListener(this);
         rlPhone.setOnClickListener(this);
         rlCache.setOnClickListener(this);
         btnExit.setOnClickListener(this);
@@ -85,6 +86,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         tvSuggest = (TextView) findViewById(R.id.tv_suggest);
         tvPhone = (TextView) findViewById(R.id.tv_phone);
         tvCache = (TextView) findViewById(R.id.tv_cache);
+        tvUpdate = (TextView) findViewById(R.id.tv_update);
         rlPhone = (RelativeLayout) findViewById(R.id.layout_phone);
         rlCache = (RelativeLayout) findViewById(R.id.layout_cache);
         btnExit = (Button) findViewById(R.id.btn_exit);
@@ -146,6 +148,9 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.tv_suggest:
                submitSuggest();
+                break;
+            case R.id.tv_update:
+                MyToast.showToast(this,"开发中，敬请期待",Toast.LENGTH_SHORT);
                 break;
             case R.id.layout_cache:
                 builder = new AlertDialog.Builder(this);

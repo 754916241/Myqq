@@ -90,6 +90,7 @@ public class ChangeMyData extends AppCompatActivity {
             editText.setVisibility(View.VISIBLE);
             layoutSex.setVisibility(View.GONE);
             tvTitle.setText("昵称");
+
         }
 
         if (bundle.getString(Constant.KEY_AGE) != null) {
@@ -120,6 +121,8 @@ public class ChangeMyData extends AppCompatActivity {
             editText.setText(signature);
             tvTitle.setText("个性签名");
         }
+
+        editText.setSelection(editText.getText().toString().length());
 
         tvMan.setOnClickListener(new View.OnClickListener() {
             @Override

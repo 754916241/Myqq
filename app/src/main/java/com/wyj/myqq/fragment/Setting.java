@@ -91,6 +91,7 @@ public class Setting extends Fragment implements View.OnClickListener{
                 Glide.with(this)
                         .load(user.getImage())
                         .placeholder(R.drawable.qq_icon)
+                        .thumbnail(0.5f)
                         .crossFade()
                         .into(imgHead);
             }

@@ -18,7 +18,6 @@ public class ContactsAdapter extends MyAdapter<Friends> {
 
     @Override
     public void convert(ViewHolder holder, Friends friends) {
-
         holder.setText(R.id.tv_nick,friends.getFriendNick())
                 .setImageUseGlide(R.id.img_head,friends.getFriendImg());
     }
