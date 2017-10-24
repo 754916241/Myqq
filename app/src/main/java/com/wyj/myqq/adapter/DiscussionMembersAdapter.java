@@ -2,22 +2,16 @@ package com.wyj.myqq.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.ConfirmFriendBean;
-import com.wyj.myqq.utils.ImageUtils;
 
 import java.util.ArrayList;
 
@@ -29,11 +23,13 @@ public class DiscussionMembersAdapter extends BaseAdapter {
     private ArrayList<ConfirmFriendBean> list;
     private LayoutInflater inflater;
     private Bitmap bm;
-    private Handler handler;
+    private Context context;
+
 
     public DiscussionMembersAdapter(Context context, ArrayList<ConfirmFriendBean> list) {
         this.list = list;
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -66,10 +62,10 @@ public class DiscussionMembersAdapter extends BaseAdapter {
 
 
         if (position < list.size()-1) {
-            final ConfirmFriendBean members = list.get(position);
+            ConfirmFriendBean members = list.get(position);
             holder.membersNick.setText(members.getFriendNick());
 
-            new AsyncTask<String,Void,Bitmap>(){
+            /*new AsyncTask<String,Void,Bitmap>(){
 
                 @Override
                 protected Bitmap doInBackground(String... params) {
@@ -82,7 +78,12 @@ public class DiscussionMembersAdapter extends BaseAdapter {
 
                     holder.membersImg.setImageBitmap(bitmap);
                 }
-            }.execute();
+            }.execute();*/
+            Glide.with(context)
+                    .load(members.getFriendImg())
+                    .placeholder(R.drawable.qq_icon)
+                    .crossFade()
+                    .into(holder.membersImg);
 
         } else if (position == list.size()-1) {
             holder.membersNick.setText("邀请");

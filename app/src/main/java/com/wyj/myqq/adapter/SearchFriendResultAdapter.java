@@ -2,8 +2,6 @@ package com.wyj.myqq.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.Friends;
-import com.wyj.myqq.utils.ImageUtils;
 
 import java.util.ArrayList;
 
@@ -26,8 +24,11 @@ public class SearchFriendResultAdapter extends BaseAdapter {
     private ArrayList<Friends> list ;
     private LayoutInflater inflater;
     private Bitmap bm;
+    private Context context;
+
     public SearchFriendResultAdapter(Context context,ArrayList<Friends> list) {
         this.list = list;
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -60,7 +61,7 @@ public class SearchFriendResultAdapter extends BaseAdapter {
         }
         final Friends friends = list.get(position);
         holder.friendNick.setText(friends.getFriendNick()+"("+friends.getFriendQQ()+")");
-        final Handler handler = new Handler(){
+       /* final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what == 0){
@@ -77,7 +78,12 @@ public class SearchFriendResultAdapter extends BaseAdapter {
                 msg.what = 0;
                 handler.sendMessage(msg);
             }
-        }.start();
+        }.start();*/
+        Glide.with(context)
+                .load(friends.getFriendImg())
+                .placeholder(R.drawable.qq_icon)
+                .crossFade()
+                .into(holder.friendImg);
         return convertView;
     }
 

@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.App;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -22,7 +22,6 @@ import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.DataCleanManager;
 import com.wyj.myqq.utils.ImageUtils;
 import com.wyj.myqq.view.MyToast;
 
@@ -31,8 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.rong.imkit.RongIM;
-
-import static com.example.wyj.myqq.R.id.img;
 
 public class FriendDetail extends AppCompatActivity implements View.OnClickListener {
 
@@ -100,7 +97,7 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
         }else{
             imgSex.setImageResource(R.mipmap.icon_woman);
         }
-        final Handler handler = new Handler(){
+        /*final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what == 0){
@@ -117,7 +114,12 @@ public class FriendDetail extends AppCompatActivity implements View.OnClickListe
                 msg.what = 0;
                 handler.sendMessage(msg);
             }
-        }.start();
+        }.start();*/
+        Glide.with(this)
+                .load(friends.getFriendImg())
+                .placeholder(R.drawable.qq_icon)
+                .crossFade()
+                .into(imgHead);
     }
 
     @Override

@@ -10,22 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.activity.FriendDetail;
 import com.wyj.myqq.adapter.ContactsAdapter;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.view.MyToast;
 
 import java.util.ArrayList;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
-import io.rong.imlib.model.Message;
 
 /**
 
@@ -56,7 +52,8 @@ public class Contacts extends ListFragment implements View.OnClickListener{
             for(Friends friend : listFriends){
                 list.checkbox_normal(new Friends(friend.getFriendQQ(),friend.getFriendNick(),friend.getFriendImg()))
             }*/
-            adapter = new ContactsAdapter(getActivity(), listFriends);
+            adapter = new ContactsAdapter(getActivity(),R.layout.contactslist_item,listFriends);
+
             setListAdapter(adapter);
         }
         rlAddFriend.setOnClickListener(this);

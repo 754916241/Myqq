@@ -2,7 +2,6 @@ package com.wyj.myqq.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.ConfirmFriendBean;
-import com.wyj.myqq.utils.ImageUtils;
 
 import java.util.ArrayList;
 
@@ -29,10 +28,12 @@ public class ConfirmFriendAdapter extends BaseAdapter{
     private LayoutInflater inflater;
     private volatile Bitmap bm;
     private boolean isAccept;
+    private Context context;
 
     public ConfirmFriendAdapter(Context context, ArrayList<ConfirmFriendBean> list) {
         this.list = list;
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class ConfirmFriendAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        final ConfirmFriendBean friends = list.get(position);
+        ConfirmFriendBean friends = list.get(position);
         holder.friendNick.setText(friends.getFriendNick() + "(" + friends.getFriendQQ() + ")");
         holder.tvMessage.setText(friends.getApplyMessage());
         if(isAccept){
@@ -74,7 +75,7 @@ public class ConfirmFriendAdapter extends BaseAdapter{
             holder.tvResult.setText("已同意");
         }
 
-        new AsyncTask<Void,Void,Bitmap>(){
+        /*new AsyncTask<Void,Void,Bitmap>(){
 
             @Override
             protected Bitmap doInBackground(Void... params) {
@@ -86,7 +87,12 @@ public class ConfirmFriendAdapter extends BaseAdapter{
             protected void onPostExecute(Bitmap bitmap) {
                 holder.friendImg.setImageBitmap(bitmap);
             }
-        }.execute();
+        }.execute();*/
+        Glide.with(context)
+                .load(friends.getFriendImg())
+                .placeholder(R.drawable.qq_icon)
+                .crossFade()
+                .into(holder.friendImg);
         holder.btnAccept.setOnClickListener(new MyClickListener(position));
 
         return convertView;

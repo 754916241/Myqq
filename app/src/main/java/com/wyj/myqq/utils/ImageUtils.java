@@ -187,6 +187,7 @@ public class ImageUtils extends Activity {
             bm.compress(Bitmap.CompressFormat.PNG, 60, stream);
             byte[] bytes = stream.toByteArray();
             String image = new String(Base64.encodeToString(bytes, Base64.DEFAULT));
+
             return image;
         }catch(Exception e){
             return "";
