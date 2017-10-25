@@ -1,80 +1,30 @@
 package com.wyj.myqq.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.ImageUtils;
 
 import java.util.List;
 import java.util.Map;
 
 
-public class UserRecordAdapter extends BaseAdapter{
-	
-	private List<Map<String, Object>> list;
-	private LayoutInflater inflater;
-	
+public class UserRecordAdapter extends MyAdapter<Map<String, Object>>{
 
-	public UserRecordAdapter(Context context,List<Map<String, Object>> moreList) {
-		this.list = moreList;
-		inflater = LayoutInflater.from(context);
+	public UserRecordAdapter(Context context,int layoutId,List<Map<String, Object>> moreList) {
+		super(context,layoutId,moreList);
 	}
 
 	@Override
-	public int getCount() {
-
-		return list.size();
+	public void convert(com.wyj.myqq.adapter.ViewHolder holder, Map<String, Object> map) {
+		holder.setText(R.id.tv_qqnumber,(String)map.get(Constant.KEY_QQNUMBER))
+				.setImageFromBase64(R.id.img_head,(String)map.get(Constant.KEY_IMAGE));
+		holder.getView(R.id.img_head).setOnClickListener(new MyClickListener(holder.position));
 	}
 
-	@Override
-	public Map<String,Object> getItem(int arg0) {
-
-		return list.get(arg0);
-	}
-
-	@Override
-	public long getItemId(int arg0) {
-
-		return arg0;
-	}
-
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder ;
-		if(convertView == null){
-			convertView = inflater.inflate(R.layout.item_user_record, parent,false);
-			holder = new ViewHolder();
-			holder.tvQQnumber = (TextView) convertView.findViewById(R.id.tv_qqnumber);
-			holder.imgDelete = (ImageView) convertView.findViewById(R.id.img_delete);
-			holder.imgHead = (ImageView) convertView.findViewById(R.id.img_head);
-			convertView.setTag(holder);
-		}else{
-			holder = (ViewHolder) convertView.getTag();
-		}
-		holder.tvQQnumber.setText((String)list.get(position).get(Constant.KEY_QQNUMBER));
-		holder.imgHead.setImageBitmap(ImageUtils.stringToBitmap(
-				(String)list.get(position).get(Constant.KEY_IMAGE)));
-		holder.imgDelete.setOnClickListener(new MyClickListener(position));
-		return convertView;
-	}
-	
-	
-
-	private class ViewHolder{
-		TextView tvQQnumber;
-		ImageView imgDelete,imgHead;
-	}
-	
 	private UserRecordClickListener listener;
-	
 
 	public void setUserRecordListener(UserRecordClickListener listener) {
 		this.listener = listener;
@@ -93,8 +43,6 @@ public class UserRecordAdapter extends BaseAdapter{
 		public void onClick(View v) {
 			listener.click(v,position);
 		}
-
-		
 	}
 
 }

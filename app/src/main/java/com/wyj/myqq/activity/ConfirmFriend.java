@@ -62,7 +62,7 @@ public class ConfirmFriend extends AppCompatActivity implements View.OnClickList
             toast.setVisibility(View.VISIBLE);
         }else{
             agreeFriends = new ArrayList<>();
-            adapter = new ConfirmFriendAdapter(ConfirmFriend.this, friendsListInPending);
+            adapter = new ConfirmFriendAdapter(ConfirmFriend.this, R.layout.item_confirm_friend,friendsListInPending);
             listFriend.setAdapter(adapter);
             adapter.setOnConfirmListener(ConfirmFriend.this);
         }

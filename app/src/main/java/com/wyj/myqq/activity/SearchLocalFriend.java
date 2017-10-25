@@ -3,16 +3,10 @@ package com.wyj.myqq.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -79,7 +73,7 @@ public class SearchLocalFriend extends AppCompatActivity {
                 if(inputFriend.size() == 0){
                     MyToast.showToast(SearchLocalFriend.this,"该好友不存在于您的好友列表中",Toast.LENGTH_SHORT);
                 }else{
-                    adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,inputFriend);
+                    adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,R.layout.item_searchfriend_result,inputFriend);
                     mLvResult.setAdapter(adapter);
                 }
                 imm.hideSoftInputFromWindow(mSvLocal.getWindowToken(), 0);
@@ -91,7 +85,7 @@ public class SearchLocalFriend extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 if(!newText.isEmpty()){
                     inputFriend.clear();
-                    adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,inputFriend);
+                    adapter = new SearchFriendResultAdapter(SearchLocalFriend.this,R.layout.item_searchfriend_result,inputFriend);
                     mLvResult.setAdapter(adapter);
                 }
                 return false;

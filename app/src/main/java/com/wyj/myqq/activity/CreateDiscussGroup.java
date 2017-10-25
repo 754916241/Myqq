@@ -87,14 +87,14 @@ public class CreateDiscussGroup extends AppCompatActivity implements View.OnClic
         tvRight.setText("完成");
         if (listFriends != null) {
             //创建讨论组适配器
-            adapter = new CreateDiscussAdapter(this, listFriends);
+            adapter = new CreateDiscussAdapter(this,R.layout.item_create_discuss, listFriends);
 
             lvChooseFriend.setAdapter(adapter);
         } else {
             //添加讨论组成员适配器
             allFriends = App.friendsListAgreed;
             allFriends.removeAll(existFriend);
-            adapter = new CreateDiscussAdapter(this, allFriends);
+            adapter = new CreateDiscussAdapter(this,R.layout.item_create_discuss, allFriends);
             lvChooseFriend.setAdapter(adapter);
         }
     }

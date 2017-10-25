@@ -16,9 +16,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Config;
@@ -30,6 +33,8 @@ import com.wyj.myqq.view.MyToast;
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.example.wyj.myqq.R.id.img;
 
 public class AddFriends extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,17 +56,8 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
     private Bundle bundle;
     private String qqnumber,nickname, imgPath;
     private Friends friends;
-    private Bitmap bm;
     private InputMethodManager imm;
     private ProgressDialog dialog;
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                imgHead.setImageBitmap(bm);
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,15 +91,12 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         imgLeft.setVisibility(View.VISIBLE);
         title.setText("确认添加");
         tvNick.setText(nickname);
-        new Thread() {
-            @Override
-            public void run() {
-                bm = ImageUtils.receiveImage(friends.getFriendImg());
-                Message msg = new Message();
-                msg.what = 0;
-                handler.sendMessage(msg);
-            }
-        }.start();
+        Glide.with(this)
+                .load(imgPath)
+                .placeholder(R.drawable.qq_icon)
+                .crossFade()
+                .into(imgHead);
+
     }
 
     @Override
@@ -125,6 +118,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
     private void addFriends() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
+        JsonHttpResponseHandler.getResponseString()
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, friends.getFriendQQ());
         params.add(Constant.KEY_APPLY_MESSAGE,edtExtra.getText().toString());

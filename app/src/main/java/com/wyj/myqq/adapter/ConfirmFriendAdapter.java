@@ -1,16 +1,10 @@
 package com.wyj.myqq.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.wyj.myqq.bean.ConfirmFriendBean;
 
@@ -21,98 +15,34 @@ import java.util.ArrayList;
  */
 
 
-public class ConfirmFriendAdapter extends BaseAdapter{
+public class ConfirmFriendAdapter extends MyAdapter<ConfirmFriendBean>{
 
 
-    private ArrayList<ConfirmFriendBean> list;
-    private LayoutInflater inflater;
-    private volatile Bitmap bm;
-    private boolean isAccept;
-    private Context context;
+    private boolean isAccept = false;
 
-    public ConfirmFriendAdapter(Context context, ArrayList<ConfirmFriendBean> list) {
-        this.list = list;
-        inflater = LayoutInflater.from(context);
-        this.context = context;
+
+    public ConfirmFriendAdapter(Context context,int layoutId, ArrayList<ConfirmFriendBean> list) {
+        super(context,layoutId,list);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
-    }
-
-    @Override
-    public ConfirmFriendBean getItem(int position) {
-        return list.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder holder;
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_confirm_friend, parent, false);
-            holder = new ViewHolder();
-            holder.tvResult = (TextView) convertView.findViewById(R.id.tv_result);
-            holder.friendNick = (TextView) convertView.findViewById(R.id.tv_nick);
-            holder.friendImg = (ImageView) convertView.findViewById(R.id.img_head);
-            holder.tvMessage = (TextView) convertView.findViewById(R.id.tv_message);
-            holder.btnAccept = (Button) convertView.findViewById(R.id.btn_accept);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        ConfirmFriendBean friends = list.get(position);
-        holder.friendNick.setText(friends.getFriendNick() + "(" + friends.getFriendQQ() + ")");
-        holder.tvMessage.setText(friends.getApplyMessage());
+    public void convert(com.wyj.myqq.adapter.ViewHolder holder, ConfirmFriendBean friend) {
+        holder.setText(R.id.tv_nick,friend.getFriendNick() + "(" + friend.getFriendQQ() + ")")
+                .setText(R.id.tv_message,friend.getApplyMessage())
+                .setImageUseGlide(R.id.img_head,friend.getFriendImg());
+        TextView tvResult = holder.getView(R.id.tv_result);
+        Button btnAccept = holder.getView(R.id.btn_accept);
         if(isAccept){
-            holder.btnAccept.setVisibility(View.GONE);
-            holder.tvResult.setVisibility(View.VISIBLE);
-            holder.tvResult.setText("已同意");
+            btnAccept.setVisibility(View.GONE);
+            tvResult.setVisibility(View.VISIBLE);
+            tvResult.setText("已同意");
         }
-
-        /*new AsyncTask<Void,Void,Bitmap>(){
-
-            @Override
-            protected Bitmap doInBackground(Void... params) {
-                bm = ImageUtils.receiveImage(friends.getFriendImg());
-                return bm;
-            }
-
-            @Override
-            protected void onPostExecute(Bitmap bitmap) {
-                holder.friendImg.setImageBitmap(bitmap);
-            }
-        }.execute();*/
-        Glide.with(context)
-                .load(friends.getFriendImg())
-                .placeholder(R.drawable.qq_icon)
-                .crossFade()
-                .into(holder.friendImg);
-        holder.btnAccept.setOnClickListener(new MyClickListener(position));
-
-        return convertView;
+        btnAccept.setOnClickListener(new MyClickListener(holder.position));
     }
 
-
-    public boolean isAccept() {
-        return isAccept;
-    }
 
     public void setAccept(boolean accept) {
         isAccept = accept;
-    }
-
-
-    private class ViewHolder {
-        TextView friendNick, tvMessage,tvResult;
-        ImageView friendImg;
-        Button btnAccept;
-
     }
 
     private OnConfirmFriendListener listener;

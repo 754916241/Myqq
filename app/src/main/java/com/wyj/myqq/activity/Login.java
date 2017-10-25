@@ -16,6 +16,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -125,7 +127,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         }
         read.close();
         c.close();
-        adapter = new UserRecordAdapter(this, popList);
+        adapter = new UserRecordAdapter(this,R.layout.item_user_record, popList);
         popLayout = LayoutInflater.from(this).inflate(R.layout.pop_user_record, null);
         popRecord = new PopupWindow(popLayout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         popRecord.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -350,6 +352,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
 
             }
         });
+
 
     }
 

@@ -90,7 +90,7 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
                                     String imgPath = object.getString(Constant.KEY_IMAGE);
                                     friends = new Friends(edtSearchFriend.getText().toString(),nickname,imgPath);
                                     list.add(friends);
-                                    adapter = new SearchFriendResultAdapter(SearchFriends.this,list);
+                                    adapter = new SearchFriendResultAdapter(SearchFriends.this,R.layout.item_searchfriend_result,list);
                                     lvResult.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
                                 }else if(object.getInt("success")==1){

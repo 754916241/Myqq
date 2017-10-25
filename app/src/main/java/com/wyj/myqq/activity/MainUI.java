@@ -97,7 +97,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     private ProgressDialog dialog;
     private SharedPreferences sp;
     private HashMap<String, String> map;
-    private String imageUriString = "",imageBase64 = "";
+    private String imageBase64 = "";
     private Bitmap photo;
 
     @Override
@@ -218,12 +218,6 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     setting = new Setting();
                     setting.setOnSettingListener(this);
                     Bundle bundle = new Bundle();
-                    if(!imageUriString.equals("")){
-                        bundle.putString(Constant.KEY_IMAGE_URI,imageUriString);
-                    }
-                    if(!imageBase64.equals("")){
-                        bundle.putString(Constant.KEY_IMAGE_BASE64,imageBase64);
-                    }
                     bundle.putSerializable(Constant.KEY_USER, user);
                     setting.setArguments(bundle);
                     transaction.add(R.id.fragment_content, setting);
@@ -384,21 +378,34 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case Constant.REQUEST_CODE_FROM_ALBUM:
-                imageUriString = data.getData().toString();
-                ImageView imageView = new ImageView(this);
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(50,50));
-                imageBase64 = ImageUtils.bitmapToString(ImageUtils.compressBitmap(this,data.getData(),imageView));
-                resetSetting();
-                postImage();
+                Uri imageUri = data.getData();
+                ImageUtils.startImageZoom(ImageUtils.convertUri(imageUri,this),this);
+
                 break;
             case Constant.REQUEST_CODE_FROM_CAMERA:
-                if (!(resultCode == RESULT_CANCELED)) {
+                if (resultCode == RESULT_CANCELED) {
+                    ImageUtils.deleteImageUri(this, ImageUtils.imageUriFromcamera);
+                } else {
+                    Bundle bundle = data.getExtras();
+                    photo = bundle.getParcelable("data");
+                    ImageUtils.startImageZoom(ImageUtils.saveBitmap(photo),this);
+                }
+                /*if (!(resultCode == RESULT_CANCELED)) {
                     Bundle bundle = data.getExtras();
                     photo = bundle.getParcelable("data");
                     imageBase64 = ImageUtils.bitmapToString(photo);
                     resetSetting();
                     postImage();
+                }*/
+                break;
+            case Constant.CROP_REQUEST:
+                if(data == null) {
+                    return;
                 }
+                photo = data.getExtras().getParcelable("data");
+                imageBase64 = ImageUtils.bitmapToString(photo);
+                postImage();
+                resetSetting();
                 break;
             case REQUEST_CODE_CHANGENICK:
                 if (resultCode == RESULT_CODE_CHANGENICK) {
@@ -431,11 +438,14 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     }
                     ArrayList<Friends> friends = (ArrayList<Friends>) data.getExtras().getSerializable(Constant.KEY_FRIENDS);
                     listFriends.addAll(friends);
+                    App.friendsListAgreed = listFriends;
                     if(contacts!=null){
                         resetConstacts();
                     }
                 }
         }
+        App.user = user;
+
     }
 
     private void postImage() {
@@ -452,6 +462,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     if(object.getInt("success") == 0){
                         MyToast.showToast(MainUI.this, "修改成功",R.mipmap.right, Toast.LENGTH_SHORT);
                         String imgPath = object.getString(Constant.KEY_IMAGE);
+                        //将更改后的图片地址设置到user中去
+                        user.setImage(imgPath);
                         RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getQQnumber()
                         ,user.getNickname(),Uri.parse(imgPath)));
                     }

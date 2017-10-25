@@ -50,6 +50,7 @@ import java.util.ArrayList;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
+import static com.example.wyj.myqq.R.id.edt_password;
 import static com.example.wyj.myqq.R.id.img;
 import static com.wyj.myqq.utils.Constant.MOB_APP_KEY;
 import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
@@ -336,8 +337,6 @@ public class Regist extends AppCompatActivity implements TextWatcher{
             case Constant.REQUEST_CODE_FROM_ALBUM:
                 imageUri = data.getData();
                 ImageUtils.startImageZoom(ImageUtils.convertUri(imageUri,this),this);
-                //photo = ImageUtils.compressBitmap(this,imageUri,imgHead);
-                //imgHead.setImageBitmap(photo);
                 break;
             case Constant.REQUEST_CODE_FROM_CAMERA:
                 if (resultCode == RESULT_CANCELED) {
@@ -346,7 +345,6 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                     Bundle bundle = data.getExtras();
                     photo = bundle.getParcelable("data");
                     ImageUtils.startImageZoom(ImageUtils.saveBitmap(photo),this);
-                    //imgHead.setImageBitmap(photo);
                 }
                 break;
 
@@ -375,6 +373,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
 
     @Override
     public void afterTextChanged(Editable s) {
+
         checkInformation();
     }
 

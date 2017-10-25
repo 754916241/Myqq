@@ -1,6 +1,9 @@
 package com.wyj.myqq.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +43,7 @@ public class ViewHolder{
         }
     }
 
-    private <T extends View> T getView(int viewId){
+    public <T extends View> T getView(int viewId){
         View view = views.get(viewId);
         if(view == null){
             view = convertView.findViewById(viewId);
@@ -70,6 +73,20 @@ public class ViewHolder{
                 .placeholder(R.drawable.qq_icon)
                 .crossFade()
                 .into(img);
+        return this;
+    }
+
+    public ViewHolder setImageResource(int viewId, int resId){
+        ImageView img = getView(viewId);
+        img.setImageResource(resId);
+        return this;
+    }
+
+    public ViewHolder setImageFromBase64(int viewId, String base64){
+        byte[] bitmapArray = Base64.decode(base64, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+        ImageView img = getView(viewId);
+        img.setImageBitmap(bitmap);
         return this;
     }
 }

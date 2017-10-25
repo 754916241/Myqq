@@ -203,7 +203,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
                             qqnumber = App.user.getQQnumber();
                             membersBean = new ConfirmFriendBean(qqnumber,"","");
                             list.add(membersBean);
-                            adapter = new DiscussionMembersAdapter(DiscussionDetail.this, list);
+                            adapter = new DiscussionMembersAdapter(DiscussionDetail.this,R.layout.item_discussion_members,list);
                             gvDiscussionMembers.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
