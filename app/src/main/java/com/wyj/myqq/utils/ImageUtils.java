@@ -146,11 +146,10 @@ public class ImageUtils extends Activity {
             fos.close();
             return Uri.fromFile(img);
         } catch (FileNotFoundException e) {
-            // TODO 自动生成的 catch 块
+
             e.printStackTrace();
             return null;
         } catch (IOException e) {
-            // TODO 自动生成的 catch 块
             e.printStackTrace();
             return null;
         }

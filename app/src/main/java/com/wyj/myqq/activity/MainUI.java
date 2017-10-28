@@ -480,6 +480,13 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         });
     }
 
+
+    private int settingState;
+    private int contactsState;
+
+    /**
+     * 将联系人界面重建以便于刷新界面
+     */
     private void resetConstacts() {
         contacts.onDestroyView();
         contacts.onDestroy();
@@ -488,9 +495,9 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         setTabSelection(1);
     }
 
-    private int settingState;
-    private int contactsState;
-
+    /**
+     * 将个人界面重建以便于刷新界面
+     */
     private void resetSetting() {
         setting.onDestroyView();
         setting.onDestroy();

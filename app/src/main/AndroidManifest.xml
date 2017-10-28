@@ -188,7 +188,7 @@
         <activity
             android:name="com.wyj.myqq.activity.SendLocation"
             android:theme="@style/NoTitle" />
-        <activity android:name="com.wyj.myqq.activity.BaseActivity"></activity>
+        <activity android:name="com.wyj.myqq.activity.BaseActivity" />
     </application>
 
 </manifest>

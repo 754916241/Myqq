@@ -118,7 +118,6 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
     private void addFriends() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        JsonHttpResponseHandler.getResponseString()
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, friends.getFriendQQ());
         params.add(Constant.KEY_APPLY_MESSAGE,edtExtra.getText().toString());
