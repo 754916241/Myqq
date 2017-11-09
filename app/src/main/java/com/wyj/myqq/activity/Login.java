@@ -375,6 +375,7 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         SharedPreferences sp = getSharedPreferences("mysp", Context.MODE_PRIVATE);
         edtQQnumber.setText(sp.getString(Constant.KEY_QQNUMBER,""));
         edtPassword.setText(sp.getString(Constant.KEY_PASSWORD,""));
+        edtQQnumber.setSelection(edtQQnumber.getText().toString().length());
         if(!sp.getString(Constant.KEY_IMAGE,"").equals("")){
             imgHead.setImageBitmap(ImageUtils.stringToBitmap(sp.getString(Constant.KEY_IMAGE,"")));
         }

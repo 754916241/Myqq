@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="位置描述"
+        android:padding="7dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="山西省大同市xxxxxx"
+        android:layout_marginLeft="7dp"
+        android:textSize="13sp"/>
+
+</LinearLayout>

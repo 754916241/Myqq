@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,14 +15,17 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.wyj.myqq.R;
+import com.wyj.myqq.adapter.AddressAdapter;
+import com.wyj.myqq.bean.AddressBean;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.view.MyToast;
+
+import java.util.ArrayList;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.IRongCallback;
@@ -29,8 +33,6 @@ import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Message;
 import io.rong.message.LocationMessage;
-
-import static com.amap.api.maps.CameraUpdateFactory.zoomTo;
 
 public class SendLocation extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,6 +57,8 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
     private Bundle bundle;
     private String targetId;
     private Conversation.ConversationType conversationType;
+    private ListView lvAddress;
+    private ArrayList<AddressBean> addressBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
     private void initData() {
         bundle = getIntent().getExtras();
         targetId = bundle.getString(Constant.KEY_FRIENDS_QQNUMBER);
+        addressBean = new ArrayList<>();
         conversationType = (Conversation.ConversationType) bundle.getSerializable(Constant.KEY_CONVERSATION_TYPE);
     }
 
@@ -80,6 +85,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tvRight = (TextView) findViewById(R.id.tv_right);
         mapView = (MapView) findViewById(R.id.map);
+        lvAddress = (ListView) findViewById(R.id.lv_address);
         tvRight.setOnClickListener(this);
         tvTitle.setText("地理位置");
         tvRight.setText("发送");
@@ -92,38 +98,51 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         aMap.showIndoorMap(true);
         aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
         locationStyle = new MyLocationStyle();
-        locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);
-        locationStyle.interval(2000);
+        //定位一次，且将视角移动到地图中心点。
+        locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) ;
+        //locationStyle.interval(2000);
         aMap.setMyLocationStyle(locationStyle);
         aMap.setMyLocationEnabled(true);
 
 
     }
 
+    /**
+     * 不连续定位，每次点击只获取一次定位结果并显示在界面上
+     */
     private void initLocation() {
         locationClient = new AMapLocationClient(getApplicationContext());
         AMapLocationClientOption option = new AMapLocationClientOption();
-        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        option.setNeedAddress(true);
-        option.setLocationCacheEnable(true);
+        //获取一次定位结果
+        option.setOnceLocation(true);
+        //获取最近3s内精度最高的一次定位结果
+        option.setOnceLocationLatest(true);
+
         locationClient.setLocationOption(option);
         AMapLocationListener listener = new AMapLocationListener() {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {
-                if(aMapLocation != null){
-                    if(aMapLocation.getErrorCode() == 0){
-                        lat = aMapLocation.getLatitude();
-                        lng = aMapLocation.getLongitude();
-                        poi = aMapLocation.getAddress();
-                        imgUri = getMapUrl(lat,lng);
-                    }else{
+                if(aMapLocation != null &&  aMapLocation.getErrorCode() == 0) {
+
+                    lat = aMapLocation.getLatitude();
+                    lng = aMapLocation.getLongitude();
+                    poi = aMapLocation.getProvince() + aMapLocation.getCity() +
+                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getPoiName();
+                    imgUri = getMapUrl(lat, lng);
+                    addressBean.add(new AddressBean(aMapLocation.getAddress(),aMapLocation.getProvince() + aMapLocation.getCity() +
+                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()));
+                    Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
+                    Log.d("SENDLOCATION", "address信息为" + aMapLocation.getAddress());
+                    Log.d("SENDLOCATION","location detail is " + aMapLocation.getLocationDetail());
+                }else{
                         MyToast.showToast(SendLocation.this,aMapLocation.getErrorInfo()+",code is"+aMapLocation.getErrorCode(), Toast.LENGTH_SHORT);
-                    }
                 }
             }
+
         };
         locationClient.setLocationListener(listener);
         locationClient.startLocation();
+        lvAddress.setAdapter(new AddressAdapter(this,R.layout.item_address_list,addressBean));
     }
 
 
@@ -136,6 +155,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_right:
                 LocationMessage locationMessage = LocationMessage.obtain(lat,lng,poi,imgUri);
                 Message message = Message.obtain(targetId,conversationType,locationMessage);
+
                 RongIM.getInstance().sendMessage(message, null, null, new IRongCallback.ISendMessageCallback() {
                     @Override
                     public void onAttached(Message message) {
@@ -169,6 +189,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        locationClient.onDestroy();
     }
 
     @Override

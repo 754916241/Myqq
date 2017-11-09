@@ -5,14 +5,6 @@
     android:background="#e7e0e0"
     android:fitsSystemWindows="true">
 
-    <ImageView
-        android:id="@+id/img_regist_addhead"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@mipmap/icon_select_head" />
-
     <EditText
         android:id="@+id/edt_regist_phone"
         android:layout_width="match_parent"
@@ -116,6 +108,15 @@
         android:layout_marginEnd="30dp"
         android:visibility="gone"
         android:id="@+id/button" />
+
+    <ImageView
+        android:id="@+id/img_regist_addhead"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="49dp"
+        android:background="@mipmap/icon_select_head"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
