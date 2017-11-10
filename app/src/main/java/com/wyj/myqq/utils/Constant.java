@@ -41,7 +41,7 @@ public class Constant {
     public static final String KEY_CONVERSATION_TYPE = "conversationType";
 
     //192.168.0.108  192.168.1.9
-    public static final String HTTP_URL = "192.168.0.179";
+    public static final String HTTP_URL = "192.168.0.180";
     public static final String HTTPURL_REGIST = "http://"+HTTP_URL+":82/htdocs/qq/Regist.php";
     public static final String HTTPURL_LOGIN = "http://"+HTTP_URL+":82/htdocs/qq/Login.php";
     public static final String HTTPURL_ADDFRIENDS = "http://"+HTTP_URL+":82/htdocs/qq/AddFriends.php";

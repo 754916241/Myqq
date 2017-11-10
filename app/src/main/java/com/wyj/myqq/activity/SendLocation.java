@@ -96,7 +96,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
             aMap = mapView.getMap();
         }
         aMap.showIndoorMap(true);
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
         locationStyle = new MyLocationStyle();
         //定位一次，且将视角移动到地图中心点。
         locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) ;
@@ -129,11 +129,14 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
                     poi = aMapLocation.getProvince() + aMapLocation.getCity() +
                             aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getPoiName();
                     imgUri = getMapUrl(lat, lng);
-                    addressBean.add(new AddressBean(aMapLocation.getAddress(),aMapLocation.getProvince() + aMapLocation.getCity() +
-                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()));
+                    addressBean.add(new AddressBean("位置信息",aMapLocation.getProvince() + aMapLocation.getCity() +
+                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getPoiName()));
+                    addressBean.add(new AddressBean("住宅信息",aMapLocation.getProvince() + aMapLocation.getCity() +
+                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getAoiName()));
+                    lvAddress.setAdapter(new AddressAdapter(SendLocation.this,R.layout.item_address_list,addressBean));
                     Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
                     Log.d("SENDLOCATION", "address信息为" + aMapLocation.getAddress());
-                    Log.d("SENDLOCATION","location detail is " + aMapLocation.getLocationDetail());
+                    Log.d("SENDLOCATION","location detail is " + aMapLocation.getAoiName());
                 }else{
                         MyToast.showToast(SendLocation.this,aMapLocation.getErrorInfo()+",code is"+aMapLocation.getErrorCode(), Toast.LENGTH_SHORT);
                 }
@@ -142,7 +145,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         };
         locationClient.setLocationListener(listener);
         locationClient.startLocation();
-        lvAddress.setAdapter(new AddressAdapter(this,R.layout.item_address_list,addressBean));
+
     }
 
 

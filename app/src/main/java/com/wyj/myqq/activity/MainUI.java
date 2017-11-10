@@ -376,11 +376,13 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_CANCELED) {
+            return;
+        }
         switch (requestCode) {
             case Constant.REQUEST_CODE_FROM_ALBUM:
                 Uri imageUri = data.getData();
                 ImageUtils.startImageZoom(ImageUtils.convertUri(imageUri,this),this);
-
                 break;
             case Constant.REQUEST_CODE_FROM_CAMERA:
                 if (resultCode == RESULT_CANCELED) {
@@ -390,13 +392,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                     photo = bundle.getParcelable("data");
                     ImageUtils.startImageZoom(ImageUtils.saveBitmap(photo),this);
                 }
-                /*if (!(resultCode == RESULT_CANCELED)) {
-                    Bundle bundle = data.getExtras();
-                    photo = bundle.getParcelable("data");
-                    imageBase64 = ImageUtils.bitmapToString(photo);
-                    resetSetting();
-                    postImage();
-                }*/
+
                 break;
             case Constant.CROP_REQUEST:
                 if(data == null) {
@@ -449,6 +445,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     }
 
     private void postImage() {
+        dialog.setMessage("正在提交，请稍后……");
+        dialog.show();
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add(Constant.KEY_QQNUMBER, user.getQQnumber());
@@ -465,17 +463,19 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                         //将更改后的图片地址设置到user中去
                         user.setImage(imgPath);
                         RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getQQnumber()
-                        ,user.getNickname(),Uri.parse(imgPath)));
+                                ,user.getNickname(),Uri.parse(imgPath)));
                     }
                 } catch (JSONException e) {
 
                     e.printStackTrace();
                 }
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 MyToast.showToast(MainUI.this, "内网错误请稍后重试",R.mipmap.error, Toast.LENGTH_SHORT);
+                dialog.dismiss();
             }
         });
     }
