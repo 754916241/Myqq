@@ -27,6 +27,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.adapter.SearchFriendResultAdapter;
 import com.wyj.myqq.bean.ConfirmFriendBean;
+import com.wyj.myqq.dblocal.DBLocal;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.example.wyj.myqq.R;
@@ -478,6 +479,9 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 dialog.dismiss();
             }
         });
+
+        DBLocal db = new DBLocal(this);
+        db.updateInRecord(user.getQQnumber(),null,imageBase64);
     }
 
 

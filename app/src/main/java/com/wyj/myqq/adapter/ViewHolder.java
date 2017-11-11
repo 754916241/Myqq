@@ -66,6 +66,12 @@ public class ViewHolder{
         return this;
     }
 
+    public ViewHolder setTextColor(int viewId,int resId){
+        TextView tv = getView(viewId);
+        tv.setTextColor(resId);
+        return this;
+    }
+
     public ViewHolder setImageUseGlide(int viewId, String imageResource){
         ImageView img = getView(viewId);
         Glide.with(context)

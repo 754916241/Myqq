@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_description"
+    <LinearLayout
+        android:id="@+id/layout_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="位置描述"
-        android:padding="7dp"
-        android:textColor="@color/colorBlack"
-        android:textSize="15sp"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="山西省大同市xxxxxx"
-        android:layout_marginLeft="7dp"
-        android:textSize="13sp"/>
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="位置描述"
+            android:padding="7dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="山西省大同市xxxxxx"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_select_location"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:src="@mipmap/right"/>
+
+
+</RelativeLayout>

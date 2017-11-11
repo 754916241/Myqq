@@ -42,10 +42,18 @@ public class DBLocal extends SQLiteOpenHelper {
         write.close();
     }
 
+    /**
+     * 传入qq号，密码以及头像，若不传入密码则默认不修改
+     * @param qqnumber
+     * @param password
+     * @param image
+     */
     public void updateInRecord(String qqnumber,String password,String image) {
         SQLiteDatabase write = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("password", password);
+        if(password != null){
+            cv.put("password", password);
+        }
         cv.put("image", image);
         write.update("record",cv,"qqnumber=?",new String[]{qqnumber});
         cv.clear();

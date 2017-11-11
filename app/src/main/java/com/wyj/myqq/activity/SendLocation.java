@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.wyj.myqq.R;
-import com.wyj.myqq.adapter.AddressAdapter;
+import com.wyj.myqq.adapter.LocationAdapter;
 import com.wyj.myqq.bean.AddressBean;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
@@ -126,14 +127,13 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
 
                     lat = aMapLocation.getLatitude();
                     lng = aMapLocation.getLongitude();
-                    poi = aMapLocation.getProvince() + aMapLocation.getCity() +
-                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getPoiName();
+                    String description = aMapLocation.getProvince() + aMapLocation.getCity() +
+                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum();
+                    poi = description + aMapLocation.getPoiName();
                     imgUri = getMapUrl(lat, lng);
-                    addressBean.add(new AddressBean("位置信息",aMapLocation.getProvince() + aMapLocation.getCity() +
-                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getPoiName()));
-                    addressBean.add(new AddressBean("住宅信息",aMapLocation.getProvince() + aMapLocation.getCity() +
-                            aMapLocation.getDistrict() + aMapLocation.getStreet() + aMapLocation.getStreetNum()+aMapLocation.getAoiName()));
-                    lvAddress.setAdapter(new AddressAdapter(SendLocation.this,R.layout.item_address_list,addressBean));
+                    addressBean.add(new AddressBean("位置信息",description + aMapLocation.getPoiName()));
+                    addressBean.add(new AddressBean("住宅信息",description + aMapLocation.getAoiName()));
+                    lvAddress.setAdapter(new LocationAdapter(SendLocation.this,R.layout.item_address_list,addressBean));
                     Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
                     Log.d("SENDLOCATION", "address信息为" + aMapLocation.getAddress());
                     Log.d("SENDLOCATION","location detail is " + aMapLocation.getAoiName());
@@ -143,9 +143,14 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
             }
 
         };
+        lvAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                poi = addressBean.get(i).getAddress();
+            }
+        });
         locationClient.setLocationListener(listener);
         locationClient.startLocation();
-
     }
 
 
