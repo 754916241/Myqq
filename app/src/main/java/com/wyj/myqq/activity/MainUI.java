@@ -59,8 +59,6 @@ import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
 import io.rong.message.DiscussionNotificationMessage;
-
-import static android.R.id.list;
 import static com.wyj.myqq.utils.Constant.KEY_AGE;
 import static com.wyj.myqq.utils.Constant.KEY_NICK;
 import static com.wyj.myqq.utils.Constant.KEY_SEX;
@@ -75,7 +73,7 @@ import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGENICK;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESEX;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGESIGNATURE;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CONFIRM_FRIEND;
-import static com.wyj.myqq.utils.Constant.RESULT_CODE_CONFIRM_FRIEND_REFUSE;
+
 
 
 public class MainUI extends FragmentActivity implements Setting.OnSettingListener,
@@ -94,10 +92,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
     private View messageLayout, contactsLayout, settingLayout;
     private String password;
     private TextView title;
-    private ScreenManager screenManager;
     private ProgressDialog dialog;
-    private SharedPreferences sp;
-    private HashMap<String, String> map;
+
     private String imageBase64 = "";
     private Bitmap photo;
 
@@ -125,8 +121,9 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
         tvSetting = (TextView) findViewById(R.id.tv_mainUI_settting);
         title = (TextView) findViewById(R.id.title);
         dialog = new ProgressDialog(this);
-        screenManager = ScreenManager.getScreenManager();
-        screenManager.pushActivity(this);
+
+        ScreenManager.getScreenManager().pushActivity(this);
+
         manager = getSupportFragmentManager();
         messageLayout = findViewById(R.id.message_layout);
         contactsLayout = findViewById(R.id.contacts_layout);
@@ -301,7 +298,7 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 MyToast.showToast(this, "再按一次退出程序", Toast.LENGTH_SHORT);
                 mExitTime = System.currentTimeMillis();
             } else {
-                screenManager.popAllActivityExceptOne(Login.class);
+                ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
             }
             return true;
         }

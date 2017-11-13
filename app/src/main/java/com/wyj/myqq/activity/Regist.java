@@ -125,8 +125,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
     }
 
     private void checkInformation() {
-        if (edtPwd.getText().toString().length() < 6||edtCode.getText().toString().equals("")
-                ||edtPwd.getText().toString().equals("")) {
+        if (edtPwd.getText().toString().length() < 6||edtCode.getText().toString().equals("")) {
             regist.setBackgroundResource(R.drawable.button_unable_click);
             regist.setEnabled(false);
             regist.setSoundEffectsEnabled(false);

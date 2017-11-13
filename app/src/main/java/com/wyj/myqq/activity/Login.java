@@ -6,18 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,10 +26,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.SharedPreferences.Editor;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wyj.myqq.App;
@@ -46,8 +45,8 @@ import com.wyj.myqq.dblocal.DBLocal;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ImageUtils;
-import com.wyj.myqq.view.MyToast;
 import com.wyj.myqq.utils.ScreenManager;
+import com.wyj.myqq.view.MyToast;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -65,7 +64,8 @@ import io.rong.imlib.model.UserInfo;
 
 public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,UserRecordAdapter.UserRecordClickListener{
 
-    private Button login,regist;
+    private Button login;
+    private TextView regist,findPassword;
     private EditText edtQQnumber,edtPassword;
     private Bundle bundle;
     private int success;
@@ -143,6 +143,13 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
             public void onClick(View v) {
                 startActivity(new Intent(Login.this,Regist.class));
                 overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+            }
+        });
+
+        findPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this,FindPasswordFirst.class));
             }
         });
 
@@ -367,7 +374,8 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
 
     private void initView() {
         login = (Button) findViewById(R.id.btn_login_login);
-        regist = (Button) findViewById(R.id.btn_login_regist);
+        regist = (TextView) findViewById(R.id.tv_regist);
+        findPassword = (TextView) findViewById(R.id.tv_find_password);
         edtPassword = (EditText) findViewById(R.id.edt_login_password);
         edtQQnumber = (EditText) findViewById(R.id.edt_login_qqnumber);
         imgHead = (ImageView) findViewById(R.id.img_login_head);
@@ -382,8 +390,10 @@ public class Login extends AppCompatActivity implements RongIM.UserInfoProvider,
         if(edtQQnumber.getText().toString().equals("")){
             imgExpand.setVisibility(View.GONE);
         }
-        ScreenManager screenManager = ScreenManager.getScreenManager();
-        screenManager.pushActivity(this);
+
+        //将当前activity推入栈中
+        ScreenManager.getScreenManager().pushActivity(this);
+
         friendsListAgreed = new ArrayList<>();
         friendsListInPanding = new ArrayList<>();
         dialog = new ProgressDialog(this);

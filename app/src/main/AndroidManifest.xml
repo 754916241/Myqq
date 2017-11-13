@@ -40,16 +40,14 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
-
     <application
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
-        android:label="@string/app_name"
         android:installLocation="preferExternal"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
 
         <!--  -->
         <activity
@@ -96,8 +94,6 @@
         <meta-data
             android:name="MyKey"
             android:value="pvxdm17jxyu6r" />
-
-
 
         <activity
             android:name="com.wyj.myqq.Conversation"
@@ -193,7 +189,10 @@
         <activity
             android:name="com.wyj.myqq.activity.SendLocation"
             android:theme="@style/NoTitle" />
-
+        <activity
+            android:name="com.wyj.myqq.activity.FindPasswordFirst"
+            android:theme="@style/NoTitle" />
+        <activity android:name="com.wyj.myqq.activity.FindPasswordSecond"></activity>
     </application>
 
 </manifest>

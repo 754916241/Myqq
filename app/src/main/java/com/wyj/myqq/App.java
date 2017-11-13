@@ -7,6 +7,7 @@ import android.content.Context;
 import com.wyj.myqq.bean.ConfirmFriendBean;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.bean.User;
+import com.wyj.myqq.utils.ScreenManager;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class App extends Application {
     public static User user;
     public static ArrayList<Friends> friendsListAgreed;
     public static ArrayList<ConfirmFriendBean> friendsListInPending;
+
     @Override
     public void onCreate() {
         super.onCreate();

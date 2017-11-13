@@ -25,7 +25,7 @@
             android:layout_height="50dp"
             android:inputType="number"
             android:maxLength="12"
-            android:hint="请输入您的帐号"
+            android:hint="请输入QQ号/手机号"
             android:paddingLeft="10dp"
             android:background="#ffffffff"
             />
@@ -71,15 +71,30 @@
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
              />
-        <Button
-            android:id="@+id/btn_login_regist"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/button_blue_select"
-            android:text="注册新用户"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/tv_find_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码？"
+                android:textColor="@color/colorApp"
+                android:layout_alignParentLeft="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_regist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新用户注册"
+                android:textColor="@color/colorApp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 

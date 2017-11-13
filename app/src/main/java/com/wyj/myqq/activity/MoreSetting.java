@@ -44,7 +44,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
     private String qqnumber,password,phone;
     private Button btnExit;
     private ProgressDialog dialog;
-    private ScreenManager screenManager;
+
     private ImageView imgBack;
     private View dialogView;
 
@@ -64,8 +64,8 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
         qqnumber = user.getQQnumber();
         password = bundle.getString(Constant.KEY_PASSWORD);
         phone = user.getPhone();
-        screenManager = ScreenManager.getScreenManager();
-        screenManager.pushActivity(this);
+
+        ScreenManager.getScreenManager().pushActivity(this);
     }
 
     private void initClick() {

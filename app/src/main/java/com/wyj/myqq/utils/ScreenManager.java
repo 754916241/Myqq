@@ -37,7 +37,7 @@ public class ScreenManager {
     //将当前Activity推入栈中
     public void pushActivity(Activity activity){
         if(activityStack==null){
-            activityStack=new Stack<Activity>();
+            activityStack=new Stack<>();
         }
         activityStack.add(activity);
     }
@@ -50,6 +50,7 @@ public class ScreenManager {
                 break;
             }
             if(activityStack.lastElement().getClass().equals(cls) ){
+                // TODO: 2017/11/13 注释这句代码
                 popActivity(activityStack.lastElement());
                 break;
             }

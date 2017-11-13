@@ -54,8 +54,6 @@ public class Constant {
     public static final String HTTPURL_SUGGEST = "http://"+HTTP_URL+":82/htdocs/qq/Suggest.php";
     //保存在本地的个人信息
     public static final String KEY_SHARE_REMEBER = "perference_key";
-    public static final String KEY_SET_SOURCEID = "sourceId";
-    public static final String KEY_SET_MESSAGE = "message";
     public static final String KEY_IS_FIRST = "first";
 
     public static final int REQUEST_CODE_FROM_CAMERA = 5001;
