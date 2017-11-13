@@ -23,6 +23,7 @@ import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -107,8 +108,8 @@ public class FindPasswordSecond extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password_second);
         Config.setNotificationBar(this, R.color.colorApp);
-        initView();
         initData();
+        initView();
     }
 
     private void initData() {

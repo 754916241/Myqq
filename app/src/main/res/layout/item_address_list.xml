@@ -3,10 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+    <ImageView
+        android:id="@+id/img_select_location"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/right"/>
+
     <LinearLayout
         android:id="@+id/layout_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+       android:layout_toLeftOf="@id/img_select_location"
         android:orientation="vertical">
 
         <TextView
@@ -29,15 +40,7 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/img_select_location"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_centerVertical="true"
-        android:visibility="gone"
-        android:src="@mipmap/right"/>
+
 
 
 </RelativeLayout>

@@ -192,7 +192,8 @@
         <activity
             android:name="com.wyj.myqq.activity.FindPasswordFirst"
             android:theme="@style/NoTitle" />
-        <activity android:name="com.wyj.myqq.activity.FindPasswordSecond"></activity>
+        <activity android:name="com.wyj.myqq.activity.FindPasswordSecond"
+            android:theme="@style/NoTitle"/>
     </application>
 
 </manifest>

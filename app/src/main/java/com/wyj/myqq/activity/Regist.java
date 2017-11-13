@@ -258,6 +258,9 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                     if (success == 1) {
                         dialog.dismiss();
                         MyToast.showToast(Regist.this, "外部网络错误请稍后重试",R.mipmap.error, Toast.LENGTH_SHORT);
+                    }else if(success == 2){
+                        dialog.dismiss();
+                        MyToast.showToast(Regist.this, "该手机号已经注册，不可重复注册，若忘记密码请找回密码", Toast.LENGTH_SHORT);
                     } else {
                         final Intent intent = new Intent(Regist.this, RegistSuccess.class);
                         Bundle bundle = new Bundle();

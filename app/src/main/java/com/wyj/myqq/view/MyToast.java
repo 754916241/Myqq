@@ -49,7 +49,7 @@ public class MyToast extends Toast {
         tv.setText(text);
         iv.setVisibility(View.GONE);
         toast.setView(toastView);
-        toast.setGravity(Gravity.CENTER, 0, 30);
+        toast.setGravity(Gravity.CENTER, 0, 80);
         toast.setDuration(duration);
         toast.show();
     }

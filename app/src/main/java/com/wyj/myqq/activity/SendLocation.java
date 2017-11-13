@@ -134,9 +134,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
                     addressBean.add(new AddressBean("位置信息",description + aMapLocation.getPoiName()));
                     addressBean.add(new AddressBean("住宅信息",description + aMapLocation.getAoiName()));
                     lvAddress.setAdapter(new LocationAdapter(SendLocation.this,R.layout.item_address_list,addressBean));
-                    Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
-                    Log.d("SENDLOCATION", "address信息为" + aMapLocation.getAddress());
-                    Log.d("SENDLOCATION","location detail is " + aMapLocation.getAoiName());
+                    Log.d("SENDLOCATION", "poi信息为" + poi);
                 }else{
                         MyToast.showToast(SendLocation.this,aMapLocation.getErrorInfo()+",code is"+aMapLocation.getErrorCode(), Toast.LENGTH_SHORT);
                 }
@@ -146,7 +144,9 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         lvAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 poi = addressBean.get(i).getAddress();
+                Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
             }
         });
         locationClient.setLocationListener(listener);

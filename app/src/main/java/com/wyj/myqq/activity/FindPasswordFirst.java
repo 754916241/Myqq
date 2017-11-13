@@ -21,6 +21,7 @@ import com.wyj.myqq.utils.Constant;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -84,8 +85,6 @@ public class FindPasswordFirst extends AppCompatActivity implements View.OnClick
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add(Constant.KEY_QQNUMBER,qqnumber);
-
-                // TODO: 2017/11/13  修改服务器文件，判断qq号是否存在，返回一个状态
                 client.post(Constant.HTTPURL_GET_FRIEND_INFO, params, new AsyncHttpResponseHandler() {
 
                     @Override

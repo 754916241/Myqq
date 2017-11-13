@@ -2,6 +2,7 @@ package com.wyj.myqq;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -25,8 +26,11 @@ import io.rong.imkit.RongIM;
 import io.rong.imlib.MessageTag;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.TypingMessage.TypingStatus;
+import io.rong.imlib.model.UserInfo;
 import io.rong.message.TextMessage;
 import io.rong.message.VoiceMessage;
+
+import static com.example.wyj.myqq.App.user;
 
 public class Conversation extends FragmentActivity implements View.OnClickListener,RongIM.LocationProvider {
 
@@ -99,6 +103,8 @@ public class Conversation extends FragmentActivity implements View.OnClickListen
         }else{
             title.setText(targetId);
         }
+        RongIM.getInstance().refreshUserInfoCache(new UserInfo(user.getQQnumber()
+                ,user.getNickname(), Uri.parse(user.getImage())));
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         ScreenManager screenManager = ScreenManager.getScreenManager();
         screenManager.pushActivity(this);
