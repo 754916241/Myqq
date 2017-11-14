@@ -41,31 +41,43 @@ public class ScreenManager {
         }
         activityStack.add(activity);
     }
-    //退出栈中所有Activity
+
+    /**
+     * 退出除了cls以外的其他activity
+     * @param cls
+     */
     public void popAllActivityExceptOne(Class cls){
         while(true){
-            Log.d("getLocalClassName",activityStack.lastElement().getLocalClassName());
-
-            if(activityStack.lastElement()==null){
-                break;
-            }
             if(activityStack.lastElement().getClass().equals(cls) ){
-                // TODO: 待测试
-                //popActivity(activityStack.lastElement());
                 break;
             }
             popActivity(activityStack.lastElement());
         }
     }
 
+    /**
+     * 退出栈中所有Activity
+     */
     public void popAllActivity(){
-        while(true){
 
-            if(activityStack.lastElement()==null){
-                break;
-            }
+        //无法遍历栈结构，只会弹出最先进去的
+        /*for (Activity activity: activityStack) {
+            Log.d("ScreenManager",activityStack.size()+"");
+            Log.d("ScreenManager",activity.getLocalClassName());
 
+        }*/
+
+        while (!activityStack.empty()){
+            Log.d("ScreenManager",activityStack.lastElement().getLocalClassName());
             popActivity(activityStack.lastElement());
         }
+
+        //这种方法会报异常，因为lastElement不存在
+        /*while(true){
+            if(activityStack.lastElement() == null){
+                break;
+            }
+            popActivity(activityStack.lastElement());
+        }*/
     }
 }

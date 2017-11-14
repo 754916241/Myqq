@@ -87,7 +87,7 @@
         <Button
             android:id="@+id/btn_regist_regist"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:background="@drawable/button_unable_click"
             android:enabled="false"
             android:text="马上注册"
