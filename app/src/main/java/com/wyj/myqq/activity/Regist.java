@@ -2,20 +2,17 @@ package com.wyj.myqq.activity;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -43,15 +40,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-import static com.example.wyj.myqq.R.id.edt_password;
-import static com.example.wyj.myqq.R.id.img;
 import static com.wyj.myqq.utils.Constant.MOB_APP_KEY;
 import static com.wyj.myqq.utils.Constant.MOB_APP_SECRETE;
 
@@ -80,7 +73,6 @@ public class Regist extends AppCompatActivity implements TextWatcher{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                           // MyToast.showToast(Regist.this,"验证码输入正确",Toast.LENGTH_SHORT);
                             postInformation();
                         }
                     });
@@ -232,7 +224,7 @@ public class Regist extends AppCompatActivity implements TextWatcher{
     private void postInformation() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.add(Constant.KEY_QQNUMBER, "" + Config.generateqqNumber());
+        params.add(Constant.KEY_QQNUMBER, Config.generateqqNumber());
         params.add(Constant.KEY_PASSWORD, edtPwd.getText().toString());
         params.add(Constant.KEY_PHONE, edtPhone.getText().toString());
 

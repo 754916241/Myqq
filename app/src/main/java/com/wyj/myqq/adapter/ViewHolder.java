@@ -66,9 +66,9 @@ public class ViewHolder{
         return this;
     }
 
-    public ViewHolder setTextColor(int viewId,int resId){
+    public ViewHolder setTextColorResource(int viewId, int resId){
         TextView tv = getView(viewId);
-        tv.setTextColor(resId);
+        tv.setTextColor(context.getResources().getColor(resId));
         return this;
     }
 

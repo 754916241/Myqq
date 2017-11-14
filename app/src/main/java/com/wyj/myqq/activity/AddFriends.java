@@ -131,7 +131,7 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
                     JSONObject object = new JSONObject(response);
                     success = object.getInt("success");
                     if (success == 0) {
-                        ScreenManager.getScreenManager().popAllActivityExceptOne(SearchFriends.class);
+                        ScreenManager.getScreenManager().popAllActivityExceptOne(MainUI.class);
                         MyToast.showToast(AddFriends.this,"好友申请已发出，请等待对方答复",Toast.LENGTH_SHORT);
                         finish();
                     } else if(success == 1) {

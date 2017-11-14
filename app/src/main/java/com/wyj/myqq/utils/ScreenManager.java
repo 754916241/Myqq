@@ -50,10 +50,21 @@ public class ScreenManager {
                 break;
             }
             if(activityStack.lastElement().getClass().equals(cls) ){
-                // TODO: 2017/11/13 注释这句代码
-                popActivity(activityStack.lastElement());
+                // TODO: 待测试
+                //popActivity(activityStack.lastElement());
                 break;
             }
+            popActivity(activityStack.lastElement());
+        }
+    }
+
+    public void popAllActivity(){
+        while(true){
+
+            if(activityStack.lastElement()==null){
+                break;
+            }
+
             popActivity(activityStack.lastElement());
         }
     }

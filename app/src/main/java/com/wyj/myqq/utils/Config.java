@@ -1,12 +1,9 @@
 package com.wyj.myqq.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.example.wyj.myqq.R;
 
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -23,9 +20,11 @@ public class Config {
      * 随机生成qq号
      * @return
      */
-    public static int generateqqNumber() {
+    public static String generateqqNumber() {
         String uuid = UUID.randomUUID().toString(); // xxxx-xxx-xxx-xxxx-xxx
-        int hashCode = Math.abs(uuid.hashCode());
+        String hashCode = Math.abs(uuid.hashCode())+"";
+        if(hashCode.length()>=11)
+            hashCode = hashCode.substring(0,10);
         return  hashCode;
     }
 

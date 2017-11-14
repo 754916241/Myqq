@@ -205,7 +205,7 @@ public class FindPasswordSecond extends AppCompatActivity implements View.OnClic
                     if (success != 0) {
                         MyToast.showToast(FindPasswordSecond.this, "传入信息有误请核对后重试", R.mipmap.error, Toast.LENGTH_SHORT);
                     } else {
-                        ScreenManager.getScreenManager().popAllActivityExceptOne(FindPasswordFirst.class);
+                        ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
                         MyToast.showToast(FindPasswordSecond.this, "密码重置成功！", R.mipmap.right, Toast.LENGTH_SHORT);
                     }
 

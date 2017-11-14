@@ -298,7 +298,8 @@ public class MainUI extends FragmentActivity implements Setting.OnSettingListene
                 MyToast.showToast(this, "再按一次退出程序", Toast.LENGTH_SHORT);
                 mExitTime = System.currentTimeMillis();
             } else {
-                ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
+                //ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
+                ScreenManager.getScreenManager().popAllActivity();
             }
             return true;
         }

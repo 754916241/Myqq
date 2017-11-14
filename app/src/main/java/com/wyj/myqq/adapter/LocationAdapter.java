@@ -26,38 +26,48 @@ public class LocationAdapter extends MyAdapter<AddressBean>{
         isChecked = new SparseBooleanArray();
     }
 
+    /**
+     *
+     * @param one
+     * @param b
+     * 将SparseBooleanArray中所有项均置为b除了one项
+     */
+    public void isCheckedPutAllExceptOne(int one,boolean b){
+        if(isChecked == null)
+            return;
+        for (int i = 0; i < isChecked.size(); i++) {
+            isChecked.put(i,b);
+        }
+        isChecked.put(one,!b);
+    }
+
     @Override
     public void convert(final ViewHolder holder, AddressBean bean) {
         holder.setText(R.id.tv_description,bean.getDescription())
                 .setText(R.id.tv_address,bean.getAddress());
+
         if(isFirstEnter){
             if(holder.position == 0) {
+                Log.d("LOCATIONADAPTER","true的position为"+holder.position);
                 isChecked.put(holder.position,true);
             }else{
+                Log.d("LOCATIONADAPTER","false的position为"+holder.position);
                 isChecked.put(holder.position,false);
             }
         }
 
         if(isChecked.get(holder.position)){
-            holder.setTextColor(R.id.tv_description,R.color.colorPrimary)
-                    .setTextColor(R.id.tv_address,R.color.colorPrimary);
+            holder.setTextColorResource(R.id.tv_description,R.color.colorPrimary)
+                    .setTextColorResource(R.id.tv_address,R.color.colorPrimary);
             holder.getView(R.id.img_select_location).setVisibility(View.VISIBLE);
+
         }else{
-            holder.setTextColor(R.id.tv_description,R.color.colorBlack)
-                    .setTextColor(R.id.tv_address,R.color.colorBlack);
+
+            holder.setTextColorResource(R.id.tv_description,R.color.colorBlack)
+                    .setTextColorResource(R.id.tv_address,R.color.colorBlack);
             holder.getView(R.id.img_select_location).setVisibility(View.GONE);
         }
-
         isFirstEnter = false;
-        holder.getView(R.id.layout_location).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int lastPosition = isChecked.indexOfValue(true);
-                Log.d("LOCATIONADAPTER",lastPosition+"");
-                isChecked.put(lastPosition,false);
-                isChecked.put(holder.position,true);
-                notifyDataSetChanged();
-            }
-        });
+
     }
 }

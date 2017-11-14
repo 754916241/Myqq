@@ -178,7 +178,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void run() {
                                 App.user = null;
-                                ScreenManager.getScreenManager().popAllActivityExceptOne(MainUI.class);
+                                ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
                                 dialog.dismiss();
                             }
                         }, 1500);
@@ -214,7 +214,7 @@ public class MoreSetting extends AppCompatActivity implements View.OnClickListen
                 break;
             case REQUEST_CODE_CHANGEPASSWORD:
                 if(resultCode == RESULT_CODE_CHANGEPASSWORD){
-                    ScreenManager.getScreenManager().popAllActivityExceptOne(MainUI.class);
+                    ScreenManager.getScreenManager().popAllActivityExceptOne(Login.class);
                 }
 
                 break;

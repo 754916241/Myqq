@@ -60,6 +60,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
     private Conversation.ConversationType conversationType;
     private ListView lvAddress;
     private ArrayList<AddressBean> addressBean;
+    private LocationAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,7 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         lvAddress = (ListView) findViewById(R.id.lv_address);
         tvRight.setOnClickListener(this);
         tvTitle.setText("地理位置");
+
         tvRight.setText("发送");
     }
 
@@ -133,7 +135,8 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
                     imgUri = getMapUrl(lat, lng);
                     addressBean.add(new AddressBean("位置信息",description + aMapLocation.getPoiName()));
                     addressBean.add(new AddressBean("住宅信息",description + aMapLocation.getAoiName()));
-                    lvAddress.setAdapter(new LocationAdapter(SendLocation.this,R.layout.item_address_list,addressBean));
+                    adapter = new LocationAdapter(SendLocation.this,R.layout.item_address_list,addressBean);
+                    lvAddress.setAdapter(adapter);
                     Log.d("SENDLOCATION", "poi信息为" + poi);
                 }else{
                         MyToast.showToast(SendLocation.this,aMapLocation.getErrorInfo()+",code is"+aMapLocation.getErrorCode(), Toast.LENGTH_SHORT);
@@ -143,9 +146,10 @@ public class SendLocation extends AppCompatActivity implements View.OnClickListe
         };
         lvAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                poi = addressBean.get(i).getAddress();
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                adapter.isCheckedPutAllExceptOne(position,false);
+                poi = addressBean.get(position).getAddress();
+                adapter.notifyDataSetChanged();
                 Log.d("SENDLOCATION", "poi信息(拼接后的地址)为" + poi);
             }
         });

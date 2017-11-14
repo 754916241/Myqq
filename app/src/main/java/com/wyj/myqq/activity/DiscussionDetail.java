@@ -265,7 +265,7 @@ public class DiscussionDetail extends AppCompatActivity implements View.OnClickL
                                 MyToast.showToast(DiscussionDetail.this, "已退出讨论组", Toast.LENGTH_SHORT);
                                 RongIM.getInstance().removeConversation(
                                         io.rong.imlib.model.Conversation.ConversationType.DISCUSSION,targetId,null);
-                                screenManager.popAllActivityExceptOne(Conversation.class);
+                                screenManager.popAllActivityExceptOne(MainUI.class);
                             }
 
                             @Override
