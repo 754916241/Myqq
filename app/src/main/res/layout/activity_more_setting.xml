@@ -19,7 +19,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/layout_title"
         android:padding="10dp"
-        android:background="@drawable/text_selector">
+        android:background="@drawable/text_selector_white">
 
         <TextView
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:layout_below="@id/layout_phone"
-        android:background="@drawable/text_selector"
+        android:background="@drawable/text_selector_white"
         android:layout_marginTop="1dp"
         android:paddingLeft="10dp"
         android:text="修改密码"
@@ -60,7 +60,7 @@
         android:layout_below="@id/tv_password"
         android:layout_marginTop="20dp"
         android:padding="10dp"
-        android:background="@drawable/text_selector">
+        android:background="@drawable/text_selector_white">
 
         <TextView
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:layout_below="@id/layout_cache"
-        android:background="@drawable/text_selector"
+        android:background="@drawable/text_selector_white"
         android:layout_marginTop="1dp"
         android:paddingLeft="10dp"
         android:text="关于"
@@ -99,7 +99,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:layout_below="@id/tv_about"
-        android:background="@drawable/text_selector"
+        android:background="@drawable/text_selector_white"
         android:layout_marginTop="1dp"
         android:paddingLeft="10dp"
         android:text="意见反馈"
@@ -112,7 +112,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:layout_below="@id/tv_suggest"
-        android:background="@drawable/text_selector"
+        android:background="@drawable/text_selector_white"
         android:layout_marginTop="1dp"
         android:paddingLeft="10dp"
         android:text="版本更新"
@@ -132,7 +132,7 @@
             android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/text_selector"
+            android:background="@drawable/text_selector_white"
             android:text="退出登录"/>
     </RelativeLayout>
 

@@ -84,6 +84,7 @@
                 android:text="忘记密码？"
                 android:textColor="@color/colorApp"
                 android:layout_alignParentLeft="true"
+                android:background="@drawable/text_selector_dark_white"
                 />
 
             <TextView
@@ -92,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:text="新用户注册"
                 android:textColor="@color/colorApp"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@drawable/text_selector_dark_white"/>
         </RelativeLayout>
 
 
