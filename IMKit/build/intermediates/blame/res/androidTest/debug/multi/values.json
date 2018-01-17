@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 4322
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 9213
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 132,
                         "startColumn": 4,
@@ -53,7 +53,7 @@
                     "endOffset": 9280
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 262,
                         "startColumn": 4,
@@ -72,7 +72,7 @@
                     "endOffset": 9341
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 263,
                         "startColumn": 4,
@@ -91,7 +91,7 @@
                     "endOffset": 9395
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 264,
                         "startColumn": 4,
@@ -110,7 +110,7 @@
                     "endOffset": 9440
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 265,
                         "startColumn": 4,
@@ -129,7 +129,7 @@
                     "endOffset": 9502
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 266,
                         "startColumn": 4,
@@ -148,7 +148,7 @@
                     "endOffset": 9548
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 267,
                         "startColumn": 4,
@@ -167,7 +167,7 @@
                     "endOffset": 9605
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 268,
                         "startColumn": 4,
@@ -186,7 +186,7 @@
                     "endOffset": 9654
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 269,
                         "startColumn": 4,
@@ -205,7 +205,7 @@
                     "endOffset": 9700
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 270,
                         "startColumn": 4,
@@ -224,7 +224,7 @@
                     "endOffset": 9753
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 271,
                         "startColumn": 4,
@@ -243,7 +243,7 @@
                     "endOffset": 9808
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 272,
                         "startColumn": 4,
@@ -262,7 +262,7 @@
                     "endOffset": 9855
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 273,
                         "startColumn": 4,
@@ -281,7 +281,7 @@
                     "endOffset": 9908
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 274,
                         "startColumn": 4,
@@ -300,7 +300,7 @@
                     "endOffset": 9957
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 275,
                         "startColumn": 4,
@@ -319,7 +319,7 @@
                     "endOffset": 10011
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 276,
                         "startColumn": 4,
@@ -338,7 +338,7 @@
                     "endOffset": 10064
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 277,
                         "startColumn": 4,
@@ -357,7 +357,7 @@
                     "endOffset": 10158
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 278,
                         "startColumn": 4,
@@ -376,7 +376,7 @@
                     "endOffset": 10219
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 279,
                         "startColumn": 4,
@@ -395,7 +395,7 @@
                     "endOffset": 10275
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 280,
                         "startColumn": 4,
@@ -414,7 +414,7 @@
                     "endOffset": 10339
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 281,
                         "startColumn": 4,
@@ -433,7 +433,7 @@
                     "endOffset": 10391
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 282,
                         "startColumn": 4,
@@ -452,7 +452,7 @@
                     "endOffset": 10456
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 283,
                         "startColumn": 4,
@@ -471,7 +471,7 @@
                     "endOffset": 10520
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 284,
                         "startColumn": 4,
@@ -490,7 +490,7 @@
                     "endOffset": 10585
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 285,
                         "startColumn": 4,
@@ -509,7 +509,7 @@
                     "endOffset": 10655
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 286,
                         "startColumn": 4,
@@ -528,7 +528,7 @@
                     "endOffset": 10724
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 287,
                         "startColumn": 4,
@@ -547,7 +547,7 @@
                     "endOffset": 10790
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 288,
                         "startColumn": 4,
@@ -566,7 +566,7 @@
                     "endOffset": 10838
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 289,
                         "startColumn": 4,
@@ -585,7 +585,7 @@
                     "endOffset": 10894
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 290,
                         "startColumn": 4,
@@ -604,7 +604,7 @@
                     "endOffset": 10971
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 291,
                         "startColumn": 4,
@@ -623,7 +623,7 @@
                     "endOffset": 11029
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 292,
                         "startColumn": 4,
@@ -642,7 +642,7 @@
                     "endOffset": 11086
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 293,
                         "startColumn": 4,
@@ -661,7 +661,7 @@
                     "endOffset": 11134
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 294,
                         "startColumn": 4,
@@ -680,7 +680,7 @@
                     "endOffset": 11187
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 295,
                         "startColumn": 4,
@@ -699,7 +699,7 @@
                     "endOffset": 11236
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 296,
                         "startColumn": 4,
@@ -718,7 +718,7 @@
                     "endOffset": 11290
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 297,
                         "startColumn": 4,
@@ -737,7 +737,7 @@
                     "endOffset": 11345
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 298,
                         "startColumn": 4,
@@ -756,7 +756,7 @@
                     "endOffset": 12279
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 314,
                         "startColumn": 4,
@@ -775,7 +775,7 @@
                     "endOffset": 12341
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 315,
                         "startColumn": 4,
@@ -794,7 +794,7 @@
                     "endOffset": 12406
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 316,
                         "startColumn": 4,
@@ -813,7 +813,7 @@
                     "endOffset": 12448
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 317,
                         "startColumn": 4,
@@ -832,7 +832,7 @@
                     "endOffset": 12485
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 318,
                         "startColumn": 4,
@@ -851,7 +851,7 @@
                     "endOffset": 12528
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 319,
                         "startColumn": 4,
@@ -870,7 +870,7 @@
                     "endOffset": 12567
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 320,
                         "startColumn": 4,
@@ -889,7 +889,7 @@
                     "endOffset": 12608
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 321,
                         "startColumn": 4,
@@ -908,7 +908,7 @@
                     "endOffset": 12648
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 322,
                         "startColumn": 4,
@@ -927,7 +927,7 @@
                     "endOffset": 12701
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 323,
                         "startColumn": 4,
@@ -946,7 +946,7 @@
                     "endOffset": 12756
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 324,
                         "startColumn": 4,
@@ -965,7 +965,7 @@
                     "endOffset": 12808
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 325,
                         "startColumn": 4,
@@ -984,7 +984,7 @@
                     "endOffset": 12858
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 326,
                         "startColumn": 4,
@@ -1003,7 +1003,7 @@
                     "endOffset": 12909
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 327,
                         "startColumn": 4,
@@ -1022,7 +1022,7 @@
                     "endOffset": 12950
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 328,
                         "startColumn": 4,
@@ -1041,7 +1041,7 @@
                     "endOffset": 12988
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 329,
                         "startColumn": 4,
@@ -1060,7 +1060,7 @@
                     "endOffset": 13025
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 330,
                         "startColumn": 4,
@@ -1079,7 +1079,7 @@
                     "endOffset": 13061
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 331,
                         "startColumn": 4,
@@ -1098,7 +1098,7 @@
                     "endOffset": 13109
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 332,
                         "startColumn": 4,
@@ -1117,7 +1117,7 @@
                     "endOffset": 13152
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 333,
                         "startColumn": 4,
@@ -1136,7 +1136,7 @@
                     "endOffset": 13197
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 334,
                         "startColumn": 4,
@@ -1155,7 +1155,7 @@
                     "endOffset": 13235
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 335,
                         "startColumn": 4,
@@ -1174,7 +1174,7 @@
                     "endOffset": 13273
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 336,
                         "startColumn": 4,
@@ -1193,7 +1193,7 @@
                     "endOffset": 13311
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 337,
                         "startColumn": 4,
@@ -1212,7 +1212,7 @@
                     "endOffset": 13349
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 338,
                         "startColumn": 4,
@@ -1231,7 +1231,7 @@
                     "endOffset": 13387
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 339,
                         "startColumn": 4,
@@ -1250,7 +1250,7 @@
                     "endOffset": 13425
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 340,
                         "startColumn": 4,
@@ -1269,7 +1269,7 @@
                     "endOffset": 13463
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 341,
                         "startColumn": 4,
@@ -1288,7 +1288,7 @@
                     "endOffset": 13501
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 342,
                         "startColumn": 4,
@@ -1307,7 +1307,7 @@
                     "endOffset": 13539
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 343,
                         "startColumn": 4,
@@ -1326,7 +1326,7 @@
                     "endOffset": 13577
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 344,
                         "startColumn": 4,
@@ -1345,7 +1345,7 @@
                     "endOffset": 13627
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 345,
                         "startColumn": 4,
@@ -1364,7 +1364,7 @@
                     "endOffset": 13666
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 346,
                         "startColumn": 4,
@@ -1383,7 +1383,7 @@
                     "endOffset": 13703
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 347,
                         "startColumn": 4,
@@ -1402,7 +1402,7 @@
                     "endOffset": 13740
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 348,
                         "startColumn": 4,
@@ -1421,7 +1421,7 @@
                     "endOffset": 13777
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 349,
                         "startColumn": 4,
@@ -1440,7 +1440,7 @@
                     "endOffset": 13829
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 350,
                         "startColumn": 4,
@@ -1459,7 +1459,7 @@
                     "endOffset": 13865
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 351,
                         "startColumn": 4,
@@ -1478,7 +1478,7 @@
                     "endOffset": 13901
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 352,
                         "startColumn": 4,
@@ -1497,7 +1497,7 @@
                     "endOffset": 13939
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 353,
                         "startColumn": 4,
@@ -1516,7 +1516,7 @@
                     "endOffset": 13980
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 354,
                         "startColumn": 4,
@@ -1535,7 +1535,7 @@
                     "endOffset": 14027
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 355,
                         "startColumn": 4,
@@ -1554,7 +1554,7 @@
                     "endOffset": 14068
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 356,
                         "startColumn": 4,
@@ -1573,7 +1573,7 @@
                     "endOffset": 14113
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 357,
                         "startColumn": 4,
@@ -1592,7 +1592,7 @@
                     "endOffset": 14151
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 358,
                         "startColumn": 4,
@@ -1611,7 +1611,7 @@
                     "endOffset": 14188
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 359,
                         "startColumn": 4,
@@ -1630,7 +1630,7 @@
                     "endOffset": 14232
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 360,
                         "startColumn": 4,
@@ -1649,7 +1649,7 @@
                     "endOffset": 14269
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 361,
                         "startColumn": 4,
@@ -1668,7 +1668,7 @@
                     "endOffset": 14307
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 362,
                         "startColumn": 4,
@@ -1687,7 +1687,7 @@
                     "endOffset": 14352
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 363,
                         "startColumn": 4,
@@ -1706,7 +1706,7 @@
                     "endOffset": 14388
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 364,
                         "startColumn": 4,
@@ -1725,7 +1725,7 @@
                     "endOffset": 14435
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 365,
                         "startColumn": 4,
@@ -1744,7 +1744,7 @@
                     "endOffset": 14488
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 366,
                         "startColumn": 4,
@@ -1763,7 +1763,7 @@
                     "endOffset": 14528
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 367,
                         "startColumn": 4,
@@ -1782,7 +1782,7 @@
                     "endOffset": 14590
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 368,
                         "startColumn": 4,
@@ -1801,7 +1801,7 @@
                     "endOffset": 14660
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 369,
                         "startColumn": 4,
@@ -1820,7 +1820,7 @@
                     "endOffset": 14731
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 370,
                         "startColumn": 4,
@@ -1839,7 +1839,7 @@
                     "endOffset": 14781
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 371,
                         "startColumn": 4,
@@ -1858,7 +1858,7 @@
                     "endOffset": 14829
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 372,
                         "startColumn": 4,
@@ -1877,7 +1877,7 @@
                     "endOffset": 14884
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 373,
                         "startColumn": 4,
@@ -1896,7 +1896,7 @@
                     "endOffset": 14941
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 374,
                         "startColumn": 4,
@@ -1915,7 +1915,7 @@
                     "endOffset": 14996
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 375,
                         "startColumn": 4,
@@ -1934,7 +1934,7 @@
                     "endOffset": 15048
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 376,
                         "startColumn": 4,
@@ -1953,7 +1953,7 @@
                     "endOffset": 15120
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 377,
                         "startColumn": 4,
@@ -1972,7 +1972,7 @@
                     "endOffset": 15195
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 378,
                         "startColumn": 4,
@@ -1991,7 +1991,7 @@
                     "endOffset": 15274
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 379,
                         "startColumn": 4,
@@ -2010,7 +2010,7 @@
                     "endOffset": 15346
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 380,
                         "startColumn": 4,
@@ -2029,7 +2029,7 @@
                     "endOffset": 15418
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 381,
                         "startColumn": 4,
@@ -2048,7 +2048,7 @@
                     "endOffset": 15488
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 382,
                         "startColumn": 4,
@@ -2067,7 +2067,7 @@
                     "endOffset": 15559
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 383,
                         "startColumn": 4,
@@ -2086,7 +2086,7 @@
                     "endOffset": 15626
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 384,
                         "startColumn": 4,
@@ -2105,7 +2105,7 @@
                     "endOffset": 15700
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 385,
                         "startColumn": 4,
@@ -2124,7 +2124,7 @@
                     "endOffset": 15769
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 386,
                         "startColumn": 4,
@@ -2143,7 +2143,7 @@
                     "endOffset": 15832
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 387,
                         "startColumn": 4,
@@ -2162,7 +2162,7 @@
                     "endOffset": 15912
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 388,
                         "startColumn": 4,
@@ -2181,7 +2181,7 @@
                     "endOffset": 15983
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 389,
                         "startColumn": 4,
@@ -2200,7 +2200,7 @@
                     "endOffset": 16054
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 390,
                         "startColumn": 4,
@@ -2219,7 +2219,7 @@
                     "endOffset": 16121
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 391,
                         "startColumn": 4,
@@ -2238,7 +2238,7 @@
                     "endOffset": 16190
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 392,
                         "startColumn": 4,
@@ -2257,7 +2257,7 @@
                     "endOffset": 16264
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 393,
                         "startColumn": 4,
@@ -2276,7 +2276,7 @@
                     "endOffset": 16308
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 394,
                         "startColumn": 4,
@@ -2295,7 +2295,7 @@
                     "endOffset": 16368
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 395,
                         "startColumn": 4,
@@ -2314,7 +2314,7 @@
                     "endOffset": 16430
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 396,
                         "startColumn": 4,
@@ -2333,7 +2333,7 @@
                     "endOffset": 16474
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 397,
                         "startColumn": 4,
@@ -2352,7 +2352,7 @@
                     "endOffset": 16522
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 398,
                         "startColumn": 4,
@@ -2371,7 +2371,7 @@
                     "endOffset": 16583
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 399,
                         "startColumn": 4,
@@ -2390,7 +2390,7 @@
                     "endOffset": 16646
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 400,
                         "startColumn": 4,
@@ -2409,7 +2409,7 @@
                     "endOffset": 16690
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 401,
                         "startColumn": 4,
@@ -2428,7 +2428,7 @@
                     "endOffset": 16771
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 402,
                         "startColumn": 4,
@@ -2447,7 +2447,7 @@
                     "endOffset": 16852
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 403,
                         "startColumn": 4,
@@ -2466,7 +2466,7 @@
                     "endOffset": 16924
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 404,
                         "startColumn": 4,
@@ -2485,7 +2485,7 @@
                     "endOffset": 17013
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 405,
                         "startColumn": 4,
@@ -2504,7 +2504,7 @@
                     "endOffset": 17101
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 406,
                         "startColumn": 4,
@@ -2523,7 +2523,7 @@
                     "endOffset": 17179
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 407,
                         "startColumn": 4,
@@ -2542,7 +2542,7 @@
                     "endOffset": 17260
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 408,
                         "startColumn": 4,
@@ -2561,7 +2561,7 @@
                     "endOffset": 17346
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 409,
                         "startColumn": 4,
@@ -2580,7 +2580,7 @@
                     "endOffset": 17407
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 410,
                         "startColumn": 4,
@@ -2599,7 +2599,7 @@
                     "endOffset": 17461
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 411,
                         "startColumn": 4,
@@ -2618,7 +2618,7 @@
                     "endOffset": 17513
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 412,
                         "startColumn": 4,
@@ -2637,7 +2637,7 @@
                     "endOffset": 17579
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 413,
                         "startColumn": 4,
@@ -2656,7 +2656,7 @@
                     "endOffset": 17644
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 414,
                         "startColumn": 4,
@@ -2675,7 +2675,7 @@
                     "endOffset": 17704
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 415,
                         "startColumn": 4,
@@ -2694,7 +2694,7 @@
                     "endOffset": 17766
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 416,
                         "startColumn": 4,
@@ -2713,7 +2713,7 @@
                     "endOffset": 17821
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 417,
                         "startColumn": 4,
@@ -2732,7 +2732,7 @@
                     "endOffset": 17871
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 418,
                         "startColumn": 4,
@@ -2751,7 +2751,7 @@
                     "endOffset": 17916
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 419,
                         "startColumn": 4,
@@ -2770,7 +2770,7 @@
                     "endOffset": 17965
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 420,
                         "startColumn": 4,
@@ -2789,7 +2789,7 @@
                     "endOffset": 18026
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 421,
                         "startColumn": 4,
@@ -2808,7 +2808,7 @@
                     "endOffset": 18084
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 422,
                         "startColumn": 4,
@@ -2827,7 +2827,7 @@
                     "endOffset": 18142
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 423,
                         "startColumn": 4,
@@ -2846,7 +2846,7 @@
                     "endOffset": 18203
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 424,
                         "startColumn": 4,
@@ -2865,7 +2865,7 @@
                     "endOffset": 18265
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 425,
                         "startColumn": 4,
@@ -2884,7 +2884,7 @@
                     "endOffset": 18323
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 426,
                         "startColumn": 4,
@@ -2903,7 +2903,7 @@
                     "endOffset": 18384
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 427,
                         "startColumn": 4,
@@ -2922,7 +2922,7 @@
                     "endOffset": 18442
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 428,
                         "startColumn": 4,
@@ -2941,7 +2941,7 @@
                     "endOffset": 18481
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 429,
                         "startColumn": 4,
@@ -2960,7 +2960,7 @@
                     "endOffset": 18533
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 430,
                         "startColumn": 4,
@@ -2979,7 +2979,7 @@
                     "endOffset": 18592
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 431,
                         "startColumn": 4,
@@ -2998,7 +2998,7 @@
                     "endOffset": 18644
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 432,
                         "startColumn": 4,
@@ -3017,7 +3017,7 @@
                     "endOffset": 18701
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 433,
                         "startColumn": 4,
@@ -3036,7 +3036,7 @@
                     "endOffset": 18765
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 434,
                         "startColumn": 4,
@@ -3055,7 +3055,7 @@
                     "endOffset": 18834
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 435,
                         "startColumn": 4,
@@ -3074,7 +3074,7 @@
                     "endOffset": 18894
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 436,
                         "startColumn": 4,
@@ -3093,7 +3093,7 @@
                     "endOffset": 18952
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 437,
                         "startColumn": 4,
@@ -3112,7 +3112,7 @@
                     "endOffset": 19010
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 438,
                         "startColumn": 4,
@@ -3131,7 +3131,7 @@
                     "endOffset": 19069
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 439,
                         "startColumn": 4,
@@ -3150,7 +3150,7 @@
                     "endOffset": 19139
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 440,
                         "startColumn": 4,
@@ -3169,7 +3169,7 @@
                     "endOffset": 19199
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 441,
                         "startColumn": 4,
@@ -3188,7 +3188,7 @@
                     "endOffset": 19265
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 442,
                         "startColumn": 4,
@@ -3207,7 +3207,7 @@
                     "endOffset": 19340
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 443,
                         "startColumn": 4,
@@ -3226,7 +3226,7 @@
                     "endOffset": 19396
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 444,
                         "startColumn": 4,
@@ -3245,7 +3245,7 @@
                     "endOffset": 19463
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 445,
                         "startColumn": 4,
@@ -3264,7 +3264,7 @@
                     "endOffset": 19541
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 446,
                         "startColumn": 4,
@@ -3283,7 +3283,7 @@
                     "endOffset": 19606
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 447,
                         "startColumn": 4,
@@ -3302,7 +3302,7 @@
                     "endOffset": 19655
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 448,
                         "startColumn": 4,
@@ -3321,7 +3321,7 @@
                     "endOffset": 19713
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 449,
                         "startColumn": 4,
@@ -3340,7 +3340,7 @@
                     "endOffset": 19762
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 450,
                         "startColumn": 4,
@@ -3359,7 +3359,7 @@
                     "endOffset": 19820
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 451,
                         "startColumn": 4,
@@ -3378,7 +3378,7 @@
                     "endOffset": 19877
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 452,
                         "startColumn": 4,
@@ -3397,7 +3397,7 @@
                     "endOffset": 19926
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 453,
                         "startColumn": 4,
@@ -3416,7 +3416,7 @@
                     "endOffset": 19989
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 454,
                         "startColumn": 4,
@@ -3435,7 +3435,7 @@
                     "endOffset": 20045
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 455,
                         "startColumn": 4,
@@ -3454,7 +3454,7 @@
                     "endOffset": 20094
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 456,
                         "startColumn": 4,
@@ -3473,7 +3473,7 @@
                     "endOffset": 20151
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 457,
                         "startColumn": 4,
@@ -3492,7 +3492,7 @@
                     "endOffset": 20216
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 458,
                         "startColumn": 4,
@@ -3511,7 +3511,7 @@
                     "endOffset": 20270
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 459,
                         "startColumn": 4,
@@ -3530,7 +3530,7 @@
                     "endOffset": 20334
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 460,
                         "startColumn": 4,
@@ -3549,7 +3549,7 @@
                     "endOffset": 20383
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 461,
                         "startColumn": 4,
@@ -3568,7 +3568,7 @@
                     "endOffset": 20431
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 462,
                         "startColumn": 4,
@@ -3587,7 +3587,7 @@
                     "endOffset": 20482
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 463,
                         "startColumn": 4,
@@ -3606,7 +3606,7 @@
                     "endOffset": 20531
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 464,
                         "startColumn": 4,
@@ -3625,7 +3625,7 @@
                     "endOffset": 20596
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 465,
                         "startColumn": 4,
@@ -3644,7 +3644,7 @@
                     "endOffset": 20661
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 466,
                         "startColumn": 4,
@@ -3663,7 +3663,7 @@
                     "endOffset": 20721
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 467,
                         "startColumn": 4,
@@ -3682,7 +3682,7 @@
                     "endOffset": 20779
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 468,
                         "startColumn": 4,
@@ -3701,7 +3701,7 @@
                     "endOffset": 20841
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 469,
                         "startColumn": 4,
@@ -3720,7 +3720,7 @@
                     "endOffset": 20898
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 470,
                         "startColumn": 4,
@@ -3739,7 +3739,7 @@
                     "endOffset": 20943
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 471,
                         "startColumn": 4,
@@ -3758,7 +3758,7 @@
                     "endOffset": 21019
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 472,
                         "startColumn": 4,
@@ -3777,7 +3777,7 @@
                     "endOffset": 21071
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 473,
                         "startColumn": 4,
@@ -3796,7 +3796,7 @@
                     "endOffset": 21132
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 474,
                         "startColumn": 4,
@@ -3815,7 +3815,7 @@
                     "endOffset": 21193
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 475,
                         "startColumn": 4,
@@ -3834,7 +3834,7 @@
                     "endOffset": 21262
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 476,
                         "startColumn": 4,
@@ -3853,7 +3853,7 @@
                     "endOffset": 21326
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 477,
                         "startColumn": 4,
@@ -3872,7 +3872,7 @@
                     "endOffset": 21391
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 478,
                         "startColumn": 4,
@@ -3891,7 +3891,7 @@
                     "endOffset": 21465
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 479,
                         "startColumn": 4,
@@ -3910,7 +3910,7 @@
                     "endOffset": 21543
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 480,
                         "startColumn": 4,
@@ -3929,7 +3929,7 @@
                     "endOffset": 21590
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 481,
                         "startColumn": 4,
@@ -3948,7 +3948,7 @@
                     "endOffset": 21640
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 482,
                         "startColumn": 4,
@@ -3967,7 +3967,7 @@
                     "endOffset": 21699
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 483,
                         "startColumn": 4,
@@ -3986,7 +3986,7 @@
                     "endOffset": 21753
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 484,
                         "startColumn": 4,
@@ -4005,7 +4005,7 @@
                     "endOffset": 21804
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 485,
                         "startColumn": 4,
@@ -4024,7 +4024,7 @@
                     "endOffset": 21855
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 486,
                         "startColumn": 4,
@@ -4043,7 +4043,7 @@
                     "endOffset": 21905
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 487,
                         "startColumn": 4,
@@ -4062,7 +4062,7 @@
                     "endOffset": 21968
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 488,
                         "startColumn": 4,
@@ -4081,7 +4081,7 @@
                     "endOffset": 22011
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 489,
                         "startColumn": 4,
@@ -4100,7 +4100,7 @@
                     "endOffset": 22048
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 490,
                         "startColumn": 4,
@@ -4119,7 +4119,7 @@
                     "endOffset": 22104
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 491,
                         "startColumn": 4,
@@ -4139,7 +4139,7 @@
                     "endOffset": 22735
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 492,
                         "startColumn": 4,
@@ -4160,7 +4160,7 @@
                     "endOffset": 22957
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 501,
                         "startColumn": 4,
@@ -4181,7 +4181,7 @@
                     "endOffset": 23165
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 505,
                         "startColumn": 4,
@@ -4202,7 +4202,7 @@
                     "endOffset": 23433
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 509,
                         "startColumn": 4,
@@ -4223,7 +4223,7 @@
                     "endOffset": 23928
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 514,
                         "startColumn": 4,
@@ -4244,7 +4244,7 @@
                     "endOffset": 24011
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 523,
                         "startColumn": 4,
@@ -4265,7 +4265,7 @@
                     "endOffset": 24093
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 526,
                         "startColumn": 4,
@@ -4286,7 +4286,7 @@
                     "endOffset": 24271
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 529,
                         "startColumn": 4,
@@ -4307,7 +4307,7 @@
                     "endOffset": 24354
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 532,
                         "startColumn": 4,
@@ -4328,7 +4328,7 @@
                     "endOffset": 24642
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 535,
                         "startColumn": 4,
@@ -4349,7 +4349,7 @@
                     "endOffset": 24724
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 540,
                         "startColumn": 4,
@@ -4370,7 +4370,7 @@
                     "endOffset": 25186
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 543,
                         "startColumn": 4,
@@ -4391,7 +4391,7 @@
                     "endOffset": 25440
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 551,
                         "startColumn": 4,
@@ -4412,7 +4412,7 @@
                     "endOffset": 25692
                 },
                 "from": {
-                    "file": "F:\\androidProject(androidstudio)\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "D:\\AndroidProject\\Myqq\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 556,
                         "startColumn": 4,

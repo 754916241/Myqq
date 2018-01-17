@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId "com.example.wyj.myqq"
@@ -35,5 +35,4 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'org.apache.httpcomponents:httpcore:4.4.2'
 }
