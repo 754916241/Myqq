@@ -71,7 +71,7 @@
             android:layout_height="40dp"
             android:background="@drawable/button_blue_select"
             android:text="确认添加"
-            android:textColor="#ffffffff" />
+            android:textColor="@color/colorWhite" />
 
     </RelativeLayout>
 

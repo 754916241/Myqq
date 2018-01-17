@@ -31,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SearchFriends extends AppCompatActivity implements TextWatcher {
 
@@ -90,6 +91,7 @@ public class SearchFriends extends AppCompatActivity implements TextWatcher {
                                     String imgPath = object.getString(Constant.KEY_IMAGE);
                                     friends = new Friends(edtSearchFriend.getText().toString(),nickname,imgPath);
                                     list.add(friends);
+                                    Collections.reverse(list);
                                     adapter = new SearchFriendResultAdapter(SearchFriends.this,R.layout.item_searchfriend_result,list);
                                     lvResult.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();

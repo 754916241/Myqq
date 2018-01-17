@@ -65,20 +65,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected void setLeftBtnVisibility(boolean isVisibility){
-        if(isVisibility){
-            imgLeft.setVisibility(View.VISIBLE);
-        }else{
-            imgRight.setVisibility(View.INVISIBLE);
-        }
-
+        int status = isVisibility ? View.VISIBLE : View.INVISIBLE;
+        imgLeft.setVisibility(status);
     }
 
     protected void setRightBtnVisibility(boolean isVisibility){
-        if(isVisibility){
-            imgLeft.setVisibility(View.VISIBLE);
-        }else{
-            imgRight.setVisibility(View.INVISIBLE);
-        }
+        int status = isVisibility ? View.VISIBLE : View.INVISIBLE;
+        imgRight.setVisibility(status);
     }
 
     protected void setLeftBtnOnClickListener(View.OnClickListener listener){

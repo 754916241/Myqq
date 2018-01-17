@@ -1,5 +1,6 @@
 package com.wyj.myqq.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class FindPasswordFirst extends AppCompatActivity implements View.OnClick
     private Button btnNext;
     private InputMethodManager imm;
     private String qqnumber,phone;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class FindPasswordFirst extends AppCompatActivity implements View.OnClick
         imgLeft.setVisibility(View.VISIBLE);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         ScreenManager.getScreenManager().pushActivity(this);
+        dialog = new ProgressDialog(this);
     }
 
 
@@ -80,6 +83,8 @@ public class FindPasswordFirst extends AppCompatActivity implements View.OnClick
                 onBackPressed();
                 break;
             case R.id.btn_next:
+                dialog.setMessage("正在验证信息是否匹配");
+                dialog.show();
                 qqnumber = edtQqnumber.getText().toString();
                 phone = edtPhone.getText().toString();
                 AsyncHttpClient client = new AsyncHttpClient();
@@ -110,14 +115,16 @@ public class FindPasswordFirst extends AppCompatActivity implements View.OnClick
                                 //qq号不存在
                                 MyToast.showToast(FindPasswordFirst.this,"qq号不存在，请核对后重试",R.mipmap.error,Toast.LENGTH_SHORT);
                             }
-
+                            dialog.dismiss();
                         } catch (JSONException e) {
+                            dialog.dismiss();
                             e.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                        dialog.dismiss();
                         MyToast.showToast(FindPasswordFirst.this,"内部网络错误请稍后重试",R.mipmap.error,Toast.LENGTH_SHORT);
                     }
                 });

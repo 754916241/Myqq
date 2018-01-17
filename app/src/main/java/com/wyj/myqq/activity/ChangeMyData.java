@@ -4,14 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,8 +32,6 @@ import org.json.JSONObject;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.UserInfo;
 
-import static com.example.wyj.myqq.App.user;
-import static com.wyj.myqq.utils.Constant.REQUEST_CODE_CHANGE_DISCUSSION_NAME;
 import static com.wyj.myqq.utils.Constant.RESULT_CODE_CHANGE_DISCUSSION_NAME;
 
 public class ChangeMyData extends AppCompatActivity {

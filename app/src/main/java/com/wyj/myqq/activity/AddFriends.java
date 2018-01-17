@@ -2,10 +2,7 @@ package com.wyj.myqq.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +18,10 @@ import com.bumptech.glide.Glide;
 import com.example.wyj.myqq.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.wyj.myqq.bean.Friends;
 import com.wyj.myqq.utils.Config;
 import com.wyj.myqq.utils.Constant;
-import com.wyj.myqq.utils.ImageUtils;
 import com.wyj.myqq.utils.ScreenManager;
 import com.wyj.myqq.view.MyToast;
 
@@ -34,7 +29,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.wyj.myqq.R.id.img;
+
 
 public class AddFriends extends AppCompatActivity implements View.OnClickListener {
 
@@ -121,6 +116,19 @@ public class AddFriends extends AppCompatActivity implements View.OnClickListene
         params.add(Constant.KEY_QQNUMBER, qqnumber);
         params.add(Constant.KEY_FRIENDS_QQNUMBER, friends.getFriendQQ());
         params.add(Constant.KEY_APPLY_MESSAGE,edtExtra.getText().toString());
+        client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int i, org.apache.http.Header[] headers, byte[] bytes) {
+
+            }
+
+            @Override
+            public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
+
+            }
+        });
         client.post(Constant.HTTPURL_ADDFRIENDS, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {

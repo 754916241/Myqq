@@ -15,10 +15,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
- <!-- 获取机型信息权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
- <!-- 录音 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 获取机型信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 录音 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -30,14 +28,12 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
- <!-- GCM 配置开始 < -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- GCM 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="io.rong.app.permission.C2D_MESSAGE" />
- <!-- GCM 配置结束 < -->
+    <uses-permission android:name="io.rong.app.permission.C2D_MESSAGE" /> <!-- GCM 配置结束 < -->
     <!-- 小米 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.MIPUSH_RECEIVE"
@@ -75,8 +71,7 @@
 
         <meta-data
             android:name="RONG_CLOUD_APP_KEY"
-            android:value="pvxdm17jxyu6r" />
- <!-- end -->
+            android:value="pvxdm17jxyu6r" /> <!-- end -->
         <!-- 必选： SDK 核心功能 -->
         <service
             android:name="io.rong.push.core.PushRegistrationService"

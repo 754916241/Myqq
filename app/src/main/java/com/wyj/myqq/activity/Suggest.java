@@ -2,7 +2,6 @@ package com.wyj.myqq.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -21,7 +20,7 @@ import com.wyj.myqq.view.MyToast;
 
 import org.apache.http.Header;
 
-public class Suggest extends AppCompatActivity {
+public class Suggest extends BaseActivity {
 
     private TextView tvTitle;
     private String qqnumber;
@@ -41,7 +40,7 @@ public class Suggest extends AppCompatActivity {
         initClick();
     }
 
-    private void initData() {
+    protected void initData() {
         bundle = getIntent().getExtras();
         qqnumber = bundle.getString(Constant.KEY_QQNUMBER);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -87,7 +86,7 @@ public class Suggest extends AppCompatActivity {
         });
     }
 
-    private void initView() {
+    protected void initView() {
         imgLeft = (ImageView) findViewById(R.id.img_left);
         tvTitle = (TextView) findViewById(R.id.title);
         edtSuggest = (EditText) findViewById(R.id.edt_suggest);
